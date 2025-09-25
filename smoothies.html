@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Wines — 1708 Hotel</title>
+  <title>Smoothies — 1708 Hotel</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-
   <style>
     /* Banner styling */
     .menu-banner{
@@ -50,7 +49,7 @@
     .back-wrap{ display:flex; justify-content:center; margin:.85rem auto 0; padding:0 .8rem; max-width:980px; }
     .back-btn{
       display:inline-block; text-decoration:none; font-weight:800; letter-spacing:.2px;
-      padding:.65rem 1.05rem; border-radius:14px; border:1.5px solid #2cc440; color:#2a1e00;
+      padding:.65rem 1.05rem; border-radius:14px; border:1.5px solid #D4AF37; color:#2a1e00;
       background: linear-gradient(180deg, #2cc440 0%, #2cc440 58%, #2cc440 100%);
       box-shadow: inset 0 0 0 1px rgba(255,255,255,.25), 0 2px 0 #8f6f05, 0 10px 24px rgba(212,175,55,.28);
       position:relative; isolation:isolate; transition: transform .12s ease, box-shadow .18s ease;
@@ -69,8 +68,13 @@
     }
     .food-card.soldout{ opacity:.48; }
 
-    /* Extra space past fixed nav */
+    /* Space above fixed bottom nav */
     main{ padding-bottom: 4.5rem; }
+
+    @media (max-width: 420px){
+      .menu-banner h2{ font-size:1.32rem; }
+      .menu-banner h2::after{ width:110px; }
+    }
   </style>
 </head>
 <body>
@@ -79,10 +83,9 @@
     <img src="images/1708.png" alt="1708 Hotel Logo" class="logo" />
   </header>
 
-  <!-- Banner -->
   <div class="menu-banner">
     <span class="super-glow" aria-hidden="true"></span>
-    <h2>ARABIAN TEA</h2>
+    <h2>SMOOTHIES</h2>
   </div>
 
   <!-- Back to Drinks -->
@@ -90,39 +93,91 @@
     <a class="back-btn" href="./drinks.html">← Back to Drinks</a>
   </div>
 
-  <!-- Image cards -->
   <main>
     <div class="food-grid">
-      <!-- Abino Shaka -->
-      <div class="food-card" id="card-abino-shaka">
-        <img src="images/arabian-tea-abino-shaka.jpg" alt="Abino Shaka Arabian herbal tea" />
+      <!-- Milk Fruity -->
+      <div class="food-card" id="card-milk-fruity">
+        <img src="images/milk-fruity.jpg" alt="Milk Fruity Smoothie" />
         <div class="food-info">
-          <h4>Abino Shaka</h4>
-          <p id="price-abino-shaka"></p>
+          <h4>Milk Fruity</h4>
+          <p id="price-milk-fruity"></p>
+          <small style="display:block;color:#ccc;margin-top:4px;">
+            Combination of assorted fruits &amp; milk
+          </small>
         </div>
       </div>
 
-      <!-- Man Power -->
-      <div class="food-card" id="card-man-power">
-        <img src="images/arabian-tea-man-power.jpg" alt="Man Power Arabian herbal tea" />
+      <!-- Banana Strawberry -->
+      <div class="food-card" id="card-banana-strawberry">
+        <img src="images/banana-strawberry.jpg" alt="Banana Strawberry Smoothie" />
         <div class="food-info">
-          <h4>Man Power</h4>
-          <p id="price-man-power"></p>
+          <h4>Banana Strawberry</h4>
+          <p id="price-banana-strawberry"></p>
         </div>
       </div>
 
-      <!-- Body Cleanser -->
-      <div class="food-card" id="card-body-cleanser">
-        <img src="images/arabian-tea-body-cleanser.jpg" alt="Body Cleanser Arabian herbal tea" />
+      <!-- Avocado Banana -->
+      <div class="food-card" id="card-avocado-banana">
+        <img src="images/avocado-banana.jpg" alt="Avocado Banana Smoothie" />
         <div class="food-info">
-          <h4>Body Cleanser</h4>
-          <p id="price-body-cleanser"></p>
+          <h4>Avocado Banana</h4>
+          <p id="price-avocado-banana"></p>
+        </div>
+      </div>
+
+      <!-- Peanut Banana -->
+      <div class="food-card" id="card-peanut-banana">
+        <img src="images/peanut-banana.jpg" alt="Peanut Banana Smoothie" />
+        <div class="food-info">
+          <h4>Peanut Banana</h4>
+          <p id="price-peanut-banana"></p>
+          <small style="display:block;color:#ccc;margin-top:4px;">
+            Banana, Avocado, Peanut Butter
+          </small>
+        </div>
+      </div>
+
+      <!-- Ginger Mix -->
+      <div class="food-card" id="card-ginger-mix">
+        <img src="images/ginger-mix.jpg" alt="Ginger Mix Smoothie" />
+        <div class="food-info">
+          <h4>Ginger Mix</h4>
+          <p id="price-ginger-mix"></p>
+          <small style="display:block;color:#ccc;margin-top:4px;">
+            Banana, Ginger, Pineapple, Avocado
+          </small>
+        </div>
+      </div>
+
+      <!-- Fresh Juice -->
+      <div class="food-card" id="card-fresh-juice">
+        <img src="images/fresh-juice.jpg" alt="Fresh Juice" />
+        <div class="food-info">
+          <h4>Fresh Juice</h4>
+          <p id="price-fresh-juice"></p>
+          <small style="display:block;color:#ccc;margin-top:4px;">
+            Watermelon, Pineapple, Orange, Cucumber, Carrot
+          </small>
+        </div>
+      </div>
+
+      <!-- Fruit Perfait -->
+      <div class="food-card" id="card-fruit-perfait">
+        <img src="images/fruit-perfait.jpg" alt="Fruit Perfait" />
+        <div class="food-info">
+          <h4>Fruit Perfait</h4>
+          <p id="price-fruit-perfait"></p>
         </div>
       </div>
     </div>
+
+    <div class="tray-note">
+      Images are illustrative. Prices include VAT where applicable.
+    </div>
   </main>
 
-   <!-- Bottom nav only -->
+  <!-- Bottom Navigation (1708 standard) -->
+  <!-- Bottom nav only -->
   <nav class="bottom-nav">
     <a href="./index.html" class="active">Home</a>
     <a href="./bites.html">Bites</a>
@@ -131,16 +186,19 @@
     <a href="./contact.html">Contact</a>
   </nav>
 
-  <!-- Live price injection (Drinks → Arabian Tea) -->
+  <!-- Live price injection -->
   <script>
+    // GAS endpoint + token (same as admin)
     const ENDPOINT = 'https://script.google.com/macros/s/AKfycbw5v7gImXthxWkHUaCtDdDGx4U_tts7_1JWuHA9ojyu6nm2qvHyPehZrtfEK2j5JTMy/exec';
     const TOKEN    = 'Forgive1988@';
 
     const formatNaira = n => '₦' + Number(n||0).toLocaleString();
-    const slug = s => String(s)
-      .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
-      .replace(/[^a-z0-9]/gi,'-').replace(/-+/g,'-')
-      .toLowerCase().replace(/-$/,'');
+    const norm = s => String(s||'').toLowerCase().trim();
+    const slug = s => String(s||'')
+      .normalize('NFD').replace(/[\u0300-\u036f]/g,'') // strip diacritics
+      .replace(/[’']/g,'')                             // drop apostrophes
+      .replace(/[^a-z0-9]/gi,'-').replace(/-+/g,'-')   // non-alnum -> dashes
+      .toLowerCase().replace(/-$/,'');                 // trim trailing dash
 
     function injectPrices(){
       fetch(`${ENDPOINT}?token=${encodeURIComponent(TOKEN)}`)
@@ -149,8 +207,9 @@
           if(!j.ok || !Array.isArray(j.rows)) return;
 
           j.rows.forEach(item => {
-            if (String(item.type) !== 'Drinks') return;               // only drinks
-            if (String(item.cat) !== 'Arabian Tea') return;           // only this category
+            // Accept both "Drink" and "Drinks" just in case
+            if (!(norm(item.type) === 'drinks' || norm(item.type) === 'drink')) return;
+            if (norm(item.cat) !== 'smoothies') return;
             if (!item.name) return;
 
             const s = slug(item.name);
@@ -170,7 +229,7 @@
             }
           });
         })
-        .catch(()=>{ /* ignore for now */ });
+        .catch(()=>{ /* silent fail */ });
     }
 
     document.addEventListener('DOMContentLoaded', injectPrices);

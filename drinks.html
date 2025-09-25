@@ -27,7 +27,7 @@
       padding: 1.6rem 0 1.05rem 0;
       margin: .4rem 0 .9rem;
       background: linear-gradient(180deg,#111 0%, #000 60%, #000 100%);
-      border: 1.5px solid #d4af37;
+      border: 1.5px solid #2cc440;
       border-radius: 7px;
       box-shadow:
         0 5px 24px 0 #00000050,
@@ -46,7 +46,7 @@
       text-transform:uppercase;
       font-weight: 900;
       font-size: 2rem;
-      background: linear-gradient(180deg,#fffde0 0%, #ffe060 25%, #e8c131 65%, #95742a 95%, #fff7cc 100%);
+      background: linear-gradient(180deg,#fffde0 0%, #2cc440 25%, #2cc440 65%, #2cc440 95%, #fff7cc 100%);
       -webkit-background-clip:text; background-clip:text;
       -webkit-text-fill-color:transparent;
       -webkit-text-stroke: 2px #d4af3766;
@@ -55,7 +55,7 @@
     }
     .menu-banner h2::after{
       content:""; display:block; width:150px; height:2.5px; margin:.7rem auto 0;
-      border-radius:2px; background: linear-gradient(90deg, transparent, #d4af37, transparent);
+      border-radius:2px; background: linear-gradient(90deg, transparent, #2cc440, transparent);
       box-shadow: 0 0 18px #d4af3748;
     }
 
@@ -82,7 +82,6 @@
   <!-- Category Buttons (club) -->
   <div class="menu-toggle">
     <a href="./beers-mixers.html">Beers / Mixers</a>
-    
     <a href="./wines.html">Wines</a>
     <a href="./champagne.html">Champagne</a>
     <a href="./whiskey.html">Whiskey</a>
@@ -97,41 +96,36 @@
   <!-- Preview Grid (you can edit prices later) -->
   <main>
     <div class="food-grid">
-      <!-- Sex on the Beach -->
-      <div class="food-card">
-        <img src="images/sex-on-the-beach.jpg" alt="Sex on the Beach" />
+      <!-- Dom Pérignon -->
+      <div class="food-card" id="card-dom-perignon">
+        <img src="images/dom-perignon.jpg" alt="Dom Pérignon" />
         <div class="food-info">
-          <h4>Sex on the Beach</h4>
-          <p>₦10,000</p>
-          <small style="display:block;color:#ccc;margin-top:4px;">Vodka, Orange, Peach, Strawberry</small>
+          <h4>Dom Pérignon</h4>
+          <p id="price-dom-perignon"></p>
         </div>
       </div>
 
-      <!-- Jack Daniels -->
-      <div class="food-card">
-        <img src="images/jack-daniels.jpg" alt="Jack Daniels" />
+      <!-- Glenfiddich 12yrs -->
+      <div class="food-card" id="card-glenfiddich-12yrs">
+        <img src="images/glenfiddich-12yrs.jpg" alt="Glenfiddich 12yrs" />
+        <div class="food-info"><h4>Glenfiddich 12yrs</h4><p id="price-glenfiddich-12yrs"></p></div>
+      </div>
+
+      <!-- Jameson Black Barrel -->
+      <div class="food-card" id="card-jameson-black-barrel">
+        <img src="images/jameson-black-barrel.jpg" alt="Jameson Black Barrel" />
         <div class="food-info">
-          <h4>Jack Daniels</h4>
-          <p>₦40,000</p>
+          <h4>Jameson Black Barrel</h4>
+          <p id="price-jameson-black-barrel"></p>
         </div>
       </div>
 
-      <!-- Electric Ice Tea -->
-      <div class="food-card">
-        <img src="images/electric-ice-tea.jpg" alt="Electric Ice Tea" />
+      <!-- Veuve rich -->
+      <div class="food-card" id="card-veuve-rich">
+        <img src="images/Veuve rich.jpg" alt="Veuve rich" />
         <div class="food-info">
-          <h4>Electric Ice Tea</h4>
-          <p>₦10,000</p>
-          <small style="display:block;color:#ccc;margin-top:4px;">Strong Alcoholic Mix, Lemon Soda, Blue Curacao</small>
-        </div>
-      </div>
-
-      <!-- Creamy Vanilla -->
-      <div class="food-card">
-        <img src="images/creamy-vanilla.jpg" alt="Creamy Vanilla" />
-        <div class="food-info">
-          <h4>Creamy Vanilla</h4>
-          <p>₦10,000</p>
+          <h4>Veuve rich</h4>
+          <p id="price-veuve-rich"></p>
         </div>
       </div>
     </div>

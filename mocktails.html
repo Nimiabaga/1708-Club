@@ -6,6 +6,7 @@
   <title>Mocktails — 1708 Hotel</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
   <style>
     /* Banner styling */
     .menu-banner{
@@ -13,7 +14,7 @@
       padding: 1.6rem 0 1.05rem 0;
       margin: .4rem 0 .9rem;
       background: linear-gradient(180deg,#111 0%, #000 60%, #000 100%);
-      border: 1.5px solid #d4af37;
+      border: 1.5px solid #2cc440;
       border-radius: 7px;
       box-shadow:
         0 5px 24px 0 #00000050,
@@ -32,7 +33,7 @@
       text-transform:uppercase;
       font-weight: 900;
       font-size: 2rem;
-      background: linear-gradient(180deg,#fffde0 0%, #ffe060 25%, #e8c131 65%, #95742a 95%, #fff7cc 100%);
+      background: linear-gradient(180deg,#fffde0 0%, #2cc440 25%, #2cc440 65%, #2cc440 95%, #fff7cc 100%);
       -webkit-background-clip:text; background-clip:text;
       -webkit-text-fill-color:transparent;
       -webkit-text-stroke: 2px #d4af3766;
@@ -41,15 +42,16 @@
     }
     .menu-banner h2::after{
       content:""; display:block; width:150px; height:2.5px; margin:.7rem auto 0;
-      border-radius:2px; background: linear-gradient(90deg, transparent, #d4af37, transparent);
+      border-radius:2px; background: linear-gradient(90deg, transparent, #2cc440, transparent);
       box-shadow: 0 0 18px #d4af3748;
     }
+
     /* Back button */
     .back-wrap{ display:flex; justify-content:center; margin:.85rem auto 0; padding:0 .8rem; max-width:980px; }
     .back-btn{
       display:inline-block; text-decoration:none; font-weight:800; letter-spacing:.2px;
-      padding:.65rem 1.05rem; border-radius:14px; border:1.5px solid #D4AF37; color:#2a1e00;
-      background: linear-gradient(180deg, #FFD867 0%, #E8C131 58%, #CBA21B 100%);
+      padding:.65rem 1.05rem; border-radius:14px; border:1.5px solid #2cc440; color:#2a1e00;
+      background: linear-gradient(180deg, #2cc440 0%, #2cc440 58%, #2cc440 100%);
       box-shadow: inset 0 0 0 1px rgba(255,255,255,.25), 0 2px 0 #8f6f05, 0 10px 24px rgba(212,175,55,.28);
       position:relative; isolation:isolate; transition: transform .12s ease, box-shadow .18s ease;
     }
@@ -60,15 +62,15 @@
     }
     .back-btn:hover, .back-btn:focus-visible{ transform: translateY(-1px); outline:none; }
 
-    /* Space above fixed bottom nav */
-    main{ padding-bottom: 4.5rem; }
-
-    /* Sold-out visuals to match others */
+    /* Sold-out visuals */
     .soldout-label{
       color:#fff; background:#d91e1e; border-radius:.35em; padding:.07em .5em;
       font-weight:700; margin-left:.6em; font-size:.97em; vertical-align:middle; display:inline-block;
     }
     .food-card.soldout{ opacity:.48; }
+
+    /* Extra space past fixed nav */
+    main{ padding-bottom: 4.5rem; }
   </style>
 </head>
 <body>
@@ -175,11 +177,11 @@
     </div>
   </main>
 
-  <!-- Bottom Navigation (1708 standard) -->
+   <!-- Bottom nav only -->
   <nav class="bottom-nav">
-    <a href="./index.html">Home</a>
-    <a href="./food.html">Food</a>
-    <a href="./drinks.html" class="active">Drinks</a>
+    <a href="./index.html" class="active">Home</a>
+    <a href="./bites.html">Bites</a>
+    <a href="./drinks.html">Drinks</a>
     <a href="./rooms.html">Rooms</a>
     <a href="./contact.html">Contact</a>
   </nav>
