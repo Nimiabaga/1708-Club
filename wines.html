@@ -97,7 +97,7 @@
         <img src="images/carlo-rossi.jpg" alt="Carlo Rossi" />
         <div class="food-info">
           <h4>Carlo Rossi</h4>
-          <p id="price-carlo-rossi"></p>
+          <p>₦18,000</p>
         </div>
       </div>
 
@@ -105,7 +105,7 @@
         <img src="images/markenellis.jpg" alt="Markenellis" />
         <div class="food-info">
           <h4>Markenellis</h4>
-          <p id="price-markenellis"></p>
+          <p>₦18,000</p>
         </div>
       </div>
 
@@ -113,7 +113,7 @@
         <img src="images/four-cousins.jpg" alt="Four Cousins" />
         <div class="food-info">
           <h4>Four Cousins</h4>
-          <p id="price-four-cousins"></p>
+          <p>₦18,000</p>
         </div>
       </div>
 
@@ -121,7 +121,7 @@
         <img src="images/four-cousins-sparkling.jpg" alt="Four Cousins Sparkling" />
         <div class="food-info">
           <h4>Four Cousins Sparkling</h4>
-          <p id="price-four-cousins-sparkling"></p>
+          <p>₦20,000</p>
         </div>
       </div>
 
@@ -129,7 +129,7 @@
         <img src="images/andre.jpg" alt="Andre" />
         <div class="food-info">
           <h4>Andre</h4>
-          <p id="price-andre"></p>
+          <p>₦22,000</p>
         </div>
       </div>
 
@@ -138,7 +138,7 @@
         <img src="images/drosty-off.jpg" alt="Droty Off" />
         <div class="food-info">
           <h4>Droty Off</h4>
-          <p id="price-droty-off"></p>
+          <p>₦18,000</p>
         </div>
       </div>
 
@@ -146,7 +146,7 @@
         <img src="images/pastoral-wine.jpg" alt="Pastoral Wine" />
         <div class="food-info">
           <h4>Pastoral Wine</h4>
-          <p id="price-pastoral-wine"></p>
+          <p>₦19,000</p>
         </div>
       </div>
 
@@ -154,7 +154,7 @@
         <img src="images/star-chaser.jpg" alt="Star Chaser" />
         <div class="food-info">
           <h4>Star Chaser</h4>
-          <p id="price-star-chaser"></p>
+          <p>₦17,000</p>
         </div>
       </div>
 
@@ -162,7 +162,7 @@
         <img src="images/lamothe-original.jpg" alt="Lamothe Original" />
         <div class="food-info">
           <h4>Lamothe Original</h4>
-          <p id="price-lamothe-original"></p>
+          <p>₦15,000</p>
         </div>
       </div>
 
@@ -170,7 +170,7 @@
         <img src="images/toma-wine.jpg" alt="Toma Wine" />
         <div class="food-info">
           <h4>Toma Wine</h4>
-          <p id="price-toma-wine"></p>
+          <p>₦10,000</p>
         </div>
       </div>
 
@@ -178,7 +178,7 @@
         <img src="images/princi-pinal-wine.jpg" alt="Princi Pinal Wine" />
         <div class="food-info">
           <h4>Princi Pinal Wine</h4>
-          <p id="price-princi-pinal-wine"></p>
+          <p>₦10,000</p>
         </div>
       </div>
 
@@ -186,7 +186,7 @@
         <img src="images/1964-wine.jpg" alt="1964 Wine" />
         <div class="food-info">
           <h4>1964 Wine</h4>
-          <p id="price-1964-wine"></p>
+          <p>₦10,000</p>
         </div>
       </div>
 
@@ -194,7 +194,7 @@
         <img src="images/sweet-lip-wine.jpg" alt="Sweet Lip Wine" />
         <div class="food-info">
           <h4>Sweet Lip Wine</h4>
-          <p id="price-sweet-lip-wine"></p>
+          <p>₦15,000</p>
         </div>
       </div>
     </div>
@@ -202,7 +202,7 @@
     <div class="tray-note">Tap any card to zoom. Prices subject to change.</div>
   </main>
 
-   <!-- Bottom nav only -->
+  <!-- Bottom nav only -->
   <nav class="bottom-nav">
     <a href="./index.html" class="active">Home</a>
     <a href="./bites.html">Bites</a>
@@ -210,54 +210,5 @@
     <a href="./rooms.html">Rooms</a>
     <a href="./contact.html">Contact</a>
   </nav>
-
-  <!-- Live price injection -->
-  <script>
-    // GAS endpoint + token (same as admin)
-    const ENDPOINT = 'https://script.google.com/macros/s/AKfycbw5v7gImXthxWkHUaCtDdDGx4U_tts7_1JWuHA9ojyu6nm2qvHyPehZrtfEK2j5JTMy/exec';
-    const TOKEN    = 'Forgive1988@';
-
-    const formatNaira = n => '₦' + Number(n||0).toLocaleString();
-    const norm = s => String(s||'').toLowerCase().trim();
-    const slug = s => String(s||'')
-      .normalize('NFD').replace(/[\u0300-\u036f]/g,'') // remove diacritics
-      .replace(/[’']/g,'')                             // drop apostrophes
-      .replace(/[^a-z0-9]/gi,'-').replace(/-+/g,'-')   // non-alnum → dash
-      .toLowerCase().replace(/-$/,'');                 // trim last dash
-
-    function injectPrices(){
-      fetch(`${ENDPOINT}?token=${encodeURIComponent(TOKEN)}`)
-        .then(r => r.json())
-        .then(j => {
-          if(!j.ok || !Array.isArray(j.rows)) return;
-
-          j.rows.forEach(item => {
-            // Only Drinks → Wines
-            if (!(norm(item.type) === 'drinks' || norm(item.type) === 'drink')) return;
-            if (norm(item.cat) !== 'wines') return;
-            if (!item.name) return;
-
-            const s = slug(item.name);
-            const priceEl = document.getElementById('price-' + s);
-            const cardEl  = document.getElementById('card-' + s);
-            if(!priceEl || !cardEl) return;
-
-            priceEl.innerHTML = '';
-            cardEl.classList.remove('soldout');
-
-            const available = (item.available === true) || (String(item.available).toLowerCase() === 'true');
-            if (available){
-              priceEl.textContent = formatNaira(item.price);
-            } else {
-              priceEl.innerHTML = `${formatNaira(item.price)} <span class="soldout-label">Sold Out</span>`;
-              cardEl.classList.add('soldout');
-            }
-          });
-        })
-        .catch(()=>{ /* silent */ });
-    }
-
-    document.addEventListener('DOMContentLoaded', injectPrices);
-  </script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Shots — 1708 Hotel</title>
+  <title>Liquor, Rum & Gin — 1708 Hotel</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
@@ -15,10 +15,7 @@
       background: linear-gradient(180deg,#111 0%, #000 60%, #000 100%);
       border: 1.5px solid #2cc440;
       border-radius: 7px;
-      box-shadow:
-        0 5px 24px 0 #00000050,
-        0 1px 0 #000000,
-        0 0 24px 0 #00000060;
+      box-shadow: 0 5px 24px 0 #00000050, 0 1px 0 #000000, 0 0 24px 0 #00000060;
       text-align: center;
     }
     .menu-banner .super-glow{
@@ -58,7 +55,6 @@
       pointer-events:none;
     }
     .back-btn:hover, .back-btn:focus-visible{ transform: translateY(-1px); outline:none; }
-
     .soldout-label{
       color:#fff; background:#d91e1e; border-radius:.35em; padding:.07em .5em;
       font-weight:700; margin-left:.6em; font-size:.97em; vertical-align:middle; display:inline-block;
@@ -71,37 +67,66 @@
   <header class="animate__animated animate__fadeInDown">
     <img src="images/1708.png" alt="1708 Hotel Logo" class="logo" />
   </header>
-  <div class="menu-banner">
-    <span class="super-glow" aria-hidden="true"></span>
-    <h2>SHOTS</h2>
-  </div>
+  <div class="menu-banner"><h2>LIQUOR, RUM & GIN</h2></div>
   <div class="back-wrap">
     <a class="back-btn" href="./drinks.html">← Back to Drinks</a>
   </div>
   <main>
     <div class="food-grid">
-      <!-- Tequila -->
-      <div class="food-card" id="card-tequila">
-        <img src="images/tequila-shot.jpg" alt="Tequila Shot" />
+      <!-- Jaegermeister -->
+      <div class="food-card" id="card-jaegermeister">
+        <img src="images/jaegermeister.jpg" alt="Jaegermeister Liquor" />
         <div class="food-info">
-          <h4>Tequila</h4>
-          <p>₦2,000</p>
+          <h4>Jaegermeister</h4>
+          <p>₦35,000</p>
         </div>
       </div>
-      <!-- Gin -->
-      <div class="food-card" id="card-gin">
-        <img src="images/gin-shot.jpg" alt="Gin Shot" />
+      <!-- Bumbu Original -->
+      <div class="food-card" id="card-bumbu-original">
+        <img src="images/bumbu-original.jpg" alt="Bumbu Original Rum" />
         <div class="food-info">
-          <h4>Gin</h4>
-          <p>₦2,000</p>
+          <h4>Bumbu Original</h4>
+          <p>₦100,000</p>
         </div>
       </div>
-      <!-- Jagermeister -->
-      <div class="food-card" id="card-jagermeister">
-        <img src="images/jagermeister-shot.jpg" alt="Jagermeister Shot" />
+      <!-- Cape velvet -->
+      <div class="food-card" id="card-cape-velvet">
+        <img src="images/cape-velvet.jpg" alt="Cape velvet" />
         <div class="food-info">
-          <h4>Jagermeister</h4>
-          <p>₦2,000</p>
+          <h4>Cape velvet</h4>
+          <p>₦50,000</p>
+        </div>
+      </div>
+      <!-- Hendricks Gin -->
+      <div class="food-card" id="card-hendricks">
+        <img src="images/hendricks.jpg" alt="Hendricks Gin" />
+        <div class="food-info">
+          <h4>Hendricks</h4>
+          <p>₦100,000</p>
+        </div>
+      </div>
+      <!-- Gordon Gin -->
+      <div class="food-card" id="card-gordon">
+        <img src="images/gordons.jpg" alt="gordon Gin" />
+        <div class="food-info">
+          <h4>Gordon Gin</h4>
+          <p>₦100,000</p>
+        </div>
+      </div>
+      <!-- Bombay Sapphire -->
+      <div class="food-card" id="card-bombay-sapphire">
+        <img src="images/bombay-sapphire.jpg" alt="Bombay Sapphire Gin" />
+        <div class="food-info">
+          <h4>Bombay Sapphire</h4>
+          <p>₦50,000</p>
+        </div>
+      </div>
+      <!-- Baileys -->
+      <div class="food-card" id="card-baileys">
+        <img src="images/baileys.jpg" alt="Baileys" />
+        <div class="food-info">
+          <h4>Baileys</h4>
+          <p>₦35,000</p>
         </div>
       </div>
     </div>
@@ -110,9 +135,9 @@
     </div>
   </main>
   <nav class="bottom-nav">
-    <a href="./index.html" class="active">Home</a>
+    <a href="./index.html">Home</a>
     <a href="./bites.html">Bites</a>
-    <a href="./drinks.html">Drinks</a>
+    <a href="./drinks.html" class="active">Drinks</a>
     <a href="./rooms.html">Rooms</a>
     <a href="./contact.html">Contact</a>
   </nav>

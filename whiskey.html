@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
   <style>
-    /* Banner styling */
     .menu-banner{
       position: relative;
       padding: 1.6rem 0 1.05rem 0;
@@ -16,10 +15,7 @@
       background: linear-gradient(180deg,#111 0%, #000 60%, #000 100%);
       border: 1.5px solid #2cc440;
       border-radius: 7px;
-      box-shadow:
-        0 5px 24px 0 #00000050,
-        0 1px 0 #000000,
-        0 0 24px 0 #00000060;
+      box-shadow: 0 5px 24px 0 #00000050, 0 1px 0 #000000, 0 0 24px 0 #00000060;
       text-align: center;
     }
     .menu-banner .super-glow{
@@ -46,7 +42,6 @@
       box-shadow: 0 0 18px #d4af3748;
     }
 
-    /* Back button */
     .back-wrap{ display:flex; justify-content:center; margin:.85rem auto 0; padding:0 .8rem; max-width:980px; }
     .back-btn{
       display:inline-block; text-decoration:none; font-weight:800; letter-spacing:.2px;
@@ -61,34 +56,24 @@
       pointer-events:none;
     }
     .back-btn:hover, .back-btn:focus-visible{ transform: translateY(-1px); outline:none; }
-
-    /* Sold-out visuals */
     .soldout-label{
       color:#fff; background:#d91e1e; border-radius:.35em; padding:.07em .5em;
       font-weight:700; margin-left:.6em; font-size:.97em; vertical-align:middle; display:inline-block;
     }
     .food-card.soldout{ opacity:.48; }
-
-    /* Extra space past fixed nav */
     main{ padding-bottom: 4.5rem; }
   </style>
 </head>
 <body>
-  <!-- Header -->
   <header class="animate__animated animate__fadeInDown">
     <img src="images/1708.png" alt="1708 Hotel Logo" class="logo" />
   </header>
-
-  <!-- Banner -->
   <div class="menu-banner">
     <h2>WHISKEY</h2>
   </div>
-
-  <!-- Back to Drinks -->
   <div class="back-wrap">
     <a class="back-btn" href="./drinks.html">← Back to Drinks</a>
   </div>
-
   <main>
     <div class="food-grid">
 
@@ -113,13 +98,13 @@
       <!-- Jameson Irish (Green) -->
       <div class="food-card" id="card-jameson-irish-green">
         <img src="images/jameson-irish-green.jpg" alt="Jameson Irish (Green)" />
-        <div class="food-info"><h4>Jameson Irish (Green)</h4><p>₦55,000</p></div>
+        <div class="food-info"><h4>Jameson Irish (Green)</h4><p>₦40,000</p></div>
       </div>
 
       <!-- Jameson Black Barrel -->
       <div class="food-card" id="card-jameson-black-barrel">
         <img src="images/jameson-black-barrel.jpg" alt="Jameson Black Barrel" />
-        <div class="food-info"><h4>Jameson Black Barrel</h4><p>₦80,000</p></div>
+        <div class="food-info"><h4>Jameson Black Barrel</h4><p>₦60,000</p></div>
       </div>
 
       <!-- Ballantine’s -->
@@ -259,12 +244,23 @@
         <img src="images/glenlivet-18yrs.jpg" alt="Glenlivet 18yrs" />
         <div class="food-info"><h4>Glenlivet 18yrs</h4><p>₦350,000</p></div>
       </div>
-    </div>
 
+      <!-- ADDED WHISKEYS -->
+      <div class="food-card" id="card-singleton">
+        <img src="images/singleton.jpg" alt="Singleton" />
+        <div class="food-info"><h4>Singleton</h4><p>₦80,000</p></div>
+      </div>
+      <div class="food-card" id="card-black-label">
+        <img src="images/black-label.jpg" alt="Black Label" />
+        <div class="food-info"><h4>Black Label</h4><p>₦60,000</p></div>
+      </div>
+      <div class="food-card" id="card-glenmorangie">
+        <img src="images/glenmorangie.jpg" alt="Glenmorangie" />
+        <div class="food-info"><h4>Glenmorangie</h4><p>₦60,000</p></div>
+      </div>
+    </div>
     <div class="tray-note">Images are illustrative. Prices include VAT where applicable.</div>
   </main>
-
-  <!-- Bottom nav only -->
   <nav class="bottom-nav">
     <a href="./index.html" class="active">Home</a>
     <a href="./bites.html">Bites</a>

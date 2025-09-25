@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
   <style>
-    /* Banner styling */
     .menu-banner{
       position: relative;
       padding: 1.6rem 0 1.05rem 0;
@@ -45,8 +44,6 @@
       border-radius:2px; background: linear-gradient(90deg, transparent, #2cc440, transparent);
       box-shadow: 0 0 18px #d4af3748;
     }
-
-    /* Back button */
     .back-wrap{ display:flex; justify-content:center; margin:.85rem auto 0; padding:0 .8rem; max-width:980px; }
     .back-btn{
       display:inline-block; text-decoration:none; font-weight:800; letter-spacing:.2px;
@@ -61,114 +58,66 @@
       pointer-events:none;
     }
     .back-btn:hover, .back-btn:focus-visible{ transform: translateY(-1px); outline:none; }
-
-    /* Sold-out visuals */
-    .soldout-label{
-      color:#fff; background:#d91e1e; border-radius:.35em; padding:.07em .5em;
-      font-weight:700; margin-left:.6em; font-size:.97em; vertical-align:middle; display:inline-block;
-    }
-    .food-card.soldout{ opacity:.48; }
-
-    /* Extra space past fixed nav */
     main{ padding-bottom: 4.5rem; }
   </style>
 </head>
 <body>
-  <!-- Header -->
   <header class="animate__animated animate__fadeInDown">
     <img src="images/1708.png" alt="1708 Hotel Logo" class="logo" />
   </header>
-  <!-- Banner -->
   <div class="menu-banner">
     <span class="super-glow" aria-hidden="true"></span>
     <h2>BITES</h2>
   </div>
-
-  <!-- Grid (Fishes & Fries + Inter-Continental Appetizers) -->
   <main>
     <div class="food-grid">
-      <!-- ===== BBQ & Fries (picked items only) ===== -->
-      <div class="food-card" id="card-croaker-fish">
-        <img src="images/croaker-fish.jpg" alt="Croaker Fish" />
-        <div class="food-info"><h4>Croaker Fish</h4><p id="price-croaker-fish"></p></div>
-      </div>
-
-      <div class="food-card" id="card-cat-fish">
-        <img src="images/cat-fish.jpg" alt="Cat Fish" />
-        <div class="food-info"><h4>Cat Fish</h4><p id="price-cat-fish"></p></div>
-      </div>
-
-      <div class="food-card" id="card-fries">
+      <div class="food-card">
         <img src="images/fries.jpg" alt="Fries" />
-        <div class="food-info"><h4>Fries</h4><p id="price-fries"></p></div>
+        <div class="food-info"><h4>Fries</h4><p>₦3,000</p></div>
       </div>
-
-      <!-- ===== Appetizers (Inter-Continental) ===== -->
-      <div class="food-card" id="card-samosa-5-pieces">
+      <div class="food-card">
         <img src="images/samosa-5-pieces-6000.jpg" alt="Samosa (5 pieces)" />
-        <div class="food-info"><h4>Samosa (5 pieces)</h4><p id="price-samosa-5-pieces"></p></div>
+        <div class="food-info"><h4>Samosa (5 pieces)</h4><p>₦6,000</p></div>
       </div>
-
-      <div class="food-card" id="card-springroll-5-pieces">
+      <div class="food-card">
         <img src="images/springroll-5-pieces.jpg" alt="Springroll (5 pieces)" />
-        <div class="food-info"><h4>Springroll (5 pieces)</h4><p id="price-springroll-5-pieces"></p></div>
+        <div class="food-info"><h4>Springroll (5 pieces)</h4><p>₦5,500</p></div>
       </div>
-
-      <div class="food-card" id="card-nkwobi">
-        <img src="images/nkwobi.jpg" alt="Nkwobi" />
-        <div class="food-info"><h4>Nkwobi</h4><p id="price-nkwobi"></p></div>
-      </div>
-
-      <div class="food-card" id="card-isi-ewu">
-        <img src="images/isi-ewu-10000.jpg" alt="Isi-Ewu" />
-        <div class="food-info"><h4>Isi-Ewu</h4><p id="price-isi-ewu"></p></div>
-      </div>
-
-      <div class="food-card" id="card-chicken-wings">
+      <div class="food-card">
         <img src="images/chicken-wings.jpg" alt="Chicken Wings" />
-        <div class="food-info"><h4>Chicken Wings</h4><p id="price-chicken-wings"></p></div>
+        <div class="food-info"><h4>Chicken Wings</h4><p>₦7,000</p></div>
       </div>
-
-      <div class="food-card" id="card-peppered-gizzard">
+      <div class="food-card">
         <img src="images/peppered-gizzard.jpg" alt="Peppered Gizzard" />
-        <div class="food-info"><h4>Peppered Gizzard</h4><p id="price-peppered-gizzard"></p></div>
+        <div class="food-info"><h4>Peppered Gizzard</h4><p>₦8,500</p></div>
       </div>
-
-      <div class="food-card" id="card-peppered-chicken">
+      <div class="food-card">
         <img src="images/peppered-chicken.jpg" alt="Peppered Chicken" />
-        <div class="food-info"><h4>Peppered Chicken</h4><p id="price-peppered-chicken"></p></div>
+        <div class="food-info"><h4>Peppered Chicken</h4><p>₦7,500</p></div>
       </div>
-
-      <div class="food-card" id="card-peppered-goat-meat">
+      <div class="food-card">
         <img src="images/peppered-goat-meat.jpg" alt="Peppered Goat Meat" />
-        <div class="food-info"><h4>Peppered Goat Meat</h4><p id="price-peppered-goat-meat"></p></div>
+        <div class="food-info"><h4>Peppered Goat Meat</h4><p>₦9,000</p></div>
       </div>
-
-      <div class="food-card" id="card-peppered-beef">
+      <div class="food-card">
         <img src="images/peppered-beef.jpg" alt="Peppered Beef" />
-        <div class="food-info"><h4>Peppered Beef</h4><p id="price-peppered-beef"></p></div>
+        <div class="food-info"><h4>Peppered Beef</h4><p>₦7,000</p></div>
       </div>
-
-      <div class="food-card" id="card-peppered-cow-tail">
+      <div class="food-card">
         <img src="images/peppered-cow-tail.jpg" alt="Peppered Cow - Tail" />
-        <div class="food-info"><h4>Peppered Cow - Tail</h4><p id="price-peppered-cow-tail"></p></div>
+        <div class="food-info"><h4>Peppered Cow - Tail</h4><p>₦8,000</p></div>
       </div>
-
-      <div class="food-card" id="card-peppered-cow-head">
+      <div class="food-card">
         <img src="images/peppered-cow-head.jpg" alt="Peppered Cow - Head" />
-        <div class="food-info"><h4>Peppered Cow - Head</h4><p id="price-peppered-cow-head"></p></div>
+        <div class="food-info"><h4>Peppered Cow - Head</h4><p>₦8,500</p></div>
       </div>
-
-      <div class="food-card" id="card-peppered-snail">
+      <div class="food-card">
         <img src="images/peppered-snail-4500.jpg" alt="Peppered Snail" />
-        <div class="food-info"><h4>Peppered Snail</h4><p id="price-peppered-snail"></p></div>
+        <div class="food-info"><h4>Peppered Snail</h4><p>₦4,500</p></div>
       </div>
     </div>
-
     <div class="tray-note">Takeout ₦300</div>
   </main>
-
-  <!-- Bottom Club Nav -->
   <nav class="bottom-nav">
     <a href="./index.html">Home</a>
     <a href="./bites.html" class="active">Bites</a>
@@ -176,51 +125,5 @@
     <a href="./rooms.html">Rooms</a>
     <a href="./contact.html">Contact</a>
   </nav>
-
-  <!-- Price injection (works when your backend is live) -->
-  <script>
-    const ENDPOINT = 'https://script.google.com/macros/s/AKfycbw5v7gImXthxWkHUaCtDdDGx4U_tts7_1JWuHA9ojyu6nm2qvHyPehZrtfEK2j5JTMy/exec';
-    const TOKEN    = 'Forgive1988@';
-    const formatNaira = n => '₦' + Number(n||0).toLocaleString();
-
-    function injectPrices(){
-      fetch(`${ENDPOINT}?token=${encodeURIComponent(TOKEN)}`)
-        .then(r => r.json())
-        .then(j => {
-          if(!j.ok || !Array.isArray(j.rows)) return;
-          j.rows.forEach(item => {
-            if (String(item.type) !== 'Food') return;
-
-            // Only the two categories we used on this page:
-            const cat = String(item.cat);
-            if (cat !== 'BBQ & Fries' && cat !== 'Appetizer (Inter-Continental)') return;
-            if (!item.name) return;
-
-            const slug = String(item.name)
-              .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
-              .replace(/[^a-z0-9]/gi,'-').replace(/-+/g,'-')
-              .toLowerCase().replace(/-$/,'');
-
-            const priceEl = document.getElementById('price-' + slug);
-            const cardEl  = document.getElementById('card-' + slug);
-            if(!priceEl || !cardEl) return;
-
-            priceEl.innerHTML = '';
-            cardEl.classList.remove('soldout');
-
-            const available = (item.available === true) || (String(item.available).toLowerCase() === 'true');
-            if (available){
-              priceEl.textContent = formatNaira(item.price);
-            } else {
-              priceEl.innerHTML = `${formatNaira(item.price)} <span class="soldout-label">Sold Out</span>`;
-              cardEl.classList.add('soldout');
-            }
-          });
-        })
-        .catch(()=>{ /* silently ignore for now */ });
-    }
-
-    document.addEventListener('DOMContentLoaded', injectPrices);
-  </script>
 </body>
 </html>

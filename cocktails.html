@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
   <style>
-    /* Banner styling */
     .menu-banner{
       position: relative;
       padding: 1.6rem 0 1.05rem 0;
@@ -45,8 +44,6 @@
       border-radius:2px; background: linear-gradient(90deg, transparent, #2cc440, transparent);
       box-shadow: 0 0 18px #d4af3748;
     }
-
-    /* Back button */
     .back-wrap{ display:flex; justify-content:center; margin:.85rem auto 0; padding:0 .8rem; max-width:980px; }
     .back-btn{
       display:inline-block; text-decoration:none; font-weight:800; letter-spacing:.2px;
@@ -61,194 +58,161 @@
       pointer-events:none;
     }
     .back-btn:hover, .back-btn:focus-visible{ transform: translateY(-1px); outline:none; }
-
-    /* Sold-out visuals */
     .soldout-label{
       color:#fff; background:#d91e1e; border-radius:.35em; padding:.07em .5em;
       font-weight:700; margin-left:.6em; font-size:.97em; vertical-align:middle; display:inline-block;
     }
     .food-card.soldout{ opacity:.48; }
-
-    /* Extra space past fixed nav */
     main{ padding-bottom: 4.5rem; }
   </style>
 </head>
 <body>
-  <!-- Header -->
   <header class="animate__animated animate__fadeInDown">
     <img src="images/1708.png" alt="1708 Hotel Logo" class="logo" />
   </header>
-  <!-- Banner -->
   <div class="menu-banner">
     <span class="super-glow" aria-hidden="true"></span>
     <h2>COCKTAILS</h2>
   </div>
-
-  <!-- Back to Drinks -->
   <div class="back-wrap">
     <a class="back-btn" href="./drinks.html">← Back to Drinks</a>
   </div>
-
   <main>
     <div class="food-grid">
-      <!-- Smoky Lamp -->
       <div class="food-card" id="card-smoky-lamp">
         <img src="images/smoky-lamp.jpg" alt="Smoky Lamp" />
         <div class="food-info">
           <h4>Smoky Lamp</h4>
-          <p id="price-smoky-lamp"></p>
+          <p>₦10,000</p>
           <small style="display:block;color:#ccc;margin-top:4px;">Jagermeister, Irish Whiskey, Sour Mix, Cinnamon</small>
         </div>
       </div>
-
-      <!-- Zombie -->
       <div class="food-card" id="card-zombie">
         <img src="images/zombie-cocktail.jpg" alt="Zombie" />
         <div class="food-info">
           <h4>Zombie</h4>
-          <p id="price-zombie"></p>
+          <p>₦10,000</p>
           <small style="display:block;color:#ccc;margin-top:4px;">Mixed Rum, Apricot Brandy, Falernum Liqueur, Lemon, Orange & Pineapple Juice</small>
         </div>
       </div>
-
-      <!-- Irish Coffee -->
       <div class="food-card" id="card-irish-coffee">
         <img src="images/irish-coffee-cocktail.jpg" alt="Irish Coffee" />
         <div class="food-info">
           <h4>Irish Coffee</h4>
-          <p id="price-irish-coffee"></p>
+          <p>₦8,000</p>
           <small style="display:block;color:#ccc;margin-top:4px;">Hot Coffee, Milk, Irish Whiskey</small>
         </div>
       </div>
-
-      <!-- Frozen Strawberry Margarita -->
       <div class="food-card" id="card-frozen-strawberry-margarita">
         <img src="images/frozen-strawberry-margarita.jpg" alt="Frozen Strawberry Margarita" />
         <div class="food-info">
           <h4>Frozen Strawberry Margarita</h4>
-          <p id="price-frozen-strawberry-margarita"></p>
+          <p>₦10,000</p>
           <small style="display:block;color:#ccc;margin-top:4px;">Tequila, Strawberry, Sour Mix</small>
         </div>
       </div>
-
-      <!-- Frozen Blue Margarita -->
       <div class="food-card" id="card-frozen-blue-margarita">
         <img src="images/frozen-blue-margarita.jpg" alt="Frozen Blue Margarita" />
         <div class="food-info">
           <h4>Frozen Blue Margarita</h4>
-          <p id="price-frozen-blue-margarita"></p>
+          <p>₦10,000</p>
           <small style="display:block;color:#ccc;margin-top:4px;">Tequila, Orange Liqueur, Blue Curacao</small>
         </div>
       </div>
-
-      <!-- Sweet Colorado -->
       <div class="food-card" id="card-sweet-colorado">
         <img src="images/sweet-colorado-cocktail.jpg" alt="Sweet Colorado" />
         <div class="food-info">
           <h4>Sweet Colorado</h4>
-          <p id="price-sweet-colorado"></p>
+          <p>₦10,000</p>
           <small style="display:block;color:#ccc;margin-top:4px;">Strong Alcoholic Mix, Aged Whiskey, Red Berry Liqueur</small>
         </div>
       </div>
-
-      <!-- Classic Margarita -->
       <div class="food-card" id="card-classic-margarita">
         <img src="images/classic-margarita.jpg" alt="Classic Margarita" />
         <div class="food-info">
           <h4>Classic Margarita</h4>
-          <p id="price-classic-margarita"></p>
+          <p>₦10,000</p>
           <small style="display:block;color:#ccc;margin-top:4px;">Tequila, Triple Sec, Lemon</small>
         </div>
       </div>
-
-      <!-- Long Island Iced Tea -->
       <div class="food-card" id="card-long-island-iced-tea">
         <img src="images/long-island-iced-tea.jpg" alt="Long Island Iced Tea" />
         <div class="food-info">
           <h4>Long Island Iced Tea</h4>
-          <p id="price-long-island-iced-tea"></p>
+          <p>₦10,000</p>
           <small style="display:block;color:#ccc;margin-top:4px;">Strong Alcoholic Mix, Lemon, Coke</small>
         </div>
       </div>
-
-      <!-- Electric Ice Tea -->
       <div class="food-card" id="card-electric-ice-tea">
         <img src="images/electric-ice-tea.jpg" alt="Electric Ice Tea" />
         <div class="food-info">
           <h4>Electric Ice Tea</h4>
-          <p id="price-electric-ice-tea"></p>
+          <p>₦10,000</p>
           <small style="display:block;color:#ccc;margin-top:4px;">Strong Alcoholic Mix, Lemon Soda, Blue Curacao</small>
         </div>
       </div>
-
-      <!-- Kiwi Fizzy -->
       <div class="food-card" id="card-kiwi-fizzy">
         <img src="images/kiwi-fizzy.jpg" alt="Kiwi Fizzy" />
         <div class="food-info">
           <h4>Kiwi Fizzy</h4>
-          <p id="price-kiwi-fizzy"></p>
+          <p>₦10,000</p>
           <small style="display:block;color:#ccc;margin-top:4px;">Vodka, Coconut Rum, Kiwi Syrup, Pineapple, Orange</small>
         </div>
       </div>
-
-      <!-- Mai Tai -->
       <div class="food-card" id="card-mai-tai">
         <img src="images/mai-tai.jpg" alt="Mai Tai" />
         <div class="food-info">
           <h4>Mai Tai</h4>
-          <p id="price-mai-tai"></p>
+          <p>₦10,000</p>
           <small style="display:block;color:#ccc;margin-top:4px;">Gold & Dark Rum, Orgeat Syrup, Orange Liqueur, Lemon</small>
         </div>
       </div>
-
-      <!-- Blue Hawaii -->
       <div class="food-card" id="card-blue-hawaii">
         <img src="images/blue-hawaii.jpg" alt="Blue Hawaii" />
         <div class="food-info">
           <h4>Blue Hawaii</h4>
-          <p id="price-blue-hawaii"></p>
+          <p>₦10,000</p>
           <small style="display:block;color:#ccc;margin-top:4px;">Vodka, Rum, Blue Curacao, Pineapple, Sour Mix</small>
         </div>
       </div>
-
-      <!-- Winter Breeze -->
       <div class="food-card" id="card-winter-breeze">
         <img src="images/winter-breeze-cocktail.jpg" alt="Winter Breeze" />
         <div class="food-info">
           <h4>Winter Breeze</h4>
-          <p id="price-winter-breeze"></p>
+          <p>₦10,000</p>
           <small style="display:block;color:#ccc;margin-top:4px;">Gin, Vodka, Lemon Cordial, Raspberry Liqueur</small>
         </div>
       </div>
-
-      <!-- Mojito -->
       <div class="food-card" id="card-mojito">
         <img src="images/mojito.jpg" alt="Mojito" />
         <div class="food-info">
           <h4>Mojito</h4>
-          <p id="price-mojito"></p>
+          <p>₦10,000</p>
           <small style="display:block;color:#ccc;margin-top:4px;">Fresh Mint, Lemon Soda, Lime</small>
         </div>
       </div>
-
-      <!-- Sex on the Beach -->
       <div class="food-card" id="card-sex-on-the-beach">
         <img src="images/sex-on-the-beach.jpg" alt="Sex on the Beach" />
         <div class="food-info">
           <h4>Sex on the Beach</h4>
-          <p id="price-sex-on-the-beach"></p>
+          <p>₦10,000</p>
           <small style="display:block;color:#ccc;margin-top:4px;">Vodka, Orange, Peach, Strawberry</small>
         </div>
       </div>
+      <!-- NEW HAMMER COCKTAIL -->
+      <div class="food-card" id="card-hammer">
+        <img src="images/hammer.jpg" alt="Hammer" />
+        <div class="food-info">
+          <h4>Hammer</h4>
+          <p>₦10,000</p>
+          <!-- No description yet -->
+        </div>
+      </div>
     </div>
-
     <div class="tray-note">
       Images are illustrative. Prices include VAT where applicable.
     </div>
   </main>
-
-  <!-- Bottom nav -->
-   <!-- Bottom nav only -->
   <nav class="bottom-nav">
     <a href="./index.html" class="active">Home</a>
     <a href="./bites.html">Bites</a>
@@ -256,53 +220,5 @@
     <a href="./rooms.html">Rooms</a>
     <a href="./contact.html">Contact</a>
   </nav>
-
-  <!-- Live price injection -->
-  <script>
-    const ENDPOINT = 'https://script.google.com/macros/s/AKfycbw5v7gImXthxWkHUaCtDdDGx4U_tts7_1JWuHA9ojyu6nm2qvHyPehZrtfEK2j5JTMy/exec';
-    const TOKEN    = 'Forgive1988@';
-
-    const formatNaira = n => '₦' + Number(n||0).toLocaleString();
-    const slug = s => String(s||'')
-      .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
-      .replace(/[^a-z0-9]/gi,'-').replace(/-+/g,'-')
-      .toLowerCase().replace(/-$/,'');
-
-    function injectPrices(){
-      fetch(`${ENDPOINT}?token=${encodeURIComponent(TOKEN)}`)
-        .then(r => r.json())
-        .then(j => {
-          if(!j.ok || !Array.isArray(j.rows)) return;
-
-          j.rows.forEach(item => {
-            // Drinks → Cocktails only
-            if (String(item.type) !== 'Drinks') return;
-            if (String(item.cat)  !== 'Cocktails') return;
-            if (!item.name) return;
-
-            const s = slug(item.name);
-            const priceEl = document.getElementById('price-' + s);
-            const cardEl  = document.getElementById('card-' + s);
-            if(!priceEl || !cardEl) return;
-
-            // reset visuals each time
-            priceEl.innerHTML = '';
-            cardEl.classList.remove('soldout');
-
-            const available = (item.available === true) || (String(item.available).toLowerCase() === 'true');
-
-            if (available){
-              priceEl.textContent = formatNaira(item.price);
-            } else {
-              priceEl.innerHTML = `${formatNaira(item.price)} <span class="soldout-label">Sold Out</span>`;
-              cardEl.classList.add('soldout');
-            }
-          });
-        })
-        .catch(()=>{ /* silent */ });
-    }
-
-    document.addEventListener('DOMContentLoaded', injectPrices);
-  </script>
 </body>
 </html>

@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
   <style>
-    /* Banner styling */
     .menu-banner{
       position: relative;
       padding: 1.6rem 0 1.05rem 0;
@@ -45,8 +44,6 @@
       border-radius:2px; background: linear-gradient(90deg, transparent, #2cc440, transparent);
       box-shadow: 0 0 18px #d4af3748;
     }
-
-    /* Back button */
     .back-wrap{ display:flex; justify-content:center; margin:.85rem auto 0; padding:0 .8rem; max-width:980px; }
     .back-btn{
       display:inline-block; text-decoration:none; font-weight:800; letter-spacing:.2px;
@@ -61,34 +58,25 @@
       pointer-events:none;
     }
     .back-btn:hover, .back-btn:focus-visible{ transform: translateY(-1px); outline:none; }
-
-    /* Sold-out visuals */
     .soldout-label{
       color:#fff; background:#d91e1e; border-radius:.35em; padding:.07em .5em;
       font-weight:700; margin-left:.6em; font-size:.97em; vertical-align:middle; display:inline-block;
     }
     .food-card.soldout{ opacity:.48; }
-
-    /* Extra space past fixed nav */
     main{ padding-bottom: 4.5rem; }
   </style>
 </head>
 <body>
-  <!-- Header -->
   <header class="animate__animated animate__fadeInDown">
     <img src="images/1708.png" alt="1708 Hotel Logo" class="logo" />
   </header>
-
   <div class="menu-banner">
     <span class="super-glow" aria-hidden="true"></span>
     <h2>MOCKTAILS</h2>
   </div>
-
-  <!-- Back to Drinks -->
   <div class="back-wrap">
     <a class="back-btn" href="./drinks.html">← Back to Drinks</a>
   </div>
-
   <main>
     <div class="food-grid">
       <!-- Chapman -->
@@ -96,88 +84,78 @@
         <img src="images/chapman.jpg" alt="Chapman Mocktail" />
         <div class="food-info">
           <h4>Chapman</h4>
-          <p id="price-chapman"></p>
+          <p>₦6,000</p>
           <small style="display:block;color:#ccc;margin-top:4px;">Alcohol / Non Alcohol</small>
         </div>
       </div>
-
       <!-- Tropical Island -->
       <div class="food-card" id="card-tropical-island">
         <img src="images/tropical-island.jpg" alt="Tropical Island Mocktail" />
         <div class="food-info">
           <h4>Tropical Island</h4>
-          <p id="price-tropical-island"></p>
+          <p>₦8,000</p>
           <small style="display:block;color:#ccc;margin-top:4px;">Fresh Cream, Irish Cream, Coconut, Vanilla</small>
         </div>
       </div>
-
       <!-- Love Portion -->
       <div class="food-card" id="card-love-portion">
         <img src="images/love-portion.jpg" alt="Love Portion Mocktail" />
         <div class="food-info">
           <h4>Love Portion</h4>
-          <p id="price-love-portion"></p>
+          <p>₦8,000</p>
           <small style="display:block;color:#ccc;margin-top:4px;">Fresh Cream, Irish Cream, Kiwi, Peach, Coconut</small>
         </div>
       </div>
-
       <!-- Holy Water -->
       <div class="food-card" id="card-holy-water">
         <img src="images/holy-water.jpg" alt="Holy Water Mocktail" />
         <div class="food-info">
           <h4>Extra Man Power</h4>
-          <p id="price-holy-water"></p>
+          <p>₦8,000</p>
           <small style="display:block;color:#ccc;margin-top:4px;">Raspberry, Tangerine Sour Mix, Lemonade, Lime</small>
         </div>
       </div>
-
       <!-- Cucumber Cooler -->
       <div class="food-card" id="card-cucumber-cooler">
         <img src="images/cucumber-cooler.jpg" alt="Cucumber Cooler Mocktail" />
         <div class="food-info">
           <h4>Cucumber Cooler</h4>
-          <p id="price-cucumber-cooler"></p>
+          <p>₦8,000</p>
           <small style="display:block;color:#ccc;margin-top:4px;">Fresh Cucumber, Lemon Cordial, Lime, Mint Syrup</small>
         </div>
       </div>
-
       <!-- Bahama’s Sunrise -->
       <div class="food-card" id="card-bahamas-sunrise">
         <img src="images/bahamas-sunrise.jpg" alt="Bahamas Sunrise Mocktail" />
         <div class="food-info">
           <h4>Bahamas Sunrise</h4>
-          <p id="price-bahamas-sunrise"></p>
+          <p>₦8,000</p>
           <small style="display:block;color:#ccc;margin-top:4px;">Orange, Pineapple, Peach, Coconut</small>
         </div>
       </div>
-
       <!-- Cinderella -->
       <div class="food-card" id="card-cinderella">
         <img src="images/cinderella.jpg" alt="Cinderella Mocktail" />
         <div class="food-info">
           <h4>Cinderella</h4>
-          <p id="price-cinderella"></p>
+          <p>₦8,000</p>
           <small style="display:block;color:#ccc;margin-top:4px;">Strawberry, Orange &amp; Pineapple, Lemon, Mixed Berry</small>
         </div>
       </div>
-
       <!-- Ginger Lemonade -->
       <div class="food-card" id="card-ginger-lemonade">
         <img src="images/ginger-lemonade.jpg" alt="Ginger Lemonade Mocktail" />
         <div class="food-info">
           <h4>Ginger Lemonade</h4>
-          <p id="price-ginger-lemonade"></p>
+          <p>₦8,000</p>
           <small style="display:block;color:#ccc;margin-top:4px;">Fresh Ginger, Fresh Lemon, Lime Soda</small>
         </div>
       </div>
     </div>
-
     <div class="tray-note">
       Images are illustrative. Prices include VAT where applicable.
     </div>
   </main>
-
-   <!-- Bottom nav only -->
   <nav class="bottom-nav">
     <a href="./index.html" class="active">Home</a>
     <a href="./bites.html">Bites</a>
@@ -185,56 +163,5 @@
     <a href="./rooms.html">Rooms</a>
     <a href="./contact.html">Contact</a>
   </nav>
-
-  <!-- Live price injection -->
-  <script>
-    // Endpoint + token (same as admin)
-    const ENDPOINT = 'https://script.google.com/macros/s/AKfycbw5v7gImXthxWkHUaCtDdDGx4U_tts7_1JWuHA9ojyu6nm2qvHyPehZrtfEK2j5JTMy/exec';
-    const TOKEN    = 'Forgive1988@';
-
-    const formatNaira = n => '₦' + Number(n||0).toLocaleString();
-    const norm = s => String(s||'').toLowerCase().trim();
-    const slug = s => String(s||'')
-      .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
-      .replace(/[^a-z0-9]/gi,'-').replace(/-+/g,'-')
-      .toLowerCase().replace(/-$/,'');
-
-    function injectPrices(){
-      fetch(`${ENDPOINT}?token=${encodeURIComponent(TOKEN)}`)
-        .then(r => r.json())
-        .then(j => {
-          if(!j.ok || !Array.isArray(j.rows)) return;
-
-          j.rows.forEach(item => {
-            // Accept "Drink" or "Drinks"; require category "Mocktails"
-            const t = norm(item.type);
-            const c = norm(item.cat);
-            if (!(t === 'drinks' || t === 'drink')) return;
-            if (c !== 'mocktails') return;
-            if (!item.name) return;
-
-            const s = slug(item.name);
-            const priceEl = document.getElementById('price-' + s);
-            const cardEl  = document.getElementById('card-' + s);
-            if(!priceEl || !cardEl) return;
-
-            // reset visuals
-            priceEl.innerHTML = '';
-            cardEl.classList.remove('soldout');
-
-            const available = (item.available === true) || (String(item.available).toLowerCase() === 'true');
-            if (available){
-              priceEl.textContent = formatNaira(item.price);
-            } else {
-              priceEl.innerHTML = `${formatNaira(item.price)} <span class="soldout-label">Sold Out</span>`;
-              cardEl.classList.add('soldout');
-            }
-          });
-        })
-        .catch(()=>{ /* ignore for now */ });
-    }
-
-    document.addEventListener('DOMContentLoaded', injectPrices);
-  </script>
 </body>
 </html>

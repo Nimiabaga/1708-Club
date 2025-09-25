@@ -6,9 +6,7 @@
   <title>Champagne — 1708 Hotel</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-
   <style>
-    /* Banner styling */
     .menu-banner{
       position: relative;
       padding: 1.6rem 0 1.05rem 0;
@@ -45,8 +43,6 @@
       border-radius:2px; background: linear-gradient(90deg, transparent, #2cc440, transparent);
       box-shadow: 0 0 18px #d4af3748;
     }
-
-    /* Back button */
     .back-wrap{ display:flex; justify-content:center; margin:.85rem auto 0; padding:0 .8rem; max-width:980px; }
     .back-btn{
       display:inline-block; text-decoration:none; font-weight:800; letter-spacing:.2px;
@@ -61,15 +57,11 @@
       pointer-events:none;
     }
     .back-btn:hover, .back-btn:focus-visible{ transform: translateY(-1px); outline:none; }
-
-    /* Sold-out visuals */
     .soldout-label{
       color:#fff; background:#d91e1e; border-radius:.35em; padding:.07em .5em;
       font-weight:700; margin-left:.6em; font-size:.97em; vertical-align:middle; display:inline-block;
     }
     .food-card.soldout{ opacity:.48; }
-
-    /* Extra space past fixed nav */
     main{ padding-bottom: 4.5rem; }
   </style>
 </head>
@@ -80,12 +72,10 @@
   </header>
   <!-- Banner -->
   <div class="menu-banner"><h2>CHAMPAGNE</h2></div>
-
   <!-- Back to Drinks -->
   <div class="back-wrap">
     <a class="back-btn" href="./drinks.html">← Back to Drinks</a>
   </div>
-
   <main>
     <div class="food-grid">
       <!-- Belaire Fantôme Rosé -->
@@ -93,60 +83,60 @@
         <img src="images/belaire-fantome-rose.jpg" alt="Belaire Fantôme Rosé" />
         <div class="food-info">
           <h4>Belaire Fantôme Rosé</h4>
-          <p id="price-belaire-fantome-rose"></p>
+          <p>₦100,000</p>
         </div>
       </div>
-
       <!-- Belaire Fantôme lux -->
       <div class="food-card" id="card-belaire-fantome">
         <img src="images/belaire-fantome.jpg" alt="Belaire Fantôme" />
         <div class="food-info">
           <h4>Belaire Fantôme lux</h4>
-          <p id="price-belaire-fantome"></p>
+          <p>₦110,000</p>
         </div>
       </div>
-
       <!-- Veuve rich -->
       <div class="food-card" id="card-veuve-rich">
         <img src="images/Veuve rich.jpg" alt="Veuve rich" />
         <div class="food-info">
           <h4>Veuve rich</h4>
-          <p id="price-veuve-rich"></p>
+          <p>₦300,000</p>
         </div>
       </div>
-
       <!-- Belaire Fantôme Gold -->
       <div class="food-card" id="card-belaire-fantome-gold">
         <img src="images/belaire-fantome-gold.jpg" alt="Belaire Fantôme Gold" />
         <div class="food-info">
           <h4>Belaire Fantôme Gold</h4>
-          <p id="price-belaire-fantome-gold"></p>
+          <p>₦100,000</p>
         </div>
       </div>
-
       <!-- Veuve Clicquot -->
       <div class="food-card" id="card-veuve-clicquot">
         <img src="images/veuve-clicquot.jpg" alt="Veuve Clicquot" />
         <div class="food-info">
           <h4>Veuve Clicquot</h4>
-          <p id="price-veuve-clicquot"></p>
+          <p>₦250,000</p>
         </div>
       </div>
-
       <!-- Dom Pérignon -->
       <div class="food-card" id="card-dom-perignon">
         <img src="images/dom-perignon.jpg" alt="Dom Pérignon" />
         <div class="food-info">
           <h4>Dom Pérignon</h4>
-          <p id="price-dom-perignon"></p>
+          <p>₦700,000</p>
+        </div>
+      </div>
+      <!-- Moet (added) -->
+      <div class="food-card" id="card-moet">
+        <img src="images/moet.jpg" alt="Moet" />
+        <div class="food-info">
+          <h4>Moet</h4>
+          <p>₦155,000</p>
         </div>
       </div>
     </div>
-
     <div class="tray-note">Images are illustrative. Prices include VAT where applicable.</div>
   </main>
-
-  <!-- Bottom Navigation (club) -->
   <nav class="bottom-nav">
     <a href="./index.html">Home</a>
     <a href="./bites.html">Bites</a>
@@ -154,28 +144,5 @@
     <a href="./rooms.html">Rooms</a>
     <a href="./contact.html">Contact</a>
   </nav>
-
-  <!-- Optional price injection hook (ready for backend) -->
-  <script>
-    const ENDPOINT='https://script.google.com/macros/s/AKfycbw5v7gImXthxWkHUaCtDdDGx4U_tts7_1JWuHA9ojyu6nm2qvHyPehZrtfEK2j5JTMy/exec';
-    const TOKEN='Forgive1988@';
-    const formatNaira=n=>'₦'+Number(n||0).toLocaleString();
-    const slug=s=>String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'')
-      .replace(/[^a-z0-9]/gi,'-').replace(/-+/g,'-').toLowerCase().replace(/-$/,'');
-    function injectPrices(){
-      fetch(`${ENDPOINT}?token=${encodeURIComponent(TOKEN)}`).then(r=>r.json()).then(j=>{
-        if(!j.ok||!Array.isArray(j.rows)) return;
-        j.rows.forEach(item=>{
-          if(String(item.type)!=='Drinks') return;
-          if(String(item.cat)!=='Champagne') return;  // ensure your sheet uses this category name
-          const id='price-'+slug(item.name||'');
-          const el=document.getElementById(id); if(!el) return;
-          el.textContent = (item.available===false) ? `${formatNaira(item.price)} (Sold Out)` : formatNaira(item.price);
-        });
-      }).catch(()=>{});
-    }
-    // Uncomment when backend is ready:
-    // document.addEventListener('DOMContentLoaded', injectPrices);
-  </script>
 </body>
 </html>
