@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Arabian Tea — 1708 Hotel</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <style>
+    /* Banner styling */
+    .menu-banner{
+      position: relative;
+      padding: 1.6rem 0 1.05rem 0;
+      margin: .4rem 0 .9rem;
+      background: linear-gradient(180deg,#111 0%, #000 60%, #000 100%);
+      border: 1.5px solid #d4af37;
+      border-radius: 7px;
+      box-shadow:
+        0 5px 24px 0 #00000050,
+        0 1px 0 #000000,
+        0 0 24px 0 #00000060;
+      text-align: center;
+    }
+    .menu-banner .super-glow{
+      position: absolute; inset:0; pointer-events: none; z-index:0;
+      background: radial-gradient(50% 80% at 50% 70%, rgba(0,0,0,.35) 0%, rgba(212,175,55,0) 90%);
+      opacity: 1;
+    }
+    .menu-banner h2{
+      position: relative; z-index:1; margin:0;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      font-weight: 900;
+      font-size: 2rem;
+      background: linear-gradient(180deg,#fffde0 0%, #ffe060 25%, #e8c131 65%, #95742a 95%, #fff7cc 100%);
+      -webkit-background-clip:text; background-clip:text;
+      -webkit-text-fill-color:transparent;
+      -webkit-text-stroke: 2px #d4af3766;
+      filter: drop-shadow(0 3px 12px #201600) drop-shadow(0 0 16px #ffedb366);
+      text-shadow: 0 2px 18px #b8921c44;
+    }
+    .menu-banner h2::after{
+      content:""; display:block; width:150px; height:2.5px; margin:.7rem auto 0;
+      border-radius:2px; background: linear-gradient(90deg, transparent, #d4af37, transparent);
+      box-shadow: 0 0 18px #d4af3748;
+    }
+
+    /* Back button */
+    .back-wrap{ display:flex; justify-content:center; margin:.85rem auto 0; padding:0 .8rem; max-width:980px; }
+    .back-btn{
+      display:inline-block; text-decoration:none; font-weight:800; letter-spacing:.2px;
+      padding:.65rem 1.05rem; border-radius:14px; border:1.5px solid #D4AF37; color:#2a1e00;
+      background: linear-gradient(180deg, #FFD867 0%, #E8C131 58%, #CBA21B 100%);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.25), 0 2px 0 #8f6f05, 0 10px 24px rgba(212,175,55,.28);
+      position:relative; isolation:isolate; transition: transform .12s ease, box-shadow .18s ease;
+    }
+    .back-btn::before{
+      content:""; position:absolute; left:10px; right:10px; top:7px; height:38%;
+      border-radius:12px; background:linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,0));
+      pointer-events:none;
+    }
+    .back-btn:hover, .back-btn:focus-visible{ transform: translateY(-1px); outline:none; }
+
+    /* Sold-out visuals (same pattern) */
+    .soldout-label{
+      color:#fff; background:#d91e1e; border-radius:.35em; padding:.07em .5em;
+      font-weight:700; margin-left:.6em; font-size:.97em; vertical-align:middle; display:inline-block;
+    }
+    .food-card.soldout{ opacity:.48; }
+
+    /* Grid tweaks */
+    .food-grid{ justify-content:center; padding-bottom:4.5rem; }
+
+    @media (max-width: 420px){
+      .menu-banner h2{ font-size:1.32rem; }
+      .menu-banner h2::after{ width:90px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="animate__animated animate__fadeInDown">
+    <img src="images/1708.png" alt="1708 Hotel Logo" class="logo" />
+  </header>
+
+  <!-- Banner -->
+  <div class="menu-banner">
+    <span class="super-glow" aria-hidden="true"></span>
+    <h2>ARABIAN TEA</h2>
+  </div>
+
+  <!-- Back to Drinks -->
+  <div class="back-wrap">
+    <a class="back-btn" href="./drinks.html">← Back to Drinks</a>
+  </div>
+
+  <!-- Image cards -->
+  <main>
+    <div class="food-grid">
+      <!-- Abino Shaka -->
+      <div class="food-card" id="card-abino-shaka">
+        <img src="images/arabian-tea-abino-shaka.jpg" alt="Abino Shaka Arabian herbal tea" />
+        <div class="food-info">
+          <h4>Abino Shaka</h4>
+          <p id="price-abino-shaka"></p>
+        </div>
+      </div>
+
+      <!-- Man Power -->
+      <div class="food-card" id="card-man-power">
+        <img src="images/arabian-tea-man-power.jpg" alt="Man Power Arabian herbal tea" />
+        <div class="food-info">
+          <h4>Man Power</h4>
+          <p id="price-man-power"></p>
+        </div>
+      </div>
+
+      <!-- Body Cleanser -->
+      <div class="food-card" id="card-body-cleanser">
+        <img src="images/arabian-tea-body-cleanser.jpg" alt="Body Cleanser Arabian herbal tea" />
+        <div class="food-info">
+          <h4>Body Cleanser</h4>
+          <p id="price-body-cleanser"></p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Bottom Navigation -->
+  <nav class="bottom-nav">
+    <a href="./index.html">Home</a>
+    <a href="./food.html">Food</a>
+    <a href="./drinks.html" class="active">Drinks</a>
+    <a href="./rooms.html">Rooms</a>
+    <a href="./contact.html">Contact</a>
+  </nav>
+
+  <!-- Live price injection (Drinks → Arabian Tea) -->
+  <script>
+    const ENDPOINT = 'https://script.google.com/macros/s/AKfycbw5v7gImXthxWkHUaCtDdDGx4U_tts7_1JWuHA9ojyu6nm2qvHyPehZrtfEK2j5JTMy/exec';
+    const TOKEN    = 'Forgive1988@';
+
+    const formatNaira = n => '₦' + Number(n||0).toLocaleString();
+    const slug = s => String(s)
+      .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+      .replace(/[^a-z0-9]/gi,'-').replace(/-+/g,'-')
+      .toLowerCase().replace(/-$/,'');
+
+    function injectPrices(){
+      fetch(`${ENDPOINT}?token=${encodeURIComponent(TOKEN)}`)
+        .then(r => r.json())
+        .then(j => {
+          if(!j.ok || !Array.isArray(j.rows)) return;
+
+          j.rows.forEach(item => {
+            if (String(item.type) !== 'Drinks') return;               // only drinks
+            if (String(item.cat) !== 'Arabian Tea') return;           // only this category
+            if (!item.name) return;
+
+            const s = slug(item.name);
+            const priceEl = document.getElementById('price-' + s);
+            const cardEl  = document.getElementById('card-' + s);
+            if(!priceEl || !cardEl) return;
+
+            priceEl.innerHTML = '';
+            cardEl.classList.remove('soldout');
+
+            const available = (item.available === true) || (String(item.available).toLowerCase() === 'true');
+            if (available){
+              priceEl.textContent = formatNaira(item.price);
+            } else {
+              priceEl.innerHTML = `${formatNaira(item.price)} <span class="soldout-label">Sold Out</span>`;
+              cardEl.classList.add('soldout');
+            }
+          });
+        })
+        .catch(()=>{ /* ignore for now */ });
+    }
+
+    document.addEventListener('DOMContentLoaded', injectPrices);
+  </script>
+</body>
+</html>

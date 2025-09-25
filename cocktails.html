@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cocktails — 1708 Hotel</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <style>
+    /* ===== Golden Ticket Banner (unified style) ===== */
+    /* Banner styling */
+    .menu-banner{
+      position: relative;
+      padding: 1.6rem 0 1.05rem 0;
+      margin: .4rem 0 .9rem;
+      background: linear-gradient(180deg,#111 0%, #000 60%, #000 100%);
+      border: 1.5px solid #d4af37;
+      border-radius: 7px;
+      box-shadow:
+        0 5px 24px 0 #00000050,
+        0 1px 0 #000000,
+        0 0 24px 0 #00000060;
+      text-align: center;
+    }
+    .menu-banner .super-glow{
+      position: absolute; inset:0; pointer-events: none; z-index:0;
+      background: radial-gradient(50% 80% at 50% 70%, rgba(0,0,0,.35) 0%, rgba(212,175,55,0) 90%);
+      opacity: 1;
+    }
+    .menu-banner h2{
+      position: relative; z-index:1; margin:0;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      font-weight: 900;
+      font-size: 2rem;
+      background: linear-gradient(180deg,#fffde0 0%, #ffe060 25%, #e8c131 65%, #95742a 95%, #fff7cc 100%);
+      -webkit-background-clip:text; background-clip:text;
+      -webkit-text-fill-color:transparent;
+      -webkit-text-stroke: 2px #d4af3766;
+      filter: drop-shadow(0 3px 12px #201600) drop-shadow(0 0 16px #ffedb366);
+      text-shadow: 0 2px 18px #b8921c44;
+    }
+    .menu-banner h2::after{
+      content:""; display:block; width:150px; height:2.5px; margin:.7rem auto 0;
+      border-radius:2px; background: linear-gradient(90deg, transparent, #d4af37, transparent);
+      box-shadow: 0 0 18px #d4af3748;
+    }
+    /* Back button */
+    .back-wrap{ display:flex; justify-content:center; margin:.85rem auto 0; padding:0 .8rem; max-width:980px; }
+    .back-btn{
+      display:inline-block; text-decoration:none; font-weight:800; letter-spacing:.2px;
+      padding:.65rem 1.05rem; border-radius:14px; border:1.5px solid #D4AF37; color:#2a1e00;
+      background: linear-gradient(180deg, #FFD867 0%, #E8C131 58%, #CBA21B 100%);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.25), 0 2px 0 #8f6f05, 0 10px 24px rgba(212,175,55,.28);
+      position:relative; isolation:isolate; transition: transform .12s ease, box-shadow .18s ease;
+    }
+    .back-btn::before{
+      content:""; position:absolute; left:10px; right:10px; top:7px; height:38%;
+      border-radius:12px; background:linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,0));
+      pointer-events:none;
+    }
+    .back-btn:hover, .back-btn:focus-visible{ transform: translateY(-1px); outline:none; }
+
+    /* Sold-out visuals (same pattern used elsewhere) */
+    .soldout-label{
+      color:#fff; background:#d91e1e; border-radius:.35em; padding:.07em .5em;
+      font-weight:700; margin-left:.6em; font-size:.97em; vertical-align:middle; display:inline-block;
+    }
+    .food-card.soldout{ opacity:.48; }
+
+    /* Space above fixed bottom nav */
+    main{ padding-bottom: 4.5rem; }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="animate__animated animate__fadeInDown">
+    <img src="images/1708.png" alt="1708 Hotel Logo" class="logo" />
+  </header>
+
+  <!-- Banner -->
+  <div class="menu-banner">
+    <span class="super-glow" aria-hidden="true"></span>
+    <h2>COCKTAILS</h2>
+  </div>
+
+  <!-- Back to Drinks -->
+  <div class="back-wrap">
+    <a class="back-btn" href="./drinks.html">← Back to Drinks</a>
+  </div>
+
+  <main>
+    <div class="food-grid">
+      <!-- Smoky Lamp -->
+      <div class="food-card" id="card-smoky-lamp">
+        <img src="images/smoky-lamp.jpg" alt="Smoky Lamp" />
+        <div class="food-info">
+          <h4>Smoky Lamp</h4>
+          <p id="price-smoky-lamp"></p>
+          <small style="display:block;color:#ccc;margin-top:4px;">Jagermeister, Irish Whiskey, Sour Mix, Cinnamon</small>
+        </div>
+      </div>
+
+      <!-- Zombie -->
+      <div class="food-card" id="card-zombie">
+        <img src="images/zombie-cocktail.jpg" alt="Zombie" />
+        <div class="food-info">
+          <h4>Zombie</h4>
+          <p id="price-zombie"></p>
+          <small style="display:block;color:#ccc;margin-top:4px;">Mixed Rum, Apricot Brandy, Falernum Liqueur, Lemon, Orange & Pineapple Juice</small>
+        </div>
+      </div>
+
+      <!-- Irish Coffee -->
+      <div class="food-card" id="card-irish-coffee">
+        <img src="images/irish-coffee-cocktail.jpg" alt="Irish Coffee" />
+        <div class="food-info">
+          <h4>Irish Coffee</h4>
+          <p id="price-irish-coffee"></p>
+          <small style="display:block;color:#ccc;margin-top:4px;">Hot Coffee, Milk, Irish Whiskey</small>
+        </div>
+      </div>
+
+      <!-- Frozen Strawberry Margarita -->
+      <div class="food-card" id="card-frozen-strawberry-margarita">
+        <img src="images/frozen-strawberry-margarita.jpg" alt="Frozen Strawberry Margarita" />
+        <div class="food-info">
+          <h4>Frozen Strawberry Margarita</h4>
+          <p id="price-frozen-strawberry-margarita"></p>
+          <small style="display:block;color:#ccc;margin-top:4px;">Tequila, Strawberry, Sour Mix</small>
+        </div>
+      </div>
+
+      <!-- Frozen Blue Margarita -->
+      <div class="food-card" id="card-frozen-blue-margarita">
+        <img src="images/frozen-blue-margarita.jpg" alt="Frozen Blue Margarita" />
+        <div class="food-info">
+          <h4>Frozen Blue Margarita</h4>
+          <p id="price-frozen-blue-margarita"></p>
+          <small style="display:block;color:#ccc;margin-top:4px;">Tequila, Orange Liqueur, Blue Curacao</small>
+        </div>
+      </div>
+
+      <!-- Sweet Colorado -->
+      <div class="food-card" id="card-sweet-colorado">
+        <img src="images/sweet-colorado-cocktail.jpg" alt="Sweet Colorado" />
+        <div class="food-info">
+          <h4>Sweet Colorado</h4>
+          <p id="price-sweet-colorado"></p>
+          <small style="display:block;color:#ccc;margin-top:4px;">Strong Alcoholic Mix, Aged Whiskey, Red Berry Liqueur</small>
+        </div>
+      </div>
+
+      <!-- Classic Margarita -->
+      <div class="food-card" id="card-classic-margarita">
+        <img src="images/classic-margarita.jpg" alt="Classic Margarita" />
+        <div class="food-info">
+          <h4>Classic Margarita</h4>
+          <p id="price-classic-margarita"></p>
+          <small style="display:block;color:#ccc;margin-top:4px;">Tequila, Triple Sec, Lemon</small>
+        </div>
+      </div>
+
+      <!-- Long Island Iced Tea -->
+      <div class="food-card" id="card-long-island-iced-tea">
+        <img src="images/long-island-iced-tea.jpg" alt="Long Island Iced Tea" />
+        <div class="food-info">
+          <h4>Long Island Iced Tea</h4>
+          <p id="price-long-island-iced-tea"></p>
+          <small style="display:block;color:#ccc;margin-top:4px;">Strong Alcoholic Mix, Lemon, Coke</small>
+        </div>
+      </div>
+
+      <!-- Electric Ice Tea -->
+      <div class="food-card" id="card-electric-ice-tea">
+        <img src="images/electric-ice-tea.jpg" alt="Electric Ice Tea" />
+        <div class="food-info">
+          <h4>Electric Ice Tea</h4>
+          <p id="price-electric-ice-tea"></p>
+          <small style="display:block;color:#ccc;margin-top:4px;">Strong Alcoholic Mix, Lemon Soda, Blue Curacao</small>
+        </div>
+      </div>
+
+      <!-- Kiwi Fizzy -->
+      <div class="food-card" id="card-kiwi-fizzy">
+        <img src="images/kiwi-fizzy.jpg" alt="Kiwi Fizzy" />
+        <div class="food-info">
+          <h4>Kiwi Fizzy</h4>
+          <p id="price-kiwi-fizzy"></p>
+          <small style="display:block;color:#ccc;margin-top:4px;">Vodka, Coconut Rum, Kiwi Syrup, Pineapple, Orange</small>
+        </div>
+      </div>
+
+      <!-- Mai Tai -->
+      <div class="food-card" id="card-mai-tai">
+        <img src="images/mai-tai.jpg" alt="Mai Tai" />
+        <div class="food-info">
+          <h4>Mai Tai</h4>
+          <p id="price-mai-tai"></p>
+          <small style="display:block;color:#ccc;margin-top:4px;">Gold & Dark Rum, Orgeat Syrup, Orange Liqueur, Lemon</small>
+        </div>
+      </div>
+
+      <!-- Blue Hawaii -->
+      <div class="food-card" id="card-blue-hawaii">
+        <img src="images/blue-hawaii.jpg" alt="Blue Hawaii" />
+        <div class="food-info">
+          <h4>Blue Hawaii</h4>
+          <p id="price-blue-hawaii"></p>
+          <small style="display:block;color:#ccc;margin-top:4px;">Vodka, Rum, Blue Curacao, Pineapple, Sour Mix</small>
+        </div>
+      </div>
+
+      <!-- Winter Breeze -->
+      <div class="food-card" id="card-winter-breeze">
+        <img src="images/winter-breeze-cocktail.jpg" alt="Winter Breeze" />
+        <div class="food-info">
+          <h4>Winter Breeze</h4>
+          <p id="price-winter-breeze"></p>
+          <small style="display:block;color:#ccc;margin-top:4px;">Gin, Vodka, Lemon Cordial, Raspberry Liqueur</small>
+        </div>
+      </div>
+
+      <!-- Mojito -->
+      <div class="food-card" id="card-mojito">
+        <img src="images/mojito.jpg" alt="Mojito" />
+        <div class="food-info">
+          <h4>Mojito</h4>
+          <p id="price-mojito"></p>
+          <small style="display:block;color:#ccc;margin-top:4px;">Fresh Mint, Lemon Soda, Lime</small>
+        </div>
+      </div>
+
+      <!-- Sex on the Beach -->
+      <div class="food-card" id="card-sex-on-the-beach">
+        <img src="images/sex-on-the-beach.jpg" alt="Sex on the Beach" />
+        <div class="food-info">
+          <h4>Sex on the Beach</h4>
+          <p id="price-sex-on-the-beach"></p>
+          <small style="display:block;color:#ccc;margin-top:4px;">Vodka, Orange, Peach, Strawberry</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="tray-note">
+      Images are illustrative. Prices include VAT where applicable.
+    </div>
+  </main>
+
+  <!-- Bottom nav -->
+  <nav class="bottom-nav">
+    <a href="./index.html">Home</a>
+    <a href="./food.html">Food</a>
+    <a href="./drinks.html" class="active">Drinks</a>
+    <a href="./rooms.html">Rooms</a>
+    <a href="./contact.html">Contact</a>
+  </nav>
+
+  <!-- Live price injection -->
+  <script>
+    const ENDPOINT = 'https://script.google.com/macros/s/AKfycbw5v7gImXthxWkHUaCtDdDGx4U_tts7_1JWuHA9ojyu6nm2qvHyPehZrtfEK2j5JTMy/exec';
+    const TOKEN    = 'Forgive1988@';
+
+    const formatNaira = n => '₦' + Number(n||0).toLocaleString();
+    const slug = s => String(s||'')
+      .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+      .replace(/[^a-z0-9]/gi,'-').replace(/-+/g,'-')
+      .toLowerCase().replace(/-$/,'');
+
+    function injectPrices(){
+      fetch(`${ENDPOINT}?token=${encodeURIComponent(TOKEN)}`)
+        .then(r => r.json())
+        .then(j => {
+          if(!j.ok || !Array.isArray(j.rows)) return;
+
+          j.rows.forEach(item => {
+            // Drinks → Cocktails only
+            if (String(item.type) !== 'Drinks') return;
+            if (String(item.cat)  !== 'Cocktails') return;
+            if (!item.name) return;
+
+            const s = slug(item.name);
+            const priceEl = document.getElementById('price-' + s);
+            const cardEl  = document.getElementById('card-' + s);
+            if(!priceEl || !cardEl) return;
+
+            // reset visuals each time
+            priceEl.innerHTML = '';
+            cardEl.classList.remove('soldout');
+
+            const available = (item.available === true) || (String(item.available).toLowerCase() === 'true');
+
+            if (available){
+              priceEl.textContent = formatNaira(item.price);
+            } else {
+              priceEl.innerHTML = `${formatNaira(item.price)} <span class="soldout-label">Sold Out</span>`;
+              cardEl.classList.add('soldout');
+            }
+          });
+        })
+        .catch(()=>{ /* silent */ });
+    }
+
+    document.addEventListener('DOMContentLoaded', injectPrices);
+  </script>
+</body>
+</html>

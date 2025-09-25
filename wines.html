@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wines — 1708 Hotel</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <style>
+    /* Banner styling */
+    .menu-banner{
+      position: relative;
+      padding: 1.6rem 0 1.05rem 0;
+      margin: .4rem 0 .9rem;
+      background: linear-gradient(180deg,#111 0%, #000 60%, #000 100%);
+      border: 1.5px solid #2cc440;
+      border-radius: 7px;
+      box-shadow:
+        0 5px 24px 0 #00000050,
+        0 1px 0 #000000,
+        0 0 24px 0 #00000060;
+      text-align: center;
+    }
+    .menu-banner .super-glow{
+      position: absolute; inset:0; pointer-events: none; z-index:0;
+      background: radial-gradient(50% 80% at 50% 70%, rgba(0,0,0,.35) 0%, rgba(212,175,55,0) 90%);
+      opacity: 1;
+    }
+    .menu-banner h2{
+      position: relative; z-index:1; margin:0;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      font-weight: 900;
+      font-size: 2rem;
+      background: linear-gradient(180deg,#fffde0 0%, #2cc440 25%, #2cc440 65%, #2cc440 95%, #fff7cc 100%);
+      -webkit-background-clip:text; background-clip:text;
+      -webkit-text-fill-color:transparent;
+      -webkit-text-stroke: 2px #d4af3766;
+      filter: drop-shadow(0 3px 12px #201600) drop-shadow(0 0 16px #ffedb366);
+      text-shadow: 0 2px 18px #b8921c44;
+    }
+    .menu-banner h2::after{
+      content:""; display:block; width:150px; height:2.5px; margin:.7rem auto 0;
+      border-radius:2px; background: linear-gradient(90deg, transparent, #2cc440, transparent);
+      box-shadow: 0 0 18px #d4af3748;
+    }
+
+    /* Back button */
+    .back-wrap{ display:flex; justify-content:center; margin:.85rem auto 0; padding:0 .8rem; max-width:980px; }
+    .back-btn{
+      display:inline-block; text-decoration:none; font-weight:800; letter-spacing:.2px;
+      padding:.65rem 1.05rem; border-radius:14px; border:1.5px solid #2cc440; color:#2a1e00;
+      background: linear-gradient(180deg, #2cc440 0%, #2cc440 58%, #2cc440 100%);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.25), 0 2px 0 #8f6f05, 0 10px 24px rgba(212,175,55,.28);
+      position:relative; isolation:isolate; transition: transform .12s ease, box-shadow .18s ease;
+    }
+    .back-btn::before{
+      content:""; position:absolute; left:10px; right:10px; top:7px; height:38%;
+      border-radius:12px; background:linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,0));
+      pointer-events:none;
+    }
+    .back-btn:hover, .back-btn:focus-visible{ transform: translateY(-1px); outline:none; }
+
+    /* Sold-out visuals */
+    .soldout-label{
+      color:#fff; background:#d91e1e; border-radius:.35em; padding:.07em .5em;
+      font-weight:700; margin-left:.6em; font-size:.97em; vertical-align:middle; display:inline-block;
+    }
+    .food-card.soldout{ opacity:.48; }
+
+    /* Extra space past fixed nav */
+    main{ padding-bottom: 4.5rem; }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="animate__animated animate__fadeInDown">
+    <img src="images/1708.png" alt="1708 Hotel Logo" class="logo" />
+  </header>
+
+  <!-- Banner -->
+  <div class="menu-banner">
+    <span class="super-glow" aria-hidden="true"></span>
+    <h2>WINES</h2>
+  </div>
+
+  <!-- Back to Drinks -->
+  <div class="back-wrap">
+    <a class="back-btn" href="./drinks.html">← Back to Drinks</a>
+  </div>
+
+  <!-- Grid of wine cards -->
+  <main>
+    <div class="food-grid">
+      <div class="food-card" id="card-carlo-rossi">
+        <img src="images/carlo-rossi.jpg" alt="Carlo Rossi" />
+        <div class="food-info">
+          <h4>Carlo Rossi</h4>
+          <p id="price-carlo-rossi"></p>
+        </div>
+      </div>
+
+      <div class="food-card" id="card-markenellis">
+        <img src="images/markenellis.jpg" alt="Markenellis" />
+        <div class="food-info">
+          <h4>Markenellis</h4>
+          <p id="price-markenellis"></p>
+        </div>
+      </div>
+
+      <div class="food-card" id="card-four-cousins">
+        <img src="images/four-cousins.jpg" alt="Four Cousins" />
+        <div class="food-info">
+          <h4>Four Cousins</h4>
+          <p id="price-four-cousins"></p>
+        </div>
+      </div>
+
+      <div class="food-card" id="card-four-cousins-sparkling">
+        <img src="images/four-cousins-sparkling.jpg" alt="Four Cousins Sparkling" />
+        <div class="food-info">
+          <h4>Four Cousins Sparkling</h4>
+          <p id="price-four-cousins-sparkling"></p>
+        </div>
+      </div>
+
+      <div class="food-card" id="card-andre">
+        <img src="images/andre.jpg" alt="Andre" />
+        <div class="food-info">
+          <h4>Andre</h4>
+          <p id="price-andre"></p>
+        </div>
+      </div>
+
+      <!-- NOTE: Catalog name is "Droty Off" (no 's'). Use that so prices show. -->
+      <div class="food-card" id="card-droty-off">
+        <img src="images/drosty-off.jpg" alt="Droty Off" />
+        <div class="food-info">
+          <h4>Droty Off</h4>
+          <p id="price-droty-off"></p>
+        </div>
+      </div>
+
+      <div class="food-card" id="card-pastoral-wine">
+        <img src="images/pastoral-wine.jpg" alt="Pastoral Wine" />
+        <div class="food-info">
+          <h4>Pastoral Wine</h4>
+          <p id="price-pastoral-wine"></p>
+        </div>
+      </div>
+
+      <div class="food-card" id="card-star-chaser">
+        <img src="images/star-chaser.jpg" alt="Star Chaser" />
+        <div class="food-info">
+          <h4>Star Chaser</h4>
+          <p id="price-star-chaser"></p>
+        </div>
+      </div>
+
+      <div class="food-card" id="card-lamothe-original">
+        <img src="images/lamothe-original.jpg" alt="Lamothe Original" />
+        <div class="food-info">
+          <h4>Lamothe Original</h4>
+          <p id="price-lamothe-original"></p>
+        </div>
+      </div>
+
+      <div class="food-card" id="card-toma-wine">
+        <img src="images/toma-wine.jpg" alt="Toma Wine" />
+        <div class="food-info">
+          <h4>Toma Wine</h4>
+          <p id="price-toma-wine"></p>
+        </div>
+      </div>
+
+      <div class="food-card" id="card-princi-pinal-wine">
+        <img src="images/princi-pinal-wine.jpg" alt="Princi Pinal Wine" />
+        <div class="food-info">
+          <h4>Princi Pinal Wine</h4>
+          <p id="price-princi-pinal-wine"></p>
+        </div>
+      </div>
+
+      <div class="food-card" id="card-1964-wine">
+        <img src="images/1964-wine.jpg" alt="1964 Wine" />
+        <div class="food-info">
+          <h4>1964 Wine</h4>
+          <p id="price-1964-wine"></p>
+        </div>
+      </div>
+
+      <div class="food-card" id="card-sweet-lip-wine">
+        <img src="images/sweet-lip-wine.jpg" alt="Sweet Lip Wine" />
+        <div class="food-info">
+          <h4>Sweet Lip Wine</h4>
+          <p id="price-sweet-lip-wine"></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tray-note">Tap any card to zoom. Prices subject to change.</div>
+  </main>
+
+  <!-- Bottom Navigation -->
+  <nav class="bottom-nav">
+    <a href="./index.html">Home</a>
+    <a href="./food.html">Food</a>
+    <a href="./drinks.html" class="active">Drinks</a>
+    <a href="./rooms.html">Rooms</a>
+    <a href="./contact.html">Contact</a>
+  </nav>
+
+  <!-- Live price injection -->
+  <script>
+    // GAS endpoint + token (same as admin)
+    const ENDPOINT = 'https://script.google.com/macros/s/AKfycbw5v7gImXthxWkHUaCtDdDGx4U_tts7_1JWuHA9ojyu6nm2qvHyPehZrtfEK2j5JTMy/exec';
+    const TOKEN    = 'Forgive1988@';
+
+    const formatNaira = n => '₦' + Number(n||0).toLocaleString();
+    const norm = s => String(s||'').toLowerCase().trim();
+    const slug = s => String(s||'')
+      .normalize('NFD').replace(/[\u0300-\u036f]/g,'') // remove diacritics
+      .replace(/[’']/g,'')                             // drop apostrophes
+      .replace(/[^a-z0-9]/gi,'-').replace(/-+/g,'-')   // non-alnum → dash
+      .toLowerCase().replace(/-$/,'');                 // trim last dash
+
+    function injectPrices(){
+      fetch(`${ENDPOINT}?token=${encodeURIComponent(TOKEN)}`)
+        .then(r => r.json())
+        .then(j => {
+          if(!j.ok || !Array.isArray(j.rows)) return;
+
+          j.rows.forEach(item => {
+            // Only Drinks → Wines
+            if (!(norm(item.type) === 'drinks' || norm(item.type) === 'drink')) return;
+            if (norm(item.cat) !== 'wines') return;
+            if (!item.name) return;
+
+            const s = slug(item.name);
+            const priceEl = document.getElementById('price-' + s);
+            const cardEl  = document.getElementById('card-' + s);
+            if(!priceEl || !cardEl) return;
+
+            priceEl.innerHTML = '';
+            cardEl.classList.remove('soldout');
+
+            const available = (item.available === true) || (String(item.available).toLowerCase() === 'true');
+            if (available){
+              priceEl.textContent = formatNaira(item.price);
+            } else {
+              priceEl.innerHTML = `${formatNaira(item.price)} <span class="soldout-label">Sold Out</span>`;
+              cardEl.classList.add('soldout');
+            }
+          });
+        })
+        .catch(()=>{ /* silent */ });
+    }
+
+    document.addEventListener('DOMContentLoaded', injectPrices);
+  </script>
+</body>
+</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Whiskey — 1708 Club</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <style>
+    /* Golden banner (1708 standard) */
+    .menu-banner{
+      position: relative; padding: 1.6rem 0 1.05rem; margin: .4rem 0 .9rem;
+      background: linear-gradient(180deg,#111 0%, #000 60%, #000 100%);
+      border: 1.5px solid #d4af37; border-radius: 7px;
+      box-shadow: 0 5px 24px #00000050, 0 1px 0 #000, 0 0 24px #00000060;
+      text-align: center;
+    }
+    .menu-banner h2{
+      margin:0; letter-spacing:.14em; text-transform:uppercase; font-weight:900; font-size:2rem;
+      background: linear-gradient(180deg,#fffde0 0%, #ffe060 25%, #e8c131 65%, #95742a 95%, #fff7cc 100%);
+      -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+      -webkit-text-stroke: 2px #d4af3766; filter: drop-shadow(0 3px 12px #201600) drop-shadow(0 0 16px #ffedb366);
+      text-shadow: 0 2px 18px #b8921c44;
+    }
+    .menu-banner h2::after{
+      content:""; display:block; width:150px; height:2.5px; margin:.7rem auto 0;
+      border-radius:2px; background:linear-gradient(90deg, transparent, #d4af37, transparent);
+      box-shadow:0 0 18px #d4af3748;
+    }
+    /* Back button */
+    .back-wrap{ display:flex; justify-content:center; margin:.85rem auto 0; padding:0 .8rem; max-width:980px; }
+    .back-btn{
+      display:inline-block; text-decoration:none; font-weight:800; letter-spacing:.2px;
+      padding:.65rem 1.05rem; border-radius:14px; border:1.5px solid #D4AF37; color:#2a1e00;
+      background: linear-gradient(180deg, #FFD867 0%, #E8C131 58%, #CBA21B 100%);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.25), 0 2px 0 #8f6f05, 0 10px 24px rgba(212,175,55,.28);
+      position:relative; isolation:isolate; transition: transform .12s ease, box-shadow .18s ease;
+    }
+    .back-btn::before{
+      content:""; position:absolute; left:10px; right:10px; top:7px; height:38%;
+      border-radius:12px; background:linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,0));
+      pointer-events:none;
+    }
+    .back-btn:hover, .back-btn:focus-visible{ transform: translateY(-1px); outline:none; }
+
+    main{ padding-bottom: 4.5rem; }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="animate__animated animate__fadeInDown">
+    <img src="images/1708.png" alt="1708 Club" class="logo" />
+  </header>
+
+  <!-- Banner -->
+  <div class="menu-banner">
+    <h2>WHISKEY</h2>
+  </div>
+
+  <!-- Back to Drinks -->
+  <div class="back-wrap">
+    <a class="back-btn" href="./drinks.html">← Back to Drinks</a>
+  </div>
+
+  <!-- Grid of whiskey cards (image names kept EXACT) -->
+  <main>
+    <div class="food-grid">
+      <!-- Mini William Lawson -->
+      <div class="food-card" id="card-mini-william-lawson">
+        <img src="images/mini-william-lawson.jpg" alt="Mini William Lawson" />
+        <div class="food-info"><h4>Mini William Lawson</h4><p id="price-mini-william-lawson"></p></div>
+      </div>
+
+      <!-- William Lawson -->
+      <div class="food-card" id="card-william-lawson">
+        <img src="images/william-lawson.jpg" alt="William Lawson" />
+        <div class="food-info"><h4>William Lawson</h4><p id="price-william-lawson"></p></div>
+      </div>
+
+      <!-- Jamson-stout -->
+      <div class="food-card" id="card-jamson-stout">
+        <img src="images/Jamson-stout.jpg" alt="Jamson-stout" />
+        <div class="food-info"><h4>Jamson-stout</h4><p id="price-jamson-stout"></p></div>
+      </div>
+
+      <!-- Jameson Irish (Green) -->
+      <div class="food-card" id="card-jameson-irish-green">
+        <img src="images/jameson-irish-green.jpg" alt="Jameson Irish (Green)" />
+        <div class="food-info"><h4>Jameson Irish (Green)</h4><p id="price-jameson-irish-green"></p></div>
+      </div>
+
+      <!-- Jameson Black Barrel -->
+      <div class="food-card" id="card-jameson-black-barrel">
+        <img src="images/jameson-black-barrel.jpg" alt="Jameson Black Barrel" />
+        <div class="food-info"><h4>Jameson Black Barrel</h4><p id="price-jameson-black-barrel"></p></div>
+      </div>
+
+      <!-- Ballantine’s -->
+      <div class="food-card" id="card-ballantines">
+        <img src="images/ballantines.jpg" alt="Ballantine’s" />
+        <div class="food-info"><h4>Ballantine’s</h4><p id="price-ballantines"></p></div>
+      </div>
+
+      <!-- Grant 12yrs -->
+      <div class="food-card" id="card-grant-12yrs">
+        <img src="images/grant-12yrs.jpg" alt="Grant 12yrs" />
+        <div class="food-info"><h4>Grant 12yrs</h4><p id="price-grant-12yrs"></p></div>
+      </div>
+
+      <!-- Monkey Shoulder -->
+      <div class="food-card" id="card-monkey-shoulder">
+        <img src="images/monkey-shoulder.jpg" alt="Monkey Shoulder" />
+        <div class="food-info"><h4>Monkey Shoulder</h4><p id="price-monkey-shoulder"></p></div>
+      </div>
+
+      <!-- Smokey Monkey -->
+      <div class="food-card" id="card-smokey-monkey">
+        <img src="images/smokey-monkey.jpg" alt="Smokey Monkey" />
+        <div class="food-info"><h4>Smokey Monkey</h4><p id="price-smokey-monkey"></p></div>
+      </div>
+
+      <!-- Lakes Whiskey -->
+      <div class="food-card" id="card-lakes-whiskey">
+        <img src="images/lakes-whiskey.jpg" alt="Lakes Whiskey" />
+        <div class="food-info"><h4>Lakes Whiskey</h4><p id="price-lakes-whiskey"></p></div>
+      </div>
+
+      <!-- Balvenie 12yrs -->
+      <div class="food-card" id="card-balvenie-12yrs">
+        <img src="images/balvenie-12yrs.jpg" alt="Balvenie 12yrs" />
+        <div class="food-info"><h4>Balvenie 12yrs</h4><p id="price-balvenie-12yrs"></p></div>
+      </div>
+
+      <!-- Balvenie 14yrs -->
+      <div class="food-card" id="card-balvenie-14yrs">
+        <img src="images/balvenie-14yrs.jpg" alt="Balvenie 14yrs" />
+        <div class="food-info"><h4>Balvenie 14yrs</h4><p id="price-balvenie-14yrs"></p></div>
+      </div>
+
+      <!-- Balvenie 16yrs -->
+      <div class="food-card" id="card-balvenie-16yrs">
+        <img src="images/balvenie-16yrs.jpg" alt="Balvenie 16yrs" />
+        <div class="food-info"><h4>Balvenie 16yrs</h4><p id="price-balvenie-16yrs"></p></div>
+      </div>
+
+      <!-- Balvenie 21yrs -->
+      <div class="food-card" id="card-balvenie-21yrs">
+        <img src="images/balvenie-21yrs.jpg" alt="Balvenie 21yrs" />
+        <div class="food-info"><h4>Balvenie 21yrs</h4><p id="price-balvenie-21yrs"></p></div>
+      </div>
+
+      <!-- Glenfiddich 12yrs -->
+      <div class="food-card" id="card-glenfiddich-12yrs">
+        <img src="images/glenfiddich-12yrs.jpg" alt="Glenfiddich 12yrs" />
+        <div class="food-info"><h4>Glenfiddich 12yrs</h4><p id="price-glenfiddich-12yrs"></p></div>
+      </div>
+
+      <!-- Glenfiddich 15yrs -->
+      <div class="food-card" id="card-glenfiddich-15yrs">
+        <img src="images/glenfiddich-15yrs.jpg" alt="Glenfiddich 15yrs" />
+        <div class="food-info"><h4>Glenfiddich 15yrs</h4><p id="price-glenfiddich-15yrs"></p></div>
+      </div>
+
+      <!-- Glenfiddich 18yrs -->
+      <div class="food-card" id="card-glenfiddich-18yrs">
+        <img src="images/glenfiddich-18yrs.jpg" alt="Glenfiddich 18yrs" />
+        <div class="food-info"><h4>Glenfiddich 18yrs</h4><p id="price-glenfiddich-18yrs"></p></div>
+      </div>
+
+      <!-- Glenfiddich 21yrs -->
+      <div class="food-card" id="card-glenfiddich-21yrs">
+        <img src="images/glenfiddich-21yrs.jpg" alt="Glenfiddich 21yrs" />
+        <div class="food-info"><h4>Glenfiddich 21yrs</h4><p id="price-glenfiddich-21yrs"></p></div>
+      </div>
+
+      <!-- Glenfiddich 22yrs -->
+      <div class="food-card" id="card-glenfiddich-22yrs">
+        <img src="images/glenfiddich-22yrs.jpg" alt="Glenfiddich 22yrs" />
+        <div class="food-info"><h4>Glenfiddich 22yrs</h4><p id="price-glenfiddich-22yrs"></p></div>
+      </div>
+
+      <!-- Glenfiddich 23yrs -->
+      <div class="food-card" id="card-glenfiddich-23yrs">
+        <img src="images/glenfiddich-23yrs.jpg" alt="Glenfiddich 23yrs" />
+        <div class="food-info"><h4>Glenfiddich 23yrs</h4><p id="price-glenfiddich-23yrs"></p></div>
+      </div>
+
+      <!-- Glenfiddich 26yrs -->
+      <div class="food-card" id="card-glenfiddich-26yrs">
+        <img src="images/glenfiddich-26yrs.jpg" alt="Glenfiddich 26yrs" />
+        <div class="food-info"><h4>Glenfiddich 26yrs</h4><p id="price-glenfiddich-26yrs"></p></div>
+      </div>
+
+      <!-- Macallan 12yrs -->
+      <div class="food-card" id="card-macallan-12yrs">
+        <img src="images/macallan-12yrs.jpg" alt="Macallan 12yrs" />
+        <div class="food-info"><h4>Macallan 12yrs</h4><p id="price-macallan-12yrs"></p></div>
+      </div>
+
+      <!-- Macallan Rare Cask -->
+      <div class="food-card" id="card-macallan-rare-cask">
+        <img src="images/macallan-rare-cask.jpg" alt="Macallan Rare Cask" />
+        <div class="food-info"><h4>Macallan Rare Cask</h4><p id="price-macallan-rare-cask"></p></div>
+      </div>
+
+      <!-- Tullamore Dew -->
+      <div class="food-card" id="card-tullamore-dew">
+        <img src="images/tullamore-dew.jpg" alt="Tullamore Dew" />
+        <div class="food-info"><h4>Tullamore Dew</h4><p id="price-tullamore-dew"></p></div>
+      </div>
+
+      <!-- Glenlivet Founder’s Reserve -->
+      <div class="food-card" id="card-glenlivet-founders-reserve">
+        <img src="images/glenlivet-founders-reserve.jpg" alt="Glenlivet Founder’s Reserve" />
+        <div class="food-info"><h4>Glenlivet Founder’s Reserve</h4><p id="price-glenlivet-founders-reserve"></p></div>
+      </div>
+
+      <!-- Glenlivet 12yrs -->
+      <div class="food-card" id="card-glenlivet-12yrs">
+        <img src="images/glenlivet-12yrs.jpg" alt="Glenlivet 12yrs" />
+        <div class="food-info"><h4>Glenlivet 12yrs</h4><p id="price-glenlivet-12yrs"></p></div>
+      </div>
+
+      <!-- Glenlivet 15yrs -->
+      <div class="food-card" id="card-glenlivet-15yrs">
+        <img src="images/glenlivet-15yrs.jpg" alt="Glenlivet 15yrs" />
+        <div class="food-info"><h4>Glenlivet 15yrs</h4><p id="price-glenlivet-15yrs"></p></div>
+      </div>
+
+      <!-- Glenlivet 18yrs -->
+      <div class="food-card" id="card-glenlivet-18yrs">
+        <img src="images/glenlivet-18yrs.jpg" alt="Glenlivet 18yrs" />
+        <div class="food-info"><h4>Glenlivet 18yrs</h4><p id="price-glenlivet-18yrs"></p></div>
+      </div>
+    </div>
+
+    <div class="tray-note">Images are illustrative. Prices include VAT where applicable.</div>
+  </main>
+
+  <!-- Bottom Navigation (club) -->
+  <nav class="bottom-nav">
+    <a href="./index.html">Home</a>
+    <a href="./bites.html">Bites</a>
+    <a href="./drinks.html" class="active">Drinks</a>
+    <a href="./rooms.html">Rooms</a>
+    <a href="./contact.html">Contact</a>
+  </nav>
+
+  <!-- Optional: price injection hook (kept for your backend) -->
+  <script>
+    const ENDPOINT='https://script.google.com/macros/s/AKfycbw5v7gImXthxWkHUaCtDdDGx4U_tts7_1JWuHA9ojyu6nm2qvHyPehZrtfEK2j5JTMy/exec';
+    const TOKEN='Forgive1988@';
+    const formatNaira=n=>'₦'+Number(n||0).toLocaleString();
+    const slug=s=>String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/gi,'-').replace(/-+/g,'-').toLowerCase().replace(/-$/,'');
+    function injectPrices(){
+      fetch(`${ENDPOINT}?token=${encodeURIComponent(TOKEN)}`).then(r=>r.json()).then(j=>{
+        if(!j.ok||!Array.isArray(j.rows)) return;
+        j.rows.forEach(item=>{
+          if(String(item.type)!=='Drinks') return;
+          if(String(item.cat)!=='Whiskey') return;
+          const id='price-'+slug(item.name||'');
+          const el=document.getElementById(id); if(!el) return;
+          el.textContent = (item.available===false) ? `${formatNaira(item.price)} (Sold Out)` : formatNaira(item.price);
+        });
+      }).catch(()=>{});
+    }
+    // Uncomment when backend is ready:
+    // document.addEventListener('DOMContentLoaded', injectPrices);
+  </script>
+</body>
+</html>
