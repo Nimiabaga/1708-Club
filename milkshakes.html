@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Milkshake — 1708 Hotel</title>
+  <title>Milkshakes — 1708 Hotel</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
   <style>
+    /* ===== Green Theme (match Cocktails & Mocktails pages) ===== */
     .menu-banner{
       position: relative;
       padding: 1.6rem 0 1.05rem 0;
@@ -44,6 +45,7 @@
       border-radius:2px; background: linear-gradient(90deg, transparent, #2cc440, transparent);
       box-shadow: 0 0 18px #d4af3748;
     }
+
     .back-wrap{ display:flex; justify-content:center; margin:.85rem auto 0; padding:0 .8rem; max-width:980px; }
     .back-btn{
       display:inline-block; text-decoration:none; font-weight:800; letter-spacing:.2px;
@@ -58,11 +60,10 @@
       pointer-events:none;
     }
     .back-btn:hover, .back-btn:focus-visible{ transform: translateY(-1px); outline:none; }
-    .soldout-label{
-      color:#fff; background:#d91e1e; border-radius:.35em; padding:.07em .5em;
-      font-weight:700; margin-left:.6em; font-size:.97em; vertical-align:middle; display:inline-block;
-    }
+
+    .soldout-label{ color:#fff; background:#d91e1e; border-radius:.35em; padding:.07em .5em; font-weight:700; margin-left:.6em; font-size:.97em; vertical-align:middle; display:inline-block; }
     .food-card.soldout{ opacity:.48; }
+
     main{ padding-bottom: 4.5rem; }
   </style>
 </head>
@@ -70,16 +71,19 @@
   <header class="animate__animated animate__fadeInDown">
     <img src="images/1708.png" alt="1708 Hotel Logo" class="logo" />
   </header>
+
   <div class="menu-banner">
     <span class="super-glow" aria-hidden="true"></span>
     <h2>MILKSHAKES</h2>
   </div>
+
   <div class="back-wrap">
     <a class="back-btn" href="./drinks.html">← Back to Drinks</a>
   </div>
+
   <main>
     <div class="food-grid">
-      <!-- Creamy Vanilla -->
+      <!-- Existing -->
       <div class="food-card" id="card-creamy-vanilla">
         <img src="images/creamy-vanilla.jpg" alt="Creamy Vanilla Milkshake" />
         <div class="food-info">
@@ -87,7 +91,7 @@
           <p>₦10,000</p>
         </div>
       </div>
-      <!-- Strawberry Slush -->
+
       <div class="food-card" id="card-strawberry-slush">
         <img src="images/strawberry-slush.jpg" alt="Strawberry Slush Milkshake" />
         <div class="food-info">
@@ -95,7 +99,7 @@
           <p>₦10,000</p>
         </div>
       </div>
-      <!-- Peanut Butter Delight -->
+
       <div class="food-card" id="card-peanut-butter-delight">
         <img src="images/peanut-butter-delight.jpg" alt="Peanut Butter Delight Milkshake" />
         <div class="food-info">
@@ -103,7 +107,7 @@
           <p>₦10,000</p>
         </div>
       </div>
-      <!-- Iced Coffee Frappuccino -->
+
       <div class="food-card" id="card-iced-coffee-frappuccino">
         <img src="images/iced-coffee-frappuccino.jpg" alt="Iced Coffee Frappuccino" />
         <div class="food-info">
@@ -111,11 +115,38 @@
           <p>₦10,000</p>
         </div>
       </div>
+
+      <!-- New Items -->
+      <div class="food-card" id="card-bailey-milkshake">
+        <img src="images/bailey-milkshake.jpg" alt="Bailey Milkshake" />
+        <div class="food-info">
+          <h4>Bailey Milkshake</h4>
+          <p>₦10,000</p>
+        </div>
+      </div>
+
+      <div class="food-card" id="card-banana-milkshake">
+        <img src="images/banana-milkshake.jpg" alt="Banana Milkshake" />
+        <div class="food-info">
+          <h4>Banana Milkshake</h4>
+          <p>₦10,000</p>
+        </div>
+      </div>
+
+      <div class="food-card" id="card-sneakers-milkshake">
+        <img src="images/sneakers-milkshake.jpg" alt="Sneakers Milkshake" />
+        <div class="food-info">
+          <h4>Sneakers Milkshake</h4>
+          <p>₦10,000</p>
+        </div>
+      </div>
     </div>
+
     <div class="tray-note">
       Images are illustrative. Prices include VAT where applicable.
     </div>
   </main>
+
   <nav class="bottom-nav">
     <a href="./index.html" class="active">Home</a>
     <a href="./bites.html">Bites</a>

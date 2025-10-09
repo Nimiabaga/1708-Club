@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
   <style>
+    /* ===== Green Theme (from first code) ===== */
     .menu-banner{
       position: relative;
       padding: 1.6rem 0 1.05rem 0;
@@ -58,10 +59,7 @@
       pointer-events:none;
     }
     .back-btn:hover, .back-btn:focus-visible{ transform: translateY(-1px); outline:none; }
-    .soldout-label{
-      color:#fff; background:#d91e1e; border-radius:.35em; padding:.07em .5em;
-      font-weight:700; margin-left:.6em; font-size:.97em; vertical-align:middle; display:inline-block;
-    }
+    .soldout-label{ color:#fff; background:#d91e1e; border-radius:.35em; padding:.07em .5em; font-weight:700; margin-left:.6em; font-size:.97em; vertical-align:middle; display:inline-block; }
     .food-card.soldout{ opacity:.48; }
     main{ padding-bottom: 4.5rem; }
   </style>
@@ -79,27 +77,62 @@
   </div>
   <main>
     <div class="food-grid">
-      <div class="food-card" id="card-smoky-lamp">
-        <img src="images/smoky-lamp.jpg" alt="Smoky Lamp" />
+      <!-- ==================== UPDATED COCKTAILS (with prices) ==================== -->
+      <div class="food-card" id="card-adios-motherfucker">
+        <img src="images/adios-motherfucker.jpg" alt="Adios Motherfucker" />
         <div class="food-info">
-          <h4>Smoky Lamp</h4>
+          <h4>Adios Motherfucker</h4>
           <p>₦10,000</p>
-          <small style="display:block;color:#ccc;margin-top:4px;">Jagermeister, Irish Whiskey, Sour Mix, Cinnamon</small>
+          <small style="display:block;color:#ccc;margin-top:4px;">Tequila, Vodka, Gin, White Rum, Blue Curaçao, Sweet &amp; Sour Mix, topped with Sprite</small>
         </div>
       </div>
+      <div class="food-card" id="card-tequila-sunrise">
+        <img src="images/tequila-sunrise.jpg" alt="Tequila Sunrise" />
+        <div class="food-info">
+          <h4>Tequila Sunrise</h4>
+          <p>₦10,000</p>
+          <small style="display:block;color:#ccc;margin-top:4px;">Tequila, Triple Sec, Orange Juice, float of Grenadine</small>
+        </div>
+      </div>
+      <div class="food-card" id="card-screaming-orgasm">
+        <img src="images/screaming-orgasm.jpg" alt="Screaming Orgasm" />
+        <div class="food-info">
+          <h4>Screaming Orgasm</h4>
+          <p>₦10,000</p>
+          <small style="display:block;color:#ccc;margin-top:4px;">Vodka, Baileys, Coffee Liqueur, Milk</small>
+        </div>
+      </div>
+      <div class="food-card" id="card-strawberry-daiquiri">
+        <img src="images/strawberry-daiquiri.jpg" alt="Strawberry Daiquiri" />
+        <div class="food-info">
+          <h4>Strawberry Daiquiri</h4>
+          <p>₦10,000</p>
+          <small style="display:block;color:#ccc;margin-top:4px;">White Rum, Strawberry, Simple Syrup, Lemon Juice</small>
+        </div>
+      </div>
+      <div class="food-card" id="card-sweet-poison">
+        <img src="images/sweet-poison.jpg" alt="Sweet Poison" />
+        <div class="food-info">
+          <h4>Sweet Poison</h4>
+          <p>₦10,000</p>
+          <small style="display:block;color:#ccc;margin-top:4px;">Vodka, White Rum, Simple Syrup, Blue Curaçao, Pineapple Juice</small>
+        </div>
+      </div>
+
+      <!-- Kept items -->
       <div class="food-card" id="card-zombie">
         <img src="images/zombie-cocktail.jpg" alt="Zombie" />
         <div class="food-info">
           <h4>Zombie</h4>
           <p>₦10,000</p>
-          <small style="display:block;color:#ccc;margin-top:4px;">Mixed Rum, Apricot Brandy, Falernum Liqueur, Lemon, Orange & Pineapple Juice</small>
+          <small style="display:block;color:#ccc;margin-top:4px;">Mixed Rum, Apricot Brandy, Falernum Liqueur, Lemon, Orange &amp; Pineapple Juice</small>
         </div>
       </div>
       <div class="food-card" id="card-irish-coffee">
         <img src="images/irish-coffee-cocktail.jpg" alt="Irish Coffee" />
         <div class="food-info">
           <h4>Irish Coffee</h4>
-          <p>₦8,000</p>
+          <p>₦10,000</p>
           <small style="display:block;color:#ccc;margin-top:4px;">Hot Coffee, Milk, Irish Whiskey</small>
         </div>
       </div>
@@ -117,14 +150,6 @@
           <h4>Frozen Blue Margarita</h4>
           <p>₦10,000</p>
           <small style="display:block;color:#ccc;margin-top:4px;">Tequila, Orange Liqueur, Blue Curacao</small>
-        </div>
-      </div>
-      <div class="food-card" id="card-sweet-colorado">
-        <img src="images/sweet-colorado-cocktail.jpg" alt="Sweet Colorado" />
-        <div class="food-info">
-          <h4>Sweet Colorado</h4>
-          <p>₦10,000</p>
-          <small style="display:block;color:#ccc;margin-top:4px;">Strong Alcoholic Mix, Aged Whiskey, Red Berry Liqueur</small>
         </div>
       </div>
       <div class="food-card" id="card-classic-margarita">
@@ -164,7 +189,7 @@
         <div class="food-info">
           <h4>Mai Tai</h4>
           <p>₦10,000</p>
-          <small style="display:block;color:#ccc;margin-top:4px;">Gold & Dark Rum, Orgeat Syrup, Orange Liqueur, Lemon</small>
+          <small style="display:block;color:#ccc;margin-top:4px;">Gold &amp; Dark Rum, Orgeat Syrup, Orange Liqueur, Lemon</small>
         </div>
       </div>
       <div class="food-card" id="card-blue-hawaii">
@@ -173,14 +198,6 @@
           <h4>Blue Hawaii</h4>
           <p>₦10,000</p>
           <small style="display:block;color:#ccc;margin-top:4px;">Vodka, Rum, Blue Curacao, Pineapple, Sour Mix</small>
-        </div>
-      </div>
-      <div class="food-card" id="card-winter-breeze">
-        <img src="images/winter-breeze-cocktail.jpg" alt="Winter Breeze" />
-        <div class="food-info">
-          <h4>Winter Breeze</h4>
-          <p>₦10,000</p>
-          <small style="display:block;color:#ccc;margin-top:4px;">Gin, Vodka, Lemon Cordial, Raspberry Liqueur</small>
         </div>
       </div>
       <div class="food-card" id="card-mojito">
@@ -199,7 +216,6 @@
           <small style="display:block;color:#ccc;margin-top:4px;">Vodka, Orange, Peach, Strawberry</small>
         </div>
       </div>
-      <!-- NEW HAMMER COCKTAIL -->
       <div class="food-card" id="card-hammer">
         <img src="images/hammer.jpg" alt="Hammer" />
         <div class="food-info">
@@ -208,6 +224,8 @@
           <!-- No description yet -->
         </div>
       </div>
+
+      <!-- Removed per request earlier: Smoky Lamp, Sweet Colorado, Winter Breeze -->
     </div>
     <div class="tray-note">
       Images are illustrative. Prices include VAT where applicable.

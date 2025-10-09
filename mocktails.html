@@ -6,8 +6,8 @@
   <title>Mocktails — 1708 Hotel</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-
   <style>
+    /* ===== Green Theme (match Cocktails & Milkshakes) ===== */
     .menu-banner{
       position: relative;
       padding: 1.6rem 0 1.05rem 0;
@@ -21,65 +21,104 @@
         0 0 24px 0 #00000060;
       text-align: center;
     }
-    .menu-banner .super-glow{
-      position: absolute; inset:0; pointer-events: none; z-index:0;
-      background: radial-gradient(50% 80% at 50% 70%, rgba(0,0,0,.35) 0%, rgba(212,175,55,0) 90%);
-      opacity: 1;
-    }
+    .menu-banner .super-glow{ position:absolute; inset:0; pointer-events:none; z-index:0; background: radial-gradient(50% 80% at 50% 70%, rgba(0,0,0,.35) 0%, rgba(212,175,55,0) 90%); opacity:1; }
     .menu-banner h2{
-      position: relative; z-index:1; margin:0;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      font-weight: 900;
-      font-size: 2rem;
+      position: relative; z-index:1; margin:0; letter-spacing:.14em; text-transform:uppercase; font-weight:900; font-size:2rem;
       background: linear-gradient(180deg,#fffde0 0%, #2cc440 25%, #2cc440 65%, #2cc440 95%, #fff7cc 100%);
-      -webkit-background-clip:text; background-clip:text;
-      -webkit-text-fill-color:transparent;
-      -webkit-text-stroke: 2px #d4af3766;
-      filter: drop-shadow(0 3px 12px #201600) drop-shadow(0 0 16px #ffedb366);
-      text-shadow: 0 2px 18px #b8921c44;
+      -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; -webkit-text-stroke:2px #d4af3766;
+      filter: drop-shadow(0 3px 12px #201600) drop-shadow(0 0 16px #ffedb366); text-shadow: 0 2px 18px #b8921c44;
     }
-    .menu-banner h2::after{
-      content:""; display:block; width:150px; height:2.5px; margin:.7rem auto 0;
-      border-radius:2px; background: linear-gradient(90deg, transparent, #2cc440, transparent);
-      box-shadow: 0 0 18px #d4af3748;
-    }
+    .menu-banner h2::after{ content:""; display:block; width:150px; height:2.5px; margin:.7rem auto 0; border-radius:2px; background: linear-gradient(90deg, transparent, #2cc440, transparent); box-shadow: 0 0 18px #d4af3748; }
+
     .back-wrap{ display:flex; justify-content:center; margin:.85rem auto 0; padding:0 .8rem; max-width:980px; }
     .back-btn{
-      display:inline-block; text-decoration:none; font-weight:800; letter-spacing:.2px;
-      padding:.65rem 1.05rem; border-radius:14px; border:1.5px solid #2cc440; color:#2a1e00;
-      background: linear-gradient(180deg, #2cc440 0%, #2cc440 58%, #2cc440 100%);
+      display:inline-block; text-decoration:none; font-weight:800; letter-spacing:.2px; padding:.65rem 1.05rem; border-radius:14px;
+      border:1.5px solid #2cc440; color:#2a1e00; background: linear-gradient(180deg, #2cc440 0%, #2cc440 58%, #2cc440 100%);
       box-shadow: inset 0 0 0 1px rgba(255,255,255,.25), 0 2px 0 #8f6f05, 0 10px 24px rgba(212,175,55,.28);
       position:relative; isolation:isolate; transition: transform .12s ease, box-shadow .18s ease;
     }
-    .back-btn::before{
-      content:""; position:absolute; left:10px; right:10px; top:7px; height:38%;
-      border-radius:12px; background:linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,0));
-      pointer-events:none;
-    }
+    .back-btn::before{ content:""; position:absolute; left:10px; right:10px; top:7px; height:38%; border-radius:12px; background:linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,0)); pointer-events:none; }
     .back-btn:hover, .back-btn:focus-visible{ transform: translateY(-1px); outline:none; }
-    .soldout-label{
-      color:#fff; background:#d91e1e; border-radius:.35em; padding:.07em .5em;
-      font-weight:700; margin-left:.6em; font-size:.97em; vertical-align:middle; display:inline-block;
-    }
+
+    .soldout-label{ color:#fff; background:#d91e1e; border-radius:.35em; padding:.07em .5em; font-weight:700; margin-left:.6em; font-size:.97em; vertical-align:middle; display:inline-block; }
     .food-card.soldout{ opacity:.48; }
     main{ padding-bottom: 4.5rem; }
   </style>
 </head>
 <body>
+  <!-- Header -->
   <header class="animate__animated animate__fadeInDown">
     <img src="images/1708.png" alt="1708 Hotel Logo" class="logo" />
   </header>
+
   <div class="menu-banner">
     <span class="super-glow" aria-hidden="true"></span>
     <h2>MOCKTAILS</h2>
   </div>
+
+  <!-- Back to Drinks -->
   <div class="back-wrap">
     <a class="back-btn" href="./drinks.html">← Back to Drinks</a>
   </div>
+
   <main>
     <div class="food-grid">
-      <!-- Chapman -->
+      <!-- ========= NEW ITEMS (₦8,000) ========= -->
+      <div class="food-card" id="card-bribe-pina">
+        <img src="images/bribe-pina.jpg" alt="Bribe Pina Mocktail" />
+        <div class="food-info">
+          <h4>Bribe Pina</h4>
+          <p>₦8,000</p>
+          <small style="display:block;color:#ccc;margin-top:4px;">Coconut Syrup, Pineapple Juice, Simple Syrup, Coconut Grenadine</small>
+        </div>
+      </div>
+
+      <div class="food-card" id="card-frozen-passion-colada">
+        <img src="images/frozen-passion-colada.jpg" alt="Frozen Passion Colada Mocktail" />
+        <div class="food-info">
+          <h4>Frozen Passion Colada</h4>
+          <p>₦8,000</p>
+          <small style="display:block;color:#ccc;margin-top:4px;">Passion Syrup, Pineapple Juice, Coconut Cream</small>
+        </div>
+      </div>
+
+      <div class="food-card" id="card-blue-lemonade">
+        <img src="images/blue-lemonade.jpg" alt="Blue Lemonade Mocktail" />
+        <div class="food-info">
+          <h4>Blue Lemonade</h4>
+          <p>₦8,000</p>
+          <small style="display:block;color:#ccc;margin-top:4px;">Blue Curaçao Syrup, Lemon Juice, Simple Syrup, top-up Soda</small>
+        </div>
+      </div>
+
+      <div class="food-card" id="card-blue-hawaii-mocktail">
+        <img src="images/blue-hawaii-mocktail.jpg" alt="Blue Hawaii Mocktail" />
+        <div class="food-info">
+          <h4>Blue Hawaii</h4>
+          <p>₦8,000</p>
+          <small style="display:block;color:#ccc;margin-top:4px;">(Mocktail)</small>
+        </div>
+      </div>
+
+      <div class="food-card" id="card-sweet-sunrise">
+        <img src="images/sweet-sunrise.jpg" alt="Sweet Sunrise Mocktail" />
+        <div class="food-info">
+          <h4>Sweet Sunrise</h4>
+          <p>₦8,000</p>
+          <small style="display:block;color:#ccc;margin-top:4px;">Orange Juice, Lime Juice, Simple Syrup, Grenadine</small>
+        </div>
+      </div>
+
+      <div class="food-card" id="card-lick-me-up">
+        <img src="images/lick-me-up.jpg" alt="Lick Me Up Mocktail" />
+        <div class="food-info">
+          <h4>Lick Me Up</h4>
+          <p>₦8,000</p>
+          <small style="display:block;color:#ccc;margin-top:4px;">Baileys, Strawberry, Yogurt, Date Syrup</small>
+        </div>
+      </div>
+
+      <!-- ========= EXISTING ITEMS (keep, set prices) ========= -->
       <div class="food-card" id="card-chapman">
         <img src="images/chapman.jpg" alt="Chapman Mocktail" />
         <div class="food-info">
@@ -88,7 +127,7 @@
           <small style="display:block;color:#ccc;margin-top:4px;">Alcohol / Non Alcohol</small>
         </div>
       </div>
-      <!-- Tropical Island -->
+
       <div class="food-card" id="card-tropical-island">
         <img src="images/tropical-island.jpg" alt="Tropical Island Mocktail" />
         <div class="food-info">
@@ -97,25 +136,7 @@
           <small style="display:block;color:#ccc;margin-top:4px;">Fresh Cream, Irish Cream, Coconut, Vanilla</small>
         </div>
       </div>
-      <!-- Love Portion -->
-      <div class="food-card" id="card-love-portion">
-        <img src="images/love-portion.jpg" alt="Love Portion Mocktail" />
-        <div class="food-info">
-          <h4>Love Portion</h4>
-          <p>₦8,000</p>
-          <small style="display:block;color:#ccc;margin-top:4px;">Fresh Cream, Irish Cream, Kiwi, Peach, Coconut</small>
-        </div>
-      </div>
-      <!-- Holy Water -->
-      <div class="food-card" id="card-holy-water">
-        <img src="images/holy-water.jpg" alt="Holy Water Mocktail" />
-        <div class="food-info">
-          <h4>Extra Man Power</h4>
-          <p>₦8,000</p>
-          <small style="display:block;color:#ccc;margin-top:4px;">Raspberry, Tangerine Sour Mix, Lemonade, Lime</small>
-        </div>
-      </div>
-      <!-- Cucumber Cooler -->
+
       <div class="food-card" id="card-cucumber-cooler">
         <img src="images/cucumber-cooler.jpg" alt="Cucumber Cooler Mocktail" />
         <div class="food-info">
@@ -124,7 +145,7 @@
           <small style="display:block;color:#ccc;margin-top:4px;">Fresh Cucumber, Lemon Cordial, Lime, Mint Syrup</small>
         </div>
       </div>
-      <!-- Bahama’s Sunrise -->
+
       <div class="food-card" id="card-bahamas-sunrise">
         <img src="images/bahamas-sunrise.jpg" alt="Bahamas Sunrise Mocktail" />
         <div class="food-info">
@@ -133,7 +154,7 @@
           <small style="display:block;color:#ccc;margin-top:4px;">Orange, Pineapple, Peach, Coconut</small>
         </div>
       </div>
-      <!-- Cinderella -->
+
       <div class="food-card" id="card-cinderella">
         <img src="images/cinderella.jpg" alt="Cinderella Mocktail" />
         <div class="food-info">
@@ -142,7 +163,7 @@
           <small style="display:block;color:#ccc;margin-top:4px;">Strawberry, Orange &amp; Pineapple, Lemon, Mixed Berry</small>
         </div>
       </div>
-      <!-- Ginger Lemonade -->
+
       <div class="food-card" id="card-ginger-lemonade">
         <img src="images/ginger-lemonade.jpg" alt="Ginger Lemonade Mocktail" />
         <div class="food-info">
@@ -151,11 +172,16 @@
           <small style="display:block;color:#ccc;margin-top:4px;">Fresh Ginger, Fresh Lemon, Lime Soda</small>
         </div>
       </div>
+
+      <!-- Removed per request earlier: Love Potion / Love Portion, Extra Man Power -->
     </div>
+
     <div class="tray-note">
       Images are illustrative. Prices include VAT where applicable.
     </div>
   </main>
+
+  <!-- Bottom Navigation (Club menu) -->
   <nav class="bottom-nav">
     <a href="./index.html" class="active">Home</a>
     <a href="./bites.html">Bites</a>
