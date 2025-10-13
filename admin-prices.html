@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Admin — 1708 | Price Editor</title>
+  <meta name="robots" content="noindex,nofollow"/>
+
+  <style>
+    :root{
+      --text:#f2f2f2; --muted:#bdbdbd; --accent:#7dffa6;
+      --card: rgba(255,255,255,.05); --card2: rgba(255,255,255,.03);
+      --bd: rgba(255,255,255,.12);
+      --fs: clamp(.92rem, 1.5vw, .98rem);
+      --fs-small: clamp(.82rem, 1.3vw, .92rem);
+      --fs-title: clamp(1.28rem, 3.0vw, 1.58rem);
+    }
+    *{ box-sizing:border-box }
+    body{
+      margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:#0b0b0b; color:var(--text);
+      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+    }
+    .wrap{ max-width:980px; margin:22px auto 36px; padding:0 12px; }
+    h1{
+      margin:6px 0 14px; text-align:center; letter-spacing:.22em; text-transform:uppercase;
+      color:var(--accent); font-size:var(--fs-title);
+      text-shadow:0 0 22px rgba(125,255,166,.25);
+    }
+    .back{ color:var(--accent); text-decoration:none; display:inline-flex; align-items:center; gap:.45rem; margin:.2rem 0 1rem; }
+    .card{
+      background:linear-gradient(180deg,var(--card),var(--card2));
+      border:1px solid var(--bd); border-radius:16px; padding:14px;
+      box-shadow:0 14px 28px rgba(0,0,0,.55);
+    }
+    .toolbar{ display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+    .toolbar input[type="search"], .toolbar select{
+      background:#111; color:#fff; border:1px solid #2c2c2c; border-radius:10px; padding:10px 12px; font-size:var(--fs);
+    }
+    .btn{ appearance:none; border:0; border-radius:999px; padding:9px 14px; font-weight:900; cursor:pointer;
+          background:linear-gradient(180deg,#fff,#e9e9e9); color:#111; font-size:var(--fs); }
+    .btn.secondary{ background:#222; color:#f5f5f5; border:1px solid #2f2f2f; }
+    .btn.danger{ background:#c1121f; color:#fff; }
+    .status{ margin-left:auto; color:var(--muted); white-space:nowrap; font-size:var(--fs-small); }
+
+    table{ width:100%; border-collapse:separate; border-spacing:0 10px; margin-top:10px; font-size:var(--fs); }
+    thead th{ color:#ddd; font-size:.9em; letter-spacing:.06em; text-transform:uppercase; }
+    th, td{ text-align:left; padding:10px 12px; }
+    tbody tr{ background:rgba(255,255,255,.035); border:1px solid rgba(255,255,255,.10); }
+    tbody tr td:first-child{ border-top-left-radius:10px; border-bottom-left-radius:10px; }
+    tbody tr td:last-child{ border-top-right-radius:10px; border-bottom-right-radius:10px; }
+
+    select.type, input.cat, input.price, select.item-select{
+      width:100%; background:#0e0e0e; color:#fff; border:1px solid #444; border-radius:8px; padding:8px 10px;
+    }
+    input.price{ text-align:right; max-width:140px; }
+    .check{ width:18px; height:18px; }
+    .del{ padding:8px 12px; border-radius:10px; }
+
+    @media (max-width:600px){
+      .btn{ width:100%; justify-content:center }
+      .toolbar{ gap:10px }
+      .status{ width:100%; text-align:center; margin:6px 0 0 }
+      table{ font-size:.95rem }
+      input.price{ max-width:100% }
+    }
+    @media (prefers-reduced-motion:reduce){ .btn, .card{ transition:none !important } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="back" href="admin.html">← Back to admin</a>
+    <h1>PRICE EDITOR</h1>
+
+    <div class="card">
+      <div class="toolbar">
+        <input id="search" type="search" placeholder="Search item or category...">
+        <select id="show">
+          <option value="">Show: All</option>
+          <option value="Drinks">Drinks</option>
+          <!-- value MUST stay 'Food' (type written to sheet), label shows 'Bites' -->
+          <option value="Food">Bites</option>
+        </select>
+
+        <button id="add" class="btn">Add Item</button>
+        <button id="save" class="btn">Save</button>
+        <button id="download" class="btn">Download JSON</button>
+        <label class="btn secondary">
+          Load JSON <input id="upload" type="file" accept="application/json" style="display:none">
+        </label>
+        <button id="startfresh" class="btn danger">Start fresh (2 rows)</button>
+
+        <span id="status" class="status"></span>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Item (choose from dropdown)</th>
+            <th>Cat</th>
+            <th>Price (₦)</th>
+            <th>Available</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    /* ===== BACKEND CONFIG (LIVE) ===== */
+    const API_URL = 'https://script.google.com/macros/s/AKfycbwowJdvGrgv0Rahu5N_zWP_60Au_GJU05zNZHNlvo3pcrYCep5c-gsIOvmNImrPCN8h/exec';
+    const TOKEN   = 'Forgive1988@';
+
+    /* ===== CATALOGS ===== */
+    const drinksCatalog = {
+      "Arabian Tea": [
+        { name: "Abino Shaka", price: 7000 },
+        { name: "Man Power", price: 7000 },
+        { name: "Body Cleanser", price: 7000 }
+      ],
+      "Beers / Mixers": [
+        { name: "Star", price: 1800 }, { name: "Gulder", price: 1900 }, { name: "Heineken", price: 2100 },
+        { name: "Medium Heineken", price: 1600 }, { name: '33"', price: 1600 }, { name: "Budweisser", price: 1700 },
+        { name: "Life", price: 1600 }, { name: "Hero", price: 1600 }, { name: "Tiger", price: 1600 },
+        { name: "Maltina", price: 1200 }, { name: "Amstel", price: 1200 }, { name: "Guinness Malta", price: 1200 },
+        { name: "Water", price: 500 }, { name: "Fayrouz", price: 1000 }, { name: "Coke can", price: 1000 },
+        { name: "Mineral", price: 1000 }, { name: "Cranberry", price: 3200 }, { name: "Juice", price: 3000 },
+        { name: "Hollandia", price: 3500 }
+      ],
+      "Wines": [
+        { name: "Carlo Rossi", price: 18000 }, { name: "Markenellis", price: 18000 }, { name: "Four Cousins", price: 18000 },
+        { name: "Four Cousins Sparkling", price: 20000 }, { name: "Andre", price: 22000 }, { name: "Droty Off", price: 18000 },
+        { name: "Pastoral Wine", price: 19000 }, { name: "Star Chaser", price: 17000 }, { name: "Lamothe Original", price: 15000 },
+        { name: "Toma Wine", price: 10000 }, { name: "Princi Pinal Wine", price: 10000 }, { name: "1964 Wine", price: 10000 },
+        { name: "Sweet Lip Wine", price: 15000 }
+      ],
+      "Champagne": [
+        { name: "Belaire Fantôme Rosé", price: 100000 }, { name: "Belaire Fantôme lux", price: 110000 },
+        { name: "Veuve rich", price: 300000 }, { name: "Belaire Fantôme Gold", price: 100000 },
+        { name: "Veuve Clicquot", price: 250000 }, { name: "Dom Pérignon", price: 700000 }, { name: "Moet", price: 155000 }
+      ],
+      "Whiskey": [
+        { name: "Williams Lawson", price: 25000 }, { name: "Williams Lawson Small", price: 12000 },
+        { name: "Jameson Green Small", price: 15000 }, { name: "Jameson Green Big", price: 40000 },
+        { name: "Jack Daniels", price: 40000 }, { name: "Singleton", price: 80000 }
+      ],
+      "Shots": [
+        { name: "Tequila", price: 3000 }, { name: "Casamigos Tequila", price: 3000 }, { name: "Bacardi", price: 3000 },
+        { name: "Campari", price: 3000 }, { name: "Baileys", price: 3000 }, { name: "Gin", price: 3000 },
+        { name: "Jagermeister", price: 3000 }
+      ],
+      "Cocktails": [
+        { name: "Adios Motherfucker", price: 10000 }, { name: "Tequila Sunrise", price: 10000 },
+        { name: "Screaming Orgasm", price: 10000 }, { name: "Strawberry Daiquiri", price: 10000 },
+        { name: "Sweet Poison", price: 10000 }, { name: "Zombie", price: 10000 }, { name: "Irish Coffee", price: 10000 },
+        { name: "Frozen Strawberry Margarita", price: 10000 }, { name: "Frozen Blue Margarita", price: 10000 },
+        { name: "Classic Margarita", price: 10000 }, { name: "Long Island Iced Tea", price: 10000 },
+        { name: "Electric Ice Tea", price: 10000 }, { name: "Kiwi Fizzy", price: 10000 }, { name: "Mai Tai", price: 10000 },
+        { name: "Blue Hawaii", price: 10000 }, { name: "Mojito", price: 10000 }, { name: "Sex on the Beach", price: 10000 },
+        { name: "Hammer", price: 10000 }
+      ],
+      "Liquor-Rum-Gin": [
+        { name: "Gordon Gin (Medium)", price: 5000 }, { name: "Big Gordon", price: 12000 },
+        { name: "Smirnoff X1 (Small)", price: 3200 }, { name: "Smirnoff X1 (Big)", price: 12000 },
+        { name: "Kensington", price: 13000 }, { name: "John Bannermans", price: 25000 }, { name: "M/Campari", price: 32000 },
+        { name: "B/Campari", price: 36000 }, { name: "Clay More", price: 14000 }, { name: "Monkey Shoulder", price: 45000 },
+        { name: "Baileys", price: 18000 }
+      ],
+      "Cognac": [
+        { name: "Martel VSSD", price: 100000 }, { name: "Martel VS", price: 100000 }, { name: "Martel Blue Swift", price: 120000 },
+        { name: "Hennessy VS", price: 95000 }, { name: "Hennessy VSOP", price: 145000 }, { name: "Hennessy XO", price: 500000 },
+        { name: "Dusse VSOP", price: 150000 }, { name: "Meukow VS", price: 75000 }, { name: "Remy Martin", price: 85000 }
+      ],
+      "Smoothies": [
+        { name: "Milk Fruity", price: 8000 }, { name: "Banana Strawberry", price: 8000 }, { name: "Avocado Banana", price: 8000 },
+        { name: "Peanut Banana", price: 8000 }, { name: "Ginger Mix", price: 8000 }, { name: "Fresh Juice", price: 8000 },
+        { name: "Fruit Perfait", price: 8000 }
+      ],
+      "Milkshakes": [
+        { name: "Creamy Vanilla", price: 10000 }, { name: "Strawberry Slush", price: 10000 },
+        { name: "Peanut Butter Delight", price: 10000 }, { name: "Chocolate Flavoured Shakes", price: 10000 },
+        { name: "Bailey Milkshake", price: 10000 }, { name: "Banana Milkshake", price: 10000 }, { name: "Sneakers Milkshake", price: 10000 }
+      ],
+      "Mocktails": [
+        { name: "Chapman", price: 6000 }, { name: "Tropical Island", price: 8000 }, { name: "Bribe Pina", price: 8000 },
+        { name: "Frozen Passion Colada", price: 8000 }, { name: "Blue Lemonade", price: 8000 }, { name: "Blue Hawaii", price: 8000 },
+        { name: "Sweet Sunrise", price: 8000 }, { name: "Lick Me Up", price: 8000 }, { name: "Cucumber Cooler", price: 8000 },
+        { name: "Bahamas Sunrise", price: 8000 }, { name: "Cinderella", price: 8000 }, { name: "Ginger Lemonade", price: 8000 }
+      ]
+    };
+
+    /* Only “Bites” under Food (type value remains 'Food') */
+    const foodCatalog = {
+      "Bites": [
+        { name: "Fries", price: 3000 },
+        { name: "Samosa (5 pieces)", price: 6000 },
+        { name: "Springroll (5 pieces)", price: 5500 },
+        { name: "Chicken Wings", price: 7000 },
+        { name: "Peppered Gizzard", price: 8500 },
+        { name: "Peppered Chicken", price: 7500 },
+        { name: "Peppered Goat Meat", price: 9000 },
+        { name: "Peppered Beef", price: 7000 },
+        { name: "Peppered Cow - Tail", price: 8000 },
+        { name: "Peppered Cow - Head", price: 8500 },
+        { name: "Peppered Snail", price: 4500 }
+      ]
+    };
+
+    /* ===== helpers ===== */
+    const $ = (id)=>document.getElementById(id);
+    const uid = ()=> String(Date.now()) + Math.random().toString(16).slice(2);
+    const money = v => (v==null || v==='') ? '' : Number(v);
+    const catalogForType = (t)=> t==='Food' ? foodCatalog : drinksCatalog;
+
+    let rows = [];
+    let pendingNew = [];
+    let saveTimer = null;
+
+    // Robust POST helper (parses JSON; falls back to no-cors)
+    async function postForm(params){
+      const body = new URLSearchParams(params);
+      try{
+        const r = await fetch(API_URL, { method:'POST', body });
+        const raw = await r.text();
+        return JSON.parse(raw);
+      }catch(err){
+        try{
+          await fetch(API_URL, { method:'POST', body, mode:'no-cors' });
+          return { ok:true, nocors:true };
+        }catch(e2){
+          return { ok:false, error: e2.message || 'Network error' };
+        }
+      }
+    }
+
+    function scheduleSave(){
+      clearTimeout(saveTimer);
+      saveTimer = setTimeout(saveToSheet, 600);
+      $('status').textContent = 'Saving…';
+    }
+
+    async function fetchItems(){
+      $('status').textContent = 'Loading...';
+      const res = await fetch(`${API_URL}?token=${encodeURIComponent(TOKEN)}`);
+      const data = await res.json();
+      if(!data.ok) throw new Error(data.error||'Failed to load');
+      rows = Array.isArray(data.rows) ? data.rows : [];
+      pendingNew = [];
+      render();
+      $('status').textContent = `Loaded ${rows.length} item(s)`;
+    }
+
+    function filtered(){
+      const q = $('search').value.trim().toLowerCase();
+      const show = $('show').value;
+      return rows
+        .filter(r =>
+          (!show || String(r.type)===show) &&
+          (!q || String(r.name).toLowerCase().includes(q) || String(r.cat).toLowerCase().includes(q))
+        )
+        .concat(pendingNew);
+    }
+
+    function itemSelectHTML(row){
+      const esc = s => String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+      const cat = catalogForType(row.type || 'Food');
+      const groups = Object.keys(cat);
+      let html = `<select class="item-select"><option value="">— pick item —</option>`;
+      for (const g of groups){
+        html += `<optgroup label="${esc(g)}">`;
+        for (const it of cat[g]){
+          const raw = `${g}|||${it.name}`;
+          const selected = (row.cat===g && row.name===it.name) ? 'selected' : '';
+          html += `<option value="${esc(raw)}" ${selected}>${esc(it.name)}</option>`;
+        }
+        html += `</optgroup>`;
+      }
+      html += `<option value="__custom__">— Custom… —</option></select>`;
+      return html;
+    }
+
+    function tr(row, isNew=false){
+      const id = row.id;
+      return `
+        <tr data-id="${id}" ${isNew?'data-new="1"':''}>
+          <td>
+            <select class="type">
+              ${['','Drinks','Food'].map(t=>`<option value="${t}" ${String(row.type||'')===t?'selected':''}>${t==='Food'?'Bites':(t||'—')}</option>`).join('')}
+            </select>
+          </td>
+          <td>${itemSelectHTML(row)}</td>
+          <td><input class="cat"  value="${row.cat??''}"  placeholder="Category"></td>
+          <td><input class="price" type="number" min="0" step="1" value="${row.price??''}"></td>
+          <td><input class="check avail" type="checkbox" ${row.available?'checked':''}></td>
+          <td><button class="del btn secondary">Delete</button></td>
+        </tr>`;
+    }
+
+    function refreshRowControls(trEl, row){
+      trEl.querySelector('td:nth-child(2)').innerHTML = itemSelectHTML(row);
+    }
+
+    function render(){
+      const body = filtered().map(r => tr(r, !!r.__new)).join('');
+      $('tbody').innerHTML = body || '<tr><td colspan="6" style="text-align:center;color:#bbb;">No items</td></tr>';
+    }
+
+    // Input handlers (autosave)
+    document.addEventListener('input', e=>{
+      const trEl = e.target.closest('tr'); if(!trEl) return;
+      const id = trEl.dataset.id;
+      const isNew = trEl.dataset.new === '1';
+      const src = isNew ? pendingNew : rows;
+      const row = src.find(x=>String(x.id)===String(id));
+      if (!row) return;
+
+      if (e.target.classList.contains('type')){
+        row.type = e.target.value || '';
+        row.name = ''; row.cat = ''; row.price = 0;
+        refreshRowControls(trEl, row);
+        return;
+      }
+      if (e.target.classList.contains('cat'))  { row.cat  = e.target.value; scheduleSave(); }
+      if (e.target.classList.contains('price')){ row.price = money(e.target.value); scheduleSave(); }
+      if (e.target.classList.contains('avail')){ row.available = e.target.checked; scheduleSave(); }
+
+      if (e.target.classList.contains('item-select')){
+        const val = e.target.value;
+        if (val === '__custom__'){
+          const nm = prompt('Enter custom item name');
+          if (nm){
+            row.name = nm; row.cat = '(Custom)';
+            trEl.querySelector('.cat').value = row.cat;
+            scheduleSave();
+          }
+          e.target.value = '';
+        } else if (val){
+          const [cat,name] = val.split('|||');
+          row.cat = cat; row.name = name;
+          const catMap = catalogForType(row.type || 'Food');
+          const found = (catMap[cat]||[]).find(i=>i.name===name);
+          row.price = found ? Number(found.price)||0 : row.price;
+          trEl.querySelector('.cat').value = row.cat;
+          trEl.querySelector('.price').value = row.price || 0;
+          scheduleSave();
+        } else {
+          row.name=''; row.cat='';
+          scheduleSave();
+        }
+      }
+    });
+
+    // Delete
+    document.addEventListener('click', e=>{
+      if(!e.target.classList.contains('del')) return;
+      const trEl = e.target.closest('tr'); const id = trEl.dataset.id;
+      if (trEl.dataset.new === '1') {
+        pendingNew = pendingNew.filter(x=>String(x.id)!==String(id));
+      } else {
+        const r = rows.find(x=>String(x.id)===String(id));
+        if (r){ r.available = false; r.price = 0; }
+      }
+      render();
+      scheduleSave();
+    });
+
+    // Add row
+    $('add').addEventListener('click', ()=>{
+      const id = uid();
+      pendingNew.push({ id, type:'Food', name:'', cat:'', price:0, available:true, __new:true });
+      render();
+    });
+
+    // Manual save
+    $('save').addEventListener('click', saveToSheet);
+
+    // Download JSON (backup)
+    $('download').addEventListener('click', ()=>{
+      const blob = new Blob([JSON.stringify(rows, null, 2)], {type:'application/json'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = url; a.download = '1708-club-menu.json'; a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    // Load JSON (bulk write)
+    $('upload').addEventListener('change', async (e)=>{
+      const file = e.target.files[0]; if(!file) return;
+      const text = await file.text();
+      let arr = JSON.parse(text);
+      if (!Array.isArray(arr)) { alert('JSON must be an array'); return; }
+      $('status').textContent = 'Importing...';
+      const data = await postForm({ token:TOKEN, op:'write', rows: JSON.stringify(arr) });
+      if(!data.ok){ alert(data.error||'Import failed'); $('status').textContent=''; return; }
+      await fetchItems();
+      $('status').textContent = `Imported ${data.count ?? ''} item(s)`.trim();
+    });
+
+    // Start fresh (2 rows)
+    $('startfresh').addEventListener('click', async ()=>{
+      if(!confirm('Replace the sheet with 2 starter rows?')) return;
+      const seed = [
+        { id:'seed-1', type:'Drinks', name:'Sample Drink', cat:'Arabian Tea', price:10000, available:true,  updatedAt:'' },
+        { id:'seed-2', type:'Food',   name:'Sample Bite',  cat:'Bites',       price: 5000, available:true,  updatedAt:'' }
+      ];
+      $('status').textContent='Starting fresh...';
+      const data = await postForm({ token:TOKEN, op:'write', rows: JSON.stringify(seed) });
+      if(!data.ok){ alert(data.error||'Failed'); $('status').textContent=''; return; }
+      await fetchItems();
+      $('status').textContent = `Imported ${data.count ?? ''} item(s)`.trim();
+    });
+
+    // === SAVE ===
+    async function saveToSheet(){
+      try{
+        const merged = rows.concat(
+          pendingNew.map(x=>({
+            id:x.id, type:x.type||'', name:x.name||'', cat:x.cat||'',
+            price:Number(x.price||0), available:!!x.available, updatedAt:''
+          }))
+        );
+
+        const cleaned = merged.filter(r => r.type && r.name && r.cat);
+
+        const map = new Map();
+        for (const r of cleaned){
+          map.set(`${r.type}|||${r.cat}|||${r.name}`, r);
+        }
+        const finalRows = Array.from(map.values());
+
+        const j = await postForm({ token:TOKEN, op:'write', rows: JSON.stringify(finalRows) });
+        if(!j.ok){ $('status').textContent='Save failed'; alert(j.error||'Save failed'); return; }
+
+        await fetchItems(); // refresh after write
+        pendingNew = [];
+        $('status').textContent = 'Saved ✓';
+      }catch(err){
+        $('status').textContent = 'Save failed';
+        alert(err.message||err);
+      }
+    }
+
+    $('search').addEventListener('input', render);
+    $('show').addEventListener('change', render);
+
+    // init
+    fetchItems().catch(err=>alert(err.message||err));
+  </script>
+</body>
+</html>

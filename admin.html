@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Admin — 1708 Club</title>
+  <meta name="robots" content="noindex,nofollow" />
+
+  <!-- Prevent flash before PIN passes -->
+  <style>html.locked body{visibility:hidden}</style>
+  <script>document.documentElement.classList.add('locked');</script>
+
+  <!-- (Optional) Your global styles -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <style>
+    :root{
+      /* club accents (green) */
+      --club:#2cc440;
+      --tile-bg1: rgba(255,255,255,.06);
+      --tile-bg2: rgba(44,196,64,.08);
+      --tile-border: var(--club);
+      --text: #eaffef;
+      --muted:#cfcfcf;
+      --muted-2:#d9d9da;
+
+      /* responsive type scale */
+      --fs-h: clamp(1.6rem, 3.6vw, 2rem);
+      --fs-sub: clamp(.82rem, 1.4vw, .95rem);
+      --fs-body: clamp(.94rem, 1.6vw, 1rem);
+      --fs-btn: clamp(.95rem, 1.8vw, 1rem);
+    }
+
+    /* Base */
+    body{
+      background:#000; color:var(--text); margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+      text-rendering:optimizeLegibility;
+    }
+    header{ padding:1rem; text-align:center; }
+    header img{ height:64px; width:auto; max-width:70vw; }
+
+    /* Layout */
+    .admin-wrap{ max-width:860px; margin:0 auto; padding:0 1rem 2rem; }
+
+    /* Banner */
+    .menu-banner{ position:relative; margin:.4rem auto 0; padding:.9rem 0 1.15rem; border-bottom:1px solid rgba(255,255,255,.08); }
+    .menu-banner h2{
+      margin:0; text-align:center; font-size:var(--fs-h); font-weight:900; letter-spacing:.24em; text-transform:uppercase;
+      color:#fff; text-shadow:0 1px 0 rgba(255,255,255,.06), 0 6px 18px rgba(0,0,0,.35);
+    }
+    .menu-banner h2::before,
+    .menu-banner h2::after{
+      content:""; display:block; height:1px; margin:.55rem auto; width:min(72%, 680px);
+      background:linear-gradient(90deg,transparent,var(--club),transparent); opacity:.7;
+      box-shadow: 0 0 10px var(--club);
+    }
+    .menu-banner::after{
+      content:"— 1708 Club —"; display:block; text-align:center; margin-top:.35rem;
+      color: var(--club);
+      font-size:var(--fs-sub); letter-spacing:.28em; opacity:.95;
+      text-shadow: 0 0 14px rgba(44,196,64,.55);
+    }
+
+    .mini-note{
+      text-align:center; color:var(--muted); margin:.2rem 0 1.6rem; font-weight:600; font-size:var(--fs-body);
+    }
+
+    .back-link{
+      display:flex; justify-content:center; align-items:center; gap:.5rem;
+      font-weight:800; text-decoration:none; color:#fff;
+      margin:.6rem 0 1.2rem; opacity:.9; font-size:var(--fs-body);
+    }
+    .back-link:hover{ text-decoration:underline; }
+
+    /* Tile grid */
+    .admin-tiles{
+      display:grid; grid-template-columns:1fr; gap:1rem;
+      max-width:760px; margin:0 auto;
+    }
+
+    .tile{
+      position:relative; border-radius:16px; padding:clamp(1rem, 2vw, 1.2rem);
+      background:linear-gradient(180deg,var(--tile-bg1),var(--tile-bg2));
+      border:1px solid var(--tile-border);
+      box-shadow:0 12px 28px rgba(0,0,0,.45), 0 0 20px rgba(44,196,64,.08) inset;
+      min-height:180px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.9rem;
+      text-align:center;
+      transition:transform .18s ease, box-shadow .18s ease, filter .18s ease;
+    }
+    .tile:hover{ transform:translateY(-2px); filter:brightness(1.03); box-shadow:0 16px 36px rgba(0,0,0,.55), 0 0 28px rgba(44,196,64,.18) inset; }
+    .tile h4{
+      margin:.2rem 0 .35rem; font-weight:900; letter-spacing:.12em; text-transform:uppercase; color:#fff;
+      font-size:clamp(1rem, 2vw, 1.05rem);
+    }
+    .tile p{
+      margin:0; color:var(--muted-2); max-width:560px; line-height:1.45; font-size:var(--fs-body);
+      padding:0 .25rem;
+    }
+    .tile::after{
+      content:""; position:absolute; inset:auto -20px -20px auto; width:180px; height:180px; opacity:.08;
+      background:radial-gradient(60% 60% at 50% 50%, var(--club) 0%, transparent 70%); transform:rotate(18deg);
+    }
+
+    .actions{ width:100%; display:flex; justify-content:center; }
+    .adm-btn{
+      appearance:none; border:0; cursor:pointer; padding:.7rem 1.25rem; border-radius:999px;
+      font-weight:900; letter-spacing:.02em; text-decoration:none; display:inline-flex; align-items:center; gap:.5rem;
+      color:#051a08; background:linear-gradient(180deg,#4cf06a,#c0ffc9);
+      box-shadow:0 2px 0 rgba(0,0,0,.35), 0 6px 22px rgba(0,0,0,.25);
+      white-space:nowrap; font-size:var(--fs-btn);
+      touch-action:manipulation;
+    }
+    .adm-btn:hover{ filter:brightness(1.05); }
+
+    .meal-caption{ text-align:center; margin-top:1.6rem; opacity:.9; color:var(--muted); font-size:var(--fs-body); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .tile, .adm-btn { transition:none !important; }
+    }
+    @media (max-width:480px){
+      .admin-wrap{ padding:0 .8rem 2rem; }
+      .adm-btn{ width:100%; justify-content:center; }
+      header img{ height:56px; }
+      .tile{ min-height:160px; }
+    }
+
+    /* Remove any special underline from global styles on this page */
+    .menu-banner + section > h2::after,
+    .menu-banner + section > h3::after{ content:"" !important; }
+  </style>
+</head>
+<body>
+  <!-- PIN gate -->
+  <script>
+    (function(){
+      const PIN = '17081';
+      const KEY = 'admin_ok_1708';
+      if (!sessionStorage.getItem(KEY)) {
+        const input = prompt('Enter admin PIN');
+        if (input === PIN) {
+          sessionStorage.setItem(KEY,'1');
+        } else {
+          location.replace('/');
+          return;
+        }
+      }
+      document.documentElement.classList.remove('locked');
+    })();
+  </script>
+
+  <header class="animate__animated animate__fadeInDown">
+    <img src="images/1708.png" alt="1708 Club Logo" />
+  </header>
+
+  <div class="menu-banner"><h2>ADMIN</h2></div>
+  <div class="mini-note">Private area for Managing Club Menu</div>
+
+  <main class="admin-wrap">
+    <a class="back-link" href="./index.html" aria-label="Back to site">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+      </svg>
+      Back to site
+    </a>
+
+    <section class="admin-tiles">
+      <article class="tile">
+        <div>
+          <h4>Update Prices</h4>
+          <p>Edit items & prices. Export/Import JSON. Filter by Drinks/Bites.</p>
+        </div>
+        <div class="actions">
+          <a class="adm-btn" href="./admin-prices.html">Open Price Editor</a>
+        </div>
+      </article>
+    </section>
+
+    <section id="admin-message" class="meal-caption">
+      <strong>Welcome, Admin:</strong> Use the Price Editor to update club prices and availability.
+    </section>
+  </main>
+</body>
+</html>
