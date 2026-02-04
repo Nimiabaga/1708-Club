@@ -143,5 +143,42 @@
     <a href="./rooms.html">Rooms</a>
     <a href="./contact.html">Contact</a>
   </nav>
+
+  <!-- Live price injection (Drinks) -->
+  <script>
+    const ENDPOINT = 'https://script.google.com/macros/s/AKfycbw5v7gImXthxWkHUaCtDdDGx4U_tts7_1JWuHA9ojyu6nm2qvHyPehZrtfEK2j5JTMy/exec';
+    const TOKEN    = 'Forgive1988@';
+    const formatNaira = n => '₦' + Number(n||0).toLocaleString();
+    const slug = s => String(s)
+      .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+      .replace(/[^a-z0-9]/gi,'-').replace(/-+/g,'-')
+      .toLowerCase().replace(/-$/,'');
+    function injectDrinkPrices(){
+      fetch(`${ENDPOINT}?token=${encodeURIComponent(TOKEN)}`)
+        .then(r=>r.json())
+        .then(j=>{
+          if(!j.ok || !Array.isArray(j.rows)) return;
+          j.rows.forEach(item=>{
+            if (String(item.type) !== 'Drinks') return; // only drinks on this page
+            if (!item.name) return;
+            const s = slug(item.name);
+            const priceEl = document.getElementById('price-' + s);
+            const cardEl  = document.getElementById('card-' + s);
+            if(!priceEl || !cardEl) return; // skip if not in the preview grid
+            priceEl.innerHTML = '';
+            cardEl.classList.remove('soldout');
+            const available = (item.available === true) || (String(item.available).toLowerCase() === 'true');
+            if (available){
+              priceEl.textContent = formatNaira(item.price);
+            } else {
+              priceEl.innerHTML = `${formatNaira(item.price)} <span class="soldout-label">Sold Out</span>`;
+              cardEl.classList.add('soldout');
+            }
+          });
+        })
+        .catch(()=>{ /* ignore for now */ });
+    }
+    document.addEventListener('DOMContentLoaded', injectDrinkPrices);
+  </script>
 </body>
 </html>

@@ -205,19 +205,19 @@
   <!-- Room cards -->
   <main>
     <div class="rooms-grid">
-      <article class="room-card">
+      <article class="room-card" id="card-deluxe">
         <img src="images/room-deluxe.jpg" alt="Deluxe Room">
         <div class="room-info">
           <h4>Deluxe</h4>
-          <p>₦40,000</p>
+          <p id="price-deluxe"></p>
         </div>
       </article>
 
-      <article class="room-card">
+      <article class="room-card" id="card-standard">
         <img src="images/room-standard.jpg" alt="Standard Room">
         <div class="room-info">
           <h4>Standard</h4>
-          <p>₦35,000</p>
+          <p id="price-standard"></p>
         </div>
       </article>
     </div>
@@ -241,6 +241,40 @@
 
   <!-- Slider auto-advance -->
   <script>
+    const ENDPOINT = 'https://script.google.com/macros/s/AKfycbwnziA_6JOOFhaY4yf81_z8TDi-g3ETkW8yLcC4Tw3IEXDAE2jQ_2WwIS8FVA17Fmk/exec';
+    const TOKEN = 'Forgive1988@';
+    
+    const formatNaira = n => '₦' + Number(n||0).toLocaleString();
+    const slug = s => String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+      .replace(/[^a-z0-9]/gi,'-').replace(/-+/g,'-').toLowerCase().replace(/-$/,'');
+    
+    function injectRooms(){
+      fetch(`${ENDPOINT}?token=${encodeURIComponent(TOKEN)}`)
+        .then(r=>r.json())
+        .then(j=>{
+          if(!j.ok || !Array.isArray(j.rows)) return;
+          j.rows.forEach(item=>{
+            if (String(item.type) !== 'Rooms') return;
+            if (String(item.cat) !== 'Rooms') return;
+            if (!item.name) return;
+            const id = 'price-' + slug(item.name);
+            const el = document.getElementById(id);
+            if (!el) return;
+            const card = el.closest('.room-card');
+            if(card) card.classList.remove('soldout');
+            const available = (item.available === true) || (String(item.available).toLowerCase() === 'true');
+            if (available) el.textContent = formatNaira(item.price);
+            else {
+              el.innerHTML = `${formatNaira(item.price)} <span class="soldout-label">Unavailable</span>`;
+              if(card) card.classList.add('soldout');
+            }
+          });
+        }).catch(()=>{});
+    }
+    
+    document.addEventListener('DOMContentLoaded', injectRooms);
+    setInterval(injectRooms, 30000);
+
     (function(){
       const slider = document.getElementById('rooms-slider');
       const slides = slider ? Array.from(slider.querySelectorAll('.slide')) : [];

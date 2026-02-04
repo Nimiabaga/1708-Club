@@ -58,6 +58,8 @@
       pointer-events:none;
     }
     .back-btn:hover, .back-btn:focus-visible{ transform: translateY(-1px); outline:none; }
+    .soldout-label{ color:#fff; background:#d91e1e; border-radius:.35em; padding:.07em .5em; font-weight:700; margin-left:.6em; font-size:.97em; vertical-align:middle; display:inline-block; }
+    .food-card.soldout{ opacity:.48; }
     main{ padding-bottom: 4.5rem; }
   </style>
 </head>
@@ -73,47 +75,47 @@
     <div class="food-grid">
       <div class="food-card">
         <img src="images/fries.jpg" alt="Fries" />
-        <div class="food-info"><h4>Fries</h4><p>₦3,000</p></div>
+        <div class="food-info"><h4>Fries</h4><p id="price-fries"></p></div>
       </div>
       <div class="food-card">
         <img src="images/samosa-5-pieces-6000.jpg" alt="Samosa (5 pieces)" />
-        <div class="food-info"><h4>Samosa (5 pieces)</h4><p>₦6,000</p></div>
+        <div class="food-info"><h4>Samosa (5 pieces)</h4><p id="price-samosa-5-pieces"></p></div>
       </div>
       <div class="food-card">
         <img src="images/springroll-5-pieces.jpg" alt="Springroll (5 pieces)" />
-        <div class="food-info"><h4>Springroll (5 pieces)</h4><p>₦5,500</p></div>
+        <div class="food-info"><h4>Springroll (5 pieces)</h4><p id="price-springroll-5-pieces"></p></div>
       </div>
       <div class="food-card">
         <img src="images/chicken-wings.jpg" alt="Chicken Wings" />
-        <div class="food-info"><h4>Chicken Wings</h4><p>₦7,000</p></div>
+        <div class="food-info"><h4>Chicken Wings</h4><p id="price-chicken-wings"></p></div>
       </div>
       <div class="food-card">
         <img src="images/peppered-gizzard.jpg" alt="Peppered Gizzard" />
-        <div class="food-info"><h4>Peppered Gizzard</h4><p>₦7,000</p></div>
+        <div class="food-info"><h4>Peppered Gizzard</h4><p id="price-peppered-gizzard"></p></div>
       </div>
       <div class="food-card">
         <img src="images/peppered-chicken.jpg" alt="Peppered Chicken" />
-        <div class="food-info"><h4>Peppered Chicken</h4><p>₦5,000</p></div>
+        <div class="food-info"><h4>Peppered Chicken</h4><p id="price-peppered-chicken"></p></div>
       </div>
       <div class="food-card">
         <img src="images/peppered-goat-meat.jpg" alt="Peppered Goat Meat" />
-        <div class="food-info"><h4>Peppered Goat Meat</h4><p>₦5,500</p></div>
+        <div class="food-info"><h4>Peppered Goat Meat</h4><p id="price-peppered-goat-meat"></p></div>
       </div>
       <div class="food-card">
         <img src="images/peppered-beef.jpg" alt="Peppered Beef" />
-        <div class="food-info"><h4>Peppered Beef</h4><p>₦4,000</p></div>
+        <div class="food-info"><h4>Peppered Beef</h4><p id="price-peppered-beef"></p></div>
       </div>
       <div class="food-card">
         <img src="images/peppered-cow-tail.jpg" alt="Peppered Cow - Tail" />
-        <div class="food-info"><h4>Peppered Cow - Tail</h4><p>₦4,000</p></div>
+        <div class="food-info"><h4>Peppered Cow - Tail</h4><p id="price-peppered-cow-tail"></p></div>
       </div>
       <div class="food-card">
         <img src="images/peppered-cow-head.jpg" alt="Peppered Cow - Head" />
-        <div class="food-info"><h4>Peppered Cow - Head</h4><p>₦4,000</p></div>
+        <div class="food-info"><h4>Peppered Cow - Head</h4><p id="price-peppered-cow-head"></p></div>
       </div>
       <div class="food-card">
         <img src="images/peppered-snail-4500.jpg" alt="Peppered Snail" />
-        <div class="food-info"><h4>Peppered Snail</h4><p>₦5,200</p></div>
+        <div class="food-info"><h4>Peppered Snail</h4><p id="price-peppered-snail"></p></div>
       </div>
     </div>
     <div class="tray-note">Takeout ₦300</div>
@@ -125,5 +127,34 @@
     <a href="./rooms.html">Rooms</a>
     <a href="./contact.html">Contact</a>
   </nav>
+  <script>
+    const ENDPOINT = 'https://script.google.com/macros/s/AKfycbwnziA_6JOOFhaY4yf81_z8TDi-g3ETkW8yLcC4Tw3IEXDAE2jQ_2WwIS8FVA17Fmk/exec';
+    const TOKEN = 'Forgive1988@';
+    const formatNaira = n => '₦' + Number(n||0).toLocaleString();
+    const slug = s => String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/gi,'-').replace(/-+/g,'-').toLowerCase().replace(/-$/,'');
+
+    function injectBites(){
+      fetch(`${ENDPOINT}?token=${encodeURIComponent(TOKEN)}`)
+        .then(r=>r.json())
+        .then(j=>{
+          if(!j.ok || !Array.isArray(j.rows)) return;
+          j.rows.forEach(item=>{
+            if (String(item.type) !== 'Food') return;
+            if (String(item.cat) !== 'Bites') return;
+            if (!item.name) return;
+            const id = 'price-' + slug(item.name);
+            const el = document.getElementById(id);
+            if (!el) return;
+            const li = el.closest('.food-card'); if(li) li.classList.remove('soldout');
+            const available = (item.available === true) || (String(item.available).toLowerCase() === 'true');
+            if (available) el.textContent = formatNaira(item.price);
+            else { el.innerHTML = `${formatNaira(item.price)} <span class="soldout-label">Sold Out</span>`; if(li) li.classList.add('soldout'); }
+          });
+        }).catch(()=>{});
+    }
+
+    document.addEventListener('DOMContentLoaded', injectBites);
+    setInterval(injectBites, 30000);
+  </script>
 </body>
 </html>

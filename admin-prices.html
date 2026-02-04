@@ -78,7 +78,6 @@
         <select id="show">
           <option value="">Show: All</option>
           <option value="Drinks">Drinks</option>
-          <!-- value MUST stay 'Food' (type written to sheet), label shows 'Bites' -->
           <option value="Food">Bites</option>
         </select>
 
@@ -111,7 +110,7 @@
 
   <script>
     /* ===== BACKEND CONFIG (LIVE) ===== */
-    const API_URL = 'https://script.google.com/macros/s/AKfycbwowJdvGrgv0Rahu5N_zWP_60Au_GJU05zNZHNlvo3pcrYCep5c-gsIOvmNImrPCN8h/exec';
+    const API_URL = 'https://script.google.com/macros/s/AKfycbwnziA_6JOOFhaY4yf81_z8TDi-g3ETkW8yLcC4Tw3IEXDAE2jQ_2WwIS8FVA17Fmk/exec';
     const TOKEN   = 'Forgive1988@';
 
     /* ===== CATALOGS ===== */
@@ -121,18 +120,32 @@
         { name: "Man Power", price: 7000 },
         { name: "Body Cleanser", price: 7000 }
       ],
-      "Beers / Mixers": [
+      "Beers/Lagers": [
         { name: "Star", price: 1800 }, { name: "Gulder", price: 1900 }, { name: "Heineken", price: 2100 },
         { name: "Medium Heineken", price: 1600 }, { name: '33"', price: 1600 }, { name: "Budweisser", price: 1700 },
         { name: "Life", price: 1600 }, { name: "Hero", price: 1600 }, { name: "Tiger", price: 1600 },
-        { name: "Maltina", price: 1200 }, { name: "Amstel", price: 1200 }, { name: "Guinness Malta", price: 1200 },
+        { name: "Trophy", price: 1600 }, { name: "Castle Lite", price: 1500 }, { name: "Flying Fish", price: 1500 }
+      ],
+      "Beers/Stout": [
+        { name: "Small Stout", price: 1700 }, { name: "Medium Stout", price: 2000 }, { name: "Big Stout", price: 2700 },
+        { name: "Legend", price: 2000 }, { name: "Guinness Smooth", price: 2500 }
+      ],
+      "Beers/Ready": [
+        { name: "Desperadoes", price: 1800 }, { name: "B/Smirnoff", price: 2200 }, { name: "Medium Double Black", price: 1600 }
+      ],
+      "Soft/Mixer": [
         { name: "Water", price: 500 }, { name: "Fayrouz", price: 1000 }, { name: "Coke can", price: 1000 },
-        { name: "Mineral", price: 1000 }, { name: "Cranberry", price: 3200 }, { name: "Juice", price: 3000 },
-        { name: "Hollandia", price: 3500 }
+        { name: "Maltina", price: 1200 }, { name: "Juice", price: 3000 }, { name: "Hollandia", price: 3500 },
+        { name: "Mineral", price: 1000 }, { name: "Amstel", price: 1200 }, { name: "Guinness Malta", price: 1200 }
+      ],
+      "Energy/Herbs": [
+        { name: "Blue Bullet", price: 2000 }, { name: "Black Bullet - New", price: 3000 }, { name: "Predator", price: 2000 },
+        { name: "Red Bull", price: 3000 }, { name: "Odogwu Bitters", price: 1200 }, { name: "Origin Bitters", price: 2500 },
+        { name: "1960", price: 1700 }
       ],
       "Wines": [
         { name: "Carlo Rossi", price: 18000 }, { name: "Markenellis", price: 18000 }, { name: "Four Cousins", price: 18000 },
-        { name: "Four Cousins Sparkling", price: 20000 }, { name: "Andre", price: 22000 }, { name: "Droty Off", price: 18000 },
+        { name: "Four Cousins Sparkling", price: 20000 }, { name: "Andre", price: 22000 }, { name: "Drostdy hof", price: 18000 },
         { name: "Pastoral Wine", price: 19000 }, { name: "Star Chaser", price: 17000 }, { name: "Lamothe Original", price: 15000 },
         { name: "Toma Wine", price: 10000 }, { name: "Princi Pinal Wine", price: 10000 }, { name: "1964 Wine", price: 10000 },
         { name: "Sweet Lip Wine", price: 15000 }
@@ -143,9 +156,23 @@
         { name: "Veuve Clicquot", price: 250000 }, { name: "Dom Pérignon", price: 700000 }, { name: "Moet", price: 155000 }
       ],
       "Whiskey": [
-        { name: "Williams Lawson", price: 25000 }, { name: "Williams Lawson Small", price: 12000 },
-        { name: "Jameson Green Small", price: 15000 }, { name: "Jameson Green Big", price: 40000 },
-        { name: "Jack Daniels", price: 40000 }, { name: "Singleton", price: 80000 }
+        { name: "Mini William Lawson", price: 12000 }, { name: "William Lawson", price: 25000 },
+        { name: "Jamson-stout", price: 60000 }, { name: "Jameson Irish (Green)", price: 40000 },
+        { name: "Jameson Black Barrel", price: 60000 }, { name: "Ballantines", price: 40000 },
+        { name: "Grant 12yrs", price: 50000 }, { name: "Monkey Shoulder", price: 85000 },
+        { name: "Smokey Monkey", price: 90000 }, { name: "Lakes Whiskey", price: 120000 },
+        { name: "Balvenie 12yrs", price: 155000 }, { name: "Balvenie 14yrs", price: 250000 },
+        { name: "Balvenie 16yrs", price: 550000 }, { name: "Balvenie 21yrs", price: 1000000 },
+        { name: "Glenfiddich 12yrs", price: 100000 }, { name: "Glenfiddich 15yrs", price: 120000 },
+        { name: "Glenfiddich 18yrs", price: 160000 }, { name: "Glenfiddich 21yrs", price: 550000 },
+        { name: "Glenfiddich 22yrs", price: 800000 }, { name: "Glenfiddich 23yrs", price: 900000 },
+        { name: "Glenfiddich 26yrs", price: 2000000 }, { name: "Macallan 12yrs", price: 200000 },
+        { name: "Tenjaku", price: 36000 }, { name: "West Cork Bourbon", price: 25000 },
+        { name: "Macallan Rare Cask", price: 600000 }, { name: "Tullamore Dew", price: 40000 },
+        { name: "Glenlivet Founder's Reserve", price: 100000 }, { name: "Glenlivet 12yrs", price: 150000 },
+        { name: "Glenlivet 15yrs", price: 200000 }, { name: "Glenlivet 18yrs", price: 350000 },
+        { name: "Singleton", price: 80000 }, { name: "Black Label", price: 60000 },
+        { name: "Glenmorangie", price: 60000 }
       ],
       "Shots": [
         { name: "Tequila", price: 3000 }, { name: "Casamigos Tequila", price: 3000 }, { name: "Bacardi", price: 3000 },
@@ -157,17 +184,16 @@
         { name: "Screaming Orgasm", price: 10000 }, { name: "Strawberry Daiquiri", price: 10000 },
         { name: "Sweet Poison", price: 10000 }, { name: "Zombie", price: 10000 }, { name: "Irish Coffee", price: 10000 },
         { name: "Frozen Strawberry Margarita", price: 10000 }, { name: "Frozen Blue Margarita", price: 10000 },
-        { name: "Classic Margarita", price: 10000 }, { name: "Long Island Iced Tea", price: 10000 },
-        { name: "Electric Ice Tea", price: 10000 }, { name: "Kiwi Fizzy", price: 10000 }, { name: "Mai Tai", price: 10000 },
-        { name: "Blue Hawaii", price: 10000 }, { name: "Mojito", price: 10000 }, { name: "Sex on the Beach", price: 10000 },
-        { name: "Hammer", price: 10000 }
+        { name: "Classic Margarita", price: 10000 }, { name: "Long Island", price: 10000 }, { name: "Piña colada", price: 10000 },
+        { name: "Long Island Iced Tea", price: 10000 }, { name: "Electric Ice Tea", price: 10000 }, 
+        { name: "Kiwi Fizzy", price: 10000 }, { name: "Mai Tai", price: 10000 }, { name: "Blue Hawaii", price: 10000 }, 
+        { name: "Mojito", price: 10000 }, { name: "Sex on the Beach", price: 10000 }, { name: "Hammer", price: 10000 }
       ],
       "Liquor-Rum-Gin": [
-        { name: "Gordon Gin (Medium)", price: 5000 }, { name: "Big Gordon", price: 12000 },
-        { name: "Smirnoff X1 (Small)", price: 3200 }, { name: "Smirnoff X1 (Big)", price: 12000 },
-        { name: "Kensington", price: 13000 }, { name: "John Bannermans", price: 25000 }, { name: "M/Campari", price: 32000 },
-        { name: "B/Campari", price: 36000 }, { name: "Clay More", price: 14000 }, { name: "Monkey Shoulder", price: 45000 },
-        { name: "Baileys", price: 18000 }
+        { name: "Jaegermeister", price: 35000 }, { name: "Bumbu Original", price: 100000 }, { name: "Cape velvet", price: 50000 },
+        { name: "Hendricks", price: 100000 }, { name: "Gordon Gin", price: 100000 }, { name: "Bombay Sapphire", price: 50000 },
+        { name: "Baileys", price: 35000 }, { name: "Gordon Gin (Medium)", price: 5000 }, { name: "Big Gordon", price: 12000 },
+        { name: "Smirnoff X1 (Small)", price: 3200 }, { name: "Smirnoff X1 (Big)", price: 12000 }
       ],
       "Cognac": [
         { name: "Martel VSSD", price: 100000 }, { name: "Martel VS", price: 100000 }, { name: "Martel Blue Swift", price: 120000 },
@@ -177,7 +203,8 @@
       "Smoothies": [
         { name: "Milk Fruity", price: 8000 }, { name: "Banana Strawberry", price: 8000 }, { name: "Avocado Banana", price: 8000 },
         { name: "Peanut Banana", price: 8000 }, { name: "Ginger Mix", price: 8000 }, { name: "Fresh Juice", price: 8000 },
-        { name: "Fruit Perfait", price: 8000 }
+        { name: "Fruit Perfait", price: 8000 }, { name: "Tropical Bowl", price: 8000 }, { name: "Sex Boster", price: 8000 },
+        { name: "Creamy Avocado", price: 8000 }, { name: "Pussy Wet", price: 8000 }
       ],
       "Milkshakes": [
         { name: "Creamy Vanilla", price: 10000 }, { name: "Strawberry Slush", price: 10000 },
@@ -199,13 +226,20 @@
         { name: "Samosa (5 pieces)", price: 6000 },
         { name: "Springroll (5 pieces)", price: 5500 },
         { name: "Chicken Wings", price: 7000 },
-        { name: "Peppered Gizzard", price: 8500 },
-        { name: "Peppered Chicken", price: 7500 },
-        { name: "Peppered Goat Meat", price: 9000 },
-        { name: "Peppered Beef", price: 7000 },
-        { name: "Peppered Cow - Tail", price: 8000 },
-        { name: "Peppered Cow - Head", price: 8500 },
-        { name: "Peppered Snail", price: 4500 }
+        { name: "Peppered Gizzard", price: 7000 },
+        { name: "Peppered Chicken", price: 5000 },
+        { name: "Peppered Goat Meat", price: 5500 },
+        { name: "Peppered Beef", price: 4000 },
+        { name: "Peppered Cow - Tail", price: 4000 },
+        { name: "Peppered Cow - Head", price: 4000 },
+        { name: "Peppered Snail", price: 5200 }
+      ]
+    };
+
+    const roomsCatalog = {
+      "Rooms": [
+        { name: "Deluxe", price: 40000 },
+        { name: "Standard", price: 35000 }
       ]
     };
 
@@ -213,28 +247,11 @@
     const $ = (id)=>document.getElementById(id);
     const uid = ()=> String(Date.now()) + Math.random().toString(16).slice(2);
     const money = v => (v==null || v==='') ? '' : Number(v);
-    const catalogForType = (t)=> t==='Food' ? foodCatalog : drinksCatalog;
+    const catalogForType = (t)=> t==='Food' ? foodCatalog : (t==='Rooms' ? roomsCatalog : drinksCatalog);
 
     let rows = [];
     let pendingNew = [];
     let saveTimer = null;
-
-    // Robust POST helper (parses JSON; falls back to no-cors)
-    async function postForm(params){
-      const body = new URLSearchParams(params);
-      try{
-        const r = await fetch(API_URL, { method:'POST', body });
-        const raw = await r.text();
-        return JSON.parse(raw);
-      }catch(err){
-        try{
-          await fetch(API_URL, { method:'POST', body, mode:'no-cors' });
-          return { ok:true, nocors:true };
-        }catch(e2){
-          return { ok:false, error: e2.message || 'Network error' };
-        }
-      }
-    }
 
     function scheduleSave(){
       clearTimeout(saveTimer);
@@ -288,7 +305,7 @@
         <tr data-id="${id}" ${isNew?'data-new="1"':''}>
           <td>
             <select class="type">
-              ${['','Drinks','Food'].map(t=>`<option value="${t}" ${String(row.type||'')===t?'selected':''}>${t==='Food'?'Bites':(t||'—')}</option>`).join('')}
+              ${['','Drinks','Food','Rooms'].map(t=>`<option value="${t}" ${String(row.type||'')===t?'selected':''}>${t==='Food'?'Bites':(t||'—')}</option>`).join('')}
             </select>
           </td>
           <td>${itemSelectHTML(row)}</td>
@@ -392,10 +409,19 @@
       let arr = JSON.parse(text);
       if (!Array.isArray(arr)) { alert('JSON must be an array'); return; }
       $('status').textContent = 'Importing...';
-      const data = await postForm({ token:TOKEN, op:'write', rows: JSON.stringify(arr) });
+      const res = await fetch(API_URL, {
+        method:'POST',
+        headers:{ 'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8' },
+        body: new URLSearchParams({
+          token: TOKEN,
+          op: 'write',
+          rows: JSON.stringify(arr)
+        })
+      });
+      const data = await res.json();
       if(!data.ok){ alert(data.error||'Import failed'); $('status').textContent=''; return; }
       await fetchItems();
-      $('status').textContent = `Imported ${data.count ?? ''} item(s)`.trim();
+      $('status').textContent = `Imported ${data.count} item(s)`;
     });
 
     // Start fresh (2 rows)
@@ -406,10 +432,19 @@
         { id:'seed-2', type:'Food',   name:'Sample Bite',  cat:'Bites',       price: 5000, available:true,  updatedAt:'' }
       ];
       $('status').textContent='Starting fresh...';
-      const data = await postForm({ token:TOKEN, op:'write', rows: JSON.stringify(seed) });
+      const res = await fetch(API_URL, {
+        method:'POST',
+        headers:{ 'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8' },
+        body: new URLSearchParams({
+          token: TOKEN,
+          op: 'write',
+          rows: JSON.stringify(seed)
+        })
+      });
+      const data = await res.json();
       if(!data.ok){ alert(data.error||'Failed'); $('status').textContent=''; return; }
       await fetchItems();
-      $('status').textContent = `Imported ${data.count ?? ''} item(s)`.trim();
+      $('status').textContent = `Imported ${data.count} item(s)`;
     });
 
     // === SAVE ===
@@ -430,11 +465,26 @@
         }
         const finalRows = Array.from(map.values());
 
-        const j = await postForm({ token:TOKEN, op:'write', rows: JSON.stringify(finalRows) });
-        if(!j.ok){ $('status').textContent='Save failed'; alert(j.error||'Save failed'); return; }
+        const r = await fetch(API_URL, {
+          method:'POST',
+          headers:{ 'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8' },
+          body: new URLSearchParams({
+            token: TOKEN,
+            op: 'write',
+            rows: JSON.stringify(finalRows)
+          })
+        });
 
-        await fetchItems(); // refresh after write
+        const j = await r.json();
+        if(!j.ok){
+          $('status').textContent = 'Save failed';
+          alert(j.error || 'Save failed');
+          return;
+        }
+
+        rows = finalRows;
         pendingNew = [];
+        render();
         $('status').textContent = 'Saved ✓';
       }catch(err){
         $('status').textContent = 'Save failed';

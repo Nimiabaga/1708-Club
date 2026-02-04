@@ -53,6 +53,12 @@
     .item-list li:last-child{ border-bottom:0; }
     .price{ color:var(--logo-gold); font-weight:900; margin-left:.8rem; white-space:nowrap; }
 
+    .soldout-label{
+      color:#fff; background:#d91e1e; border-radius:.35em; padding:.07em .5em;
+      font-weight:700; margin-left:.6em; font-size:.97em; vertical-align:middle; display:inline-block;
+    }
+    .item-list li.soldout{ opacity:.48; }
+
     main{ padding-bottom: 4.5rem; }
     @media (max-width:420px){ .menu-banner h2{ font-size:1.32rem } .menu-banner h2::after{ width:90px } }
   </style>
@@ -162,7 +168,7 @@
 
   <!-- Optional: live override from sheet later -->
   <script>
-    const ENDPOINT='https://script.google.com/macros/s/AKfycbw5v7gImXthxWkHUaCtDdDGx4U_tts7_1JWuHA9ojyu6nm2qvHyPehZrtfEK2j5JTMy/exec';
+    const ENDPOINT='https://script.google.com/macros/s/AKfycbwnziA_6JOOFhaY4yf81_z8TDi-g3ETkW8yLcC4Tw3IEXDAE2jQ_2WwIS8FVA17Fmk/exec';
     const TOKEN='Forgive1988@';
     const formatNaira=n=>'₦'+Number(n||0).toLocaleString();
     const slug=s=>String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/gi,'-').replace(/-+/g,'-').toLowerCase().replace(/-$/,'');
@@ -184,8 +190,10 @@
         });
       }).catch(()=>{});
     }
-    // Uncomment if/when you want live overrides:
-    // document.addEventListener('DOMContentLoaded', injectPrices);
+    // Live price injection on page load
+    document.addEventListener('DOMContentLoaded', injectPrices);
+    // Refresh every 30 seconds
+    setInterval(injectPrices, 30000);
   </script>
 </body>
 </html>

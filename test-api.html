@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API Test - 1708 Club</title>
+  <style>
+    body { font-family: monospace; background: #0a0a0a; color: #0f0; padding: 20px; }
+    .test-box { background: #111; border: 1px solid #0f0; padding: 15px; margin: 10px 0; border-radius: 5px; }
+    .success { color: #0f0; }
+    .error { color: #f00; }
+    button { background: #0f0; color: #000; padding: 10px 15px; border: none; border-radius: 3px; cursor: pointer; font-weight: bold; }
+    button:hover { background: #0a0; }
+    pre { background: #000; padding: 10px; border-radius: 3px; overflow-x: auto; }
+  </style>
+</head>
+<body>
+  <h1>🔧 API Diagnostics</h1>
+  
+  <div class="test-box">
+    <h3>1. Test Connection</h3>
+    <button onclick="testPing()">Test Ping</button>
+    <pre id="ping-result"></pre>
+  </div>
+
+  <div class="test-box">
+    <h3>2. Fetch Current Data</h3>
+    <button onclick="testFetch()">Fetch Prices</button>
+    <pre id="fetch-result"></pre>
+  </div>
+
+  <div class="test-box">
+    <h3>3. Write Test Data</h3>
+    <button onclick="testWrite()">Write Test Item</button>
+    <pre id="write-result"></pre>
+  </div>
+
+  <div class="test-box">
+    <h3>4. Check Sheet Name</h3>
+    <p>Expected: <strong>'1708 Club — LIVE Menu'</strong> (with em-dash, not hyphen)</p>
+    <button onclick="alert('Go to your Google Sheet and check the tab name at the bottom. It must match exactly.')">Check Your Sheet</button>
+  </div>
+
+  <script>
+    const ENDPOINT = 'https://script.google.com/macros/s/AKfycbwnziA_6JOOFhaY4yf81_z8TDi-g3ETkW8yLcC4Tw3IEXDAE2jQ_2WwIS8FVA17Fmk/exec';
+    const TOKEN = 'Forgive1988@';
+
+    async function testPing() {
+      const resultEl = document.getElementById('ping-result');
+      resultEl.innerHTML = '⏳ Testing...';
+      try {
+        const res = await fetch(`${ENDPOINT}?token=${encodeURIComponent(TOKEN)}&op=ping`);
+        const data = await res.json();
+        resultEl.innerHTML = `<span class="success">✓ Connected!</span>\n${JSON.stringify(data, null, 2)}`;
+      } catch (err) {
+        resultEl.innerHTML = `<span class="error">✗ Error: ${err.message}</span>`;
+      }
+    }
+
+    async function testFetch() {
+      const resultEl = document.getElementById('fetch-result');
+      resultEl.innerHTML = '⏳ Fetching...';
+      try {
+        const res = await fetch(`${ENDPOINT}?token=${encodeURIComponent(TOKEN)}`);
+        const data = await res.json();
+        if (data.ok) {
+          resultEl.innerHTML = `<span class="success">✓ Data fetched (${data.rows?.length ?? 0} items)</span>\n${JSON.stringify(data, null, 2)}`;
+        } else {
+          resultEl.innerHTML = `<span class="error">✗ Error: ${data.error}</span>`;
+        }
+      } catch (err) {
+        resultEl.innerHTML = `<span class="error">✗ Error: ${err.message}</span>`;
+      }
+    }
+
+    async function testWrite() {
+      const resultEl = document.getElementById('write-result');
+      resultEl.innerHTML = '⏳ Writing...';
+      try {
+        const testData = [{
+          id: 'test-' + Date.now(),
+          type: 'Drinks',
+          cat: 'Arabian Tea',
+          name: 'Test Item',
+          price: 9999,
+          available: true,
+          updatedAt: ''
+        }];
+
+        const res = await fetch(ENDPOINT, {
+          method: 'POST',
+          body: new URLSearchParams({
+            token: TOKEN,
+            op: 'write',
+            rows: JSON.stringify(testData)
+          })
+        });
+        const data = await res.json();
+        if (data.ok) {
+          resultEl.innerHTML = `<span class="success">✓ Write successful!</span>\n${JSON.stringify(data, null, 2)}\n\nCheck your Google Sheet for the test item.`;
+        } else {
+          resultEl.innerHTML = `<span class="error">✗ Error: ${data.error}</span>`;
+        }
+      } catch (err) {
+        resultEl.innerHTML = `<span class="error">✗ Error: ${err.message}</span>`;
+      }
+    }
+
+    // Auto-test on load
+    window.addEventListener('load', () => {
+      console.log('Testing API connection...');
+      testPing();
+    });
+  </script>
+</body>
+</html>
