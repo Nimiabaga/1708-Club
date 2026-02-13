@@ -88,6 +88,7 @@
           Load JSON <input id="upload" type="file" accept="application/json" style="display:none">
         </label>
         <button id="startfresh" class="btn danger">Start fresh (2 rows)</button>
+        <button id="loadcatalog" class="btn" style="background:linear-gradient(180deg,#7dffa6,#5ce68d);">Load All Catalog Items</button>
 
         <span id="status" class="status"></span>
       </div>
@@ -459,6 +460,81 @@
       if(!data.ok){ alert(data.error||'Failed'); $('status').textContent=''; return; }
       await fetchItems();
       $('status').textContent = `Imported ${data.count} item(s)`;
+    });
+
+    // Load All Catalog Items
+    $('loadcatalog').addEventListener('click', async ()=>{
+      if(!confirm('Load ALL catalog items into the sheet? This will replace existing data.')) return;
+      
+      const allItems = [];
+      let idCounter = 1;
+
+      // Load Drinks
+      for (const [cat, items] of Object.entries(drinksCatalog)){
+        for (const item of items){
+          allItems.push({
+            id: `cat-${idCounter++}`,
+            type: 'Drinks',
+            name: item.name,
+            cat: cat,
+            price: item.price,
+            available: true,
+            updatedAt: ''
+          });
+        }
+      }
+
+      // Load Food (Bites)
+      for (const [cat, items] of Object.entries(foodCatalog)){
+        for (const item of items){
+          allItems.push({
+            id: `cat-${idCounter++}`,
+            type: 'Food',
+            name: item.name,
+            cat: cat,
+            price: item.price,
+            available: true,
+            updatedAt: ''
+          });
+        }
+      }
+
+      // Load Rooms
+      for (const [cat, items] of Object.entries(roomsCatalog)){
+        for (const item of items){
+          allItems.push({
+            id: `cat-${idCounter++}`,
+            type: 'Rooms',
+            name: item.name,
+            cat: cat,
+            price: item.price,
+            available: true,
+            updatedAt: ''
+          });
+        }
+      }
+
+      $('status').textContent = `Loading ${allItems.length} catalog items...`;
+      
+      const res = await fetch(API_URL, {
+        method:'POST',
+        headers:{ 'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8' },
+        body: new URLSearchParams({
+          token: TOKEN,
+          op: 'write',
+          rows: JSON.stringify(allItems)
+        })
+      });
+      
+      const data = await res.json();
+      if(!data.ok){ 
+        alert(data.error||'Failed to load catalog items'); 
+        $('status').textContent='Load failed'; 
+        return; 
+      }
+      
+      await fetchItems();
+      $('status').textContent = `✓ Loaded ${allItems.length} catalog items`;
     });
 
     // === SAVE ===
