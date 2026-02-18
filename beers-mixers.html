@@ -89,8 +89,13 @@
         <h3>Beers — Lagers</h3>
         <ul class="item-list">
           <li><span>Star</span><span class="price" id="price-star">₦3,000</span></li>
+          <li><span>Gulder</span><span class="price" id="price-gulder">₦3,000</span></li>
           <li><span>Heineken</span><span class="price" id="price-heineken">₦3,000</span></li>
+          <li><span>Medium Heineken</span><span class="price" id="price-medium-heineken">₦3,000</span></li>
           <li><span>33"</span><span class="price" id="price-33">₦3,000</span></li>
+          <li><span>Budweiser</span><span class="price" id="price-budweiser">₦3,000</span></li>
+          <li><span>Star Radler</span><span class="price" id="price-star-radler">₦3,000</span></li>
+          <li><span>Orijin Beer</span><span class="price" id="price-orijin-beer">₦3,000</span></li>
           <li><span>Life</span><span class="price" id="price-life">₦3,000</span></li>
           <li><span>Hero</span><span class="price" id="price-hero">₦3,000</span></li>
           <li><span>Tiger</span><span class="price" id="price-tiger">₦3,000</span></li>
@@ -107,7 +112,7 @@
           <li><span>Small Stout</span><span class="price" id="price-small-stout">₦1,700</span></li>
           <li><span>Medium Stout</span><span class="price" id="price-medium-stout">₦3,000</span></li>
           <li><span>Big Stout</span><span class="price" id="price-big-stout">₦4,000</span></li>
-          <li><span>Guinness Smooth</span><span class="price" id="price- guinness-smooth">₦3,000</span></li>
+          <li><span>Guinness Smooth</span><span class="price" id="price-guinness-smooth">₦3,000</span></li>
           <li><span>Legend</span><span class="price" id="price-legend">₦3,000</span></li>
         </ul>
       </div>
@@ -182,6 +187,10 @@
     const TOKEN='Forgive1988@';
     const formatNaira=n=>'₦'+Number(n||0).toLocaleString();
     const slug=s=>String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/gi,'-').replace(/-+/g,'-').toLowerCase().replace(/-$/,'');
+    const NAME_ALIAS={
+      'budweisser':'budweiser',
+      'origin-beer':'orijin-beer'
+    };
     const ALLOWED_CATS=new Set(['Beers/Lagers','Beers/Stout','Beers/Ready','Soft/Mixer','Energy/Herbs']);
     function injectPrices(){
       fetch(`${ENDPOINT}?token=${encodeURIComponent(TOKEN)}`).then(r=>r.json()).then(j=>{
@@ -190,7 +199,8 @@
           if(String(item.type)!=='Drinks')return;
           if(!ALLOWED_CATS.has(String(item.cat)))return;
           if(!item.name)return;
-          const s=slug(item.name);
+          const rawSlug=slug(item.name);
+          const s=NAME_ALIAS[rawSlug]||rawSlug;
           const el=document.getElementById('price-'+s);
           if(!el)return;
           const li=el.closest('li'); if(li) li.classList.remove('soldout');

@@ -129,6 +129,11 @@
     const formatNaira = n => '₦' + Number(n||0).toLocaleString();
     const slug = s => String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'')
       .replace(/[^a-z0-9]/gi,'-').replace(/-+/g,'-').toLowerCase().replace(/-$/,'');
+    const NAME_ALIAS = {
+      'hennessey-vs': 'hennessy-vs',
+      'hennessey-vsop': 'hennessy-vsop',
+      'swift-martel': 'martel-blue-swift'
+    };
     
     function injectCognac(){
       fetch(`${ENDPOINT}?token=${encodeURIComponent(TOKEN)}`)
@@ -139,7 +144,8 @@
             if (String(item.type) !== 'Drinks') return;
             if (String(item.cat) !== 'Cognac') return;
             if (!item.name) return;
-            const id = 'price-' + slug(item.name);
+            const rawSlug = slug(item.name);
+            const id = 'price-' + (NAME_ALIAS[rawSlug] || rawSlug);
             const el = document.getElementById(id);
             if (!el) return;
             const card = el.closest('.food-card');

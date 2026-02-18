@@ -149,6 +149,22 @@
         </div>
       </div>
 
+      <div class="food-card" id="card-pastoral-sour">
+        <img src="images/pastoral-sour.jpg" alt="Pastoral Sour" />
+        <div class="food-info">
+          <h4>Pastoral Sour</h4>
+          <p id="price-pastoral-sour"></p>
+        </div>
+      </div>
+
+      <div class="food-card" id="card-pastoral-muscat">
+        <img src="images/pastoral-muscat.jpg" alt="Pastoral Muscat" />
+        <div class="food-info">
+          <h4>Pastoral Muscat</h4>
+          <p id="price-pastoral-muscat"></p>
+        </div>
+      </div>
+
       <div class="food-card" id="card-star-chaser">
         <img src="images/star-chaser.jpg" alt="Star Chaser" />
         <div class="food-info">
@@ -196,6 +212,22 @@
           <p id="price-sweet-lip-wine"></p>
         </div>
       </div>
+
+      <div class="food-card" id="card-asconi-agor-wine">
+        <img src="images/asconi-agor-wine.jpg" alt="Asconi Agor wine" />
+        <div class="food-info">
+          <h4>Asconi Agor wine</h4>
+          <p id="price-asconi-agor-wine"></p>
+        </div>
+      </div>
+
+      <div class="food-card" id="card-slik-and-spice-wine">
+        <img src="images/slik-and-spice-wine.jpg" alt="Slik and Spice wine" />
+        <div class="food-info">
+          <h4>Slik and Spice wine</h4>
+          <p id="price-slik-and-spice-wine"></p>
+        </div>
+      </div>
     </div>
 
     <div class="tray-note">Tap any card to zoom. Prices subject to change.</div>
@@ -215,6 +247,10 @@
     const TOKEN = 'Forgive1988@';
     const formatNaira = n => '₦' + Number(n||0).toLocaleString();
     const slug = s => String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/gi,'-').replace(/-+/g,'-').toLowerCase().replace(/-$/,'');
+    const NAME_ALIAS = {
+      'lamothe-patriot': 'lamothe-original',
+      '1964wine': '1964-wine'
+    };
 
     function injectWines() {
       fetch(`${ENDPOINT}?token=${encodeURIComponent(TOKEN)}`)
@@ -225,7 +261,8 @@
             if (String(item.type) !== 'Drinks') return;
             if (String(item.cat) !== 'Wines') return;
             if (!item.name) return;
-            const id = 'price-' + slug(item.name);
+            const rawSlug = slug(item.name);
+            const id = 'price-' + (NAME_ALIAS[rawSlug] || rawSlug);
             const el = document.getElementById(id);
             if (!el) return;
             const card = el.closest('.food-card');
