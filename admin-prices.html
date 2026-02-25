@@ -78,7 +78,7 @@
         <select id="show">
           <option value="">Show: All</option>
           <option value="Drinks">Drinks</option>
-          <option value="Food">Bites</option>
+          <option value="Food">Food</option>
         </select>
 
         <button id="add" class="btn">Add Item</button>
@@ -193,7 +193,8 @@
         { name: "Classic Margarita", price: 10000 }, { name: "Long Island", price: 10000 }, { name: "Piña colada", price: 10000 },
         { name: "Long Island Iced Tea", price: 10000 }, { name: "Electric Ice Tea", price: 10000 }, 
         { name: "Kiwi Fizzy", price: 10000 }, { name: "Mai Tai", price: 10000 }, { name: "Blue Hawaii", price: 10000 }, 
-        { name: "Mojito", price: 10000 }, { name: "Sex on the Beach", price: 10000 }, { name: "Hammer", price: 10000 }
+        { name: "Mojito", price: 10000 }, { name: "Sex on the Beach", price: 10000 }, { name: "Hammer", price: 10000 },
+        { name: "Seabreeze", price: 10000 }
       ],
       "Liquor-Rum-Gin": [
         { name: "Jaegermeister", price: 35000 }, { name: "Bumbu Original", price: 100000 }, { name: "Cape velvet", price: 50000 },
@@ -224,30 +225,121 @@
         { name: "Frozen Passion Colada", price: 8000 }, { name: "Blue Lemonade", price: 8000 }, { name: "Blue Hawaii", price: 8000 },
         { name: "Sweet Sunrise", price: 8000 }, { name: "Lick Me Up", price: 8000 }, { name: "Cucumber Cooler", price: 8000 },
         { name: "Bahamas Sunrise", price: 8000 }, { name: "Cinderella", price: 8000 }, { name: "Ginger Lemonade", price: 8000 }
+      ],
+      "Cigarettes / Nuts": [
+        { name: "LIGHTER", price: 500 },
+        { name: "DUNHILL", price: 2500 },
+        { name: "BENSON SWITCH", price: 2500 },
+        { name: "BENSON BOOST", price: 2500 },
+        { name: "BENSON", price: 2500 },
+        { name: "ESSE CHANGE", price: 2500 },
+        { name: "ORIS", price: 1500 },
+        { name: "CHESTERFIELD", price: 2000 },
+        { name: "DORCHESTER", price: 2000 },
+        { name: "BOHEM", price: 2000 },
+        { name: "GROUNDNUT SMALL", price: 1000 },
+        { name: "GROUNDNUT BIG", price: 1500 }
       ]
     };
 
-    /* Only “Bites” under Food (type value remains 'Food') */
+    /* Food categories: Bites, Swallows, Stews & Sauces, Proteins (type value remains 'Food') */
     const foodCatalog = {
-      "Bites": [
-        { name: "Fries", price: 3000 },
+      "Appetizers (Inter-Continental)": [
         { name: "Samosa (5 pieces)", price: 6000 },
         { name: "Springroll (5 pieces)", price: 5500 },
+        { name: "Nkwobi", price: 9000 },
+        { name: "Isi-Ewu", price: 10000 },
         { name: "Chicken Wings", price: 7000 },
-        { name: "Peppered Gizzard", price: 7000 },
-        { name: "Peppered Chicken", price: 5000 },
-        { name: "Peppered Goat Meat", price: 5500 },
-        { name: "Peppered Beef", price: 4000 },
-        { name: "Peppered Cow - Tail", price: 4000 },
-        { name: "Peppered Cow - Head", price: 4000 },
-        { name: "Peppered Snail", price: 5200 },
-        { name: "Ground nut big", price: 4500 },
-        { name: "Peppered Catfish", price: 5800 },
-        { name: "Peppered Assorted", price: 4700 },
+        { name: "Peppered Gizzard", price: 8500 },
+        { name: "Peppered Chicken", price: 7500 },
+        { name: "Peppered Goat Meat", price: 9000 },
+        { name: "Peppered Beef", price: 7000 },
+        { name: "Peppered Cow - Tail", price: 8000 },
+        { name: "Peppered Cow - Head", price: 8500 },
+        { name: "Peppered Snail", price: 4500 },
         { name: "Peppered Croaker", price: 8900 },
-        { name: "Barbecue Catfish", price: 13400 },
-        { name: "Barbecue Croaker", price: 13400 },
-        { name: "Barbecue Chicken", price: 5200 }
+        { name: "Peppered Assorted", price: 4800 }
+      ],
+      "Appetizers (National)": [
+        { name: "Chicken Peppersoup", price: 7000 },
+        { name: "Goat Meat Peppersoup", price: 8000 },
+        { name: "Beef Peppersoup", price: 6000 },
+        { name: "Catfish Peppersoup", price: 7000 },
+        { name: "Assorted Meats Pepper Soup", price: 8000 },
+        { name: "Cow Leg Peppersoup", price: 7000 },
+        { name: "Cow Head Peppersoup", price: 8000 }
+      ],
+      "BBQ & Fries": [
+        { name: "Croaker Fish", price: 13400 },
+        { name: "Cat Fish", price: 13400 },
+        { name: "Barbecue Chicken", price: 5200 },
+        { name: "Fries", price: 3000 }
+      ],
+      "Beverages": [
+        { name: "Coffee", price: 2500 },
+        { name: "Tea", price: 2000 },
+        { name: "Lipton Tea", price: 0 },
+        { name: "Custard", price: 0 },
+        { name: "Cocoa", price: 2500 }
+      ],
+      "Breakfast Dishes": [
+        { name: "Boiled Plantain", price: 3500 },
+        { name: "Fried Plantain", price: 3500 },
+        { name: "Fried Yam", price: 3500 },
+        { name: "Boiled Yam", price: 3000 },
+        { name: "Club Sandwich", price: 6500 },
+        { name: "English Breakfast", price: 7500 },
+        { name: "Toasted Breads", price: 2500 }
+      ],
+      "Main Dishes (Inter-Continental)": [
+        { name: "Plain Spaghetti", price: 1200 },
+        { name: "Jollof Spaghetti", price: 2800 },
+        { name: "French Fries", price: 3500 },
+        { name: "Chinese Stir-Fry Rice", price: 4500 }
+      ],
+      "Main Dishes (National)": [
+        { name: "Jollof Rice", price: 5500 },
+        { name: "White Rice", price: 4500 },
+        { name: "Fried Rice", price: 5500 }
+      ],
+      "National Soups": [
+        { name: "Afang Soup", price: 6500 },
+        { name: "Okro / Okra Soup", price: 5500 },
+        { name: "Egusi Soup", price: 6000 },
+        { name: "Vegetable Soup", price: 6000 },
+        { name: "Native Soup", price: 6500 },
+        { name: "Fisherman Soup", price: 9000 }
+      ],
+      "Proteins": [
+        { name: "Boiled Egg", price: 800 },
+        { name: "Omelette", price: 1500 },
+        { name: "Beef", price: 2500 },
+        { name: "Chicken", price: 3000 },
+        { name: "Goat Meat", price: 3200 },
+        { name: "Catfish", price: 3500 },
+        { name: "Croaker", price: 3800 },
+        { name: "Cow Tail", price: 2800 },
+        { name: "Cow Head", price: 3000 },
+        { name: "Assorted", price: 3700 },
+        { name: "Gizzard", price: 6300 },
+        { name: "Snail", price: 4700 },
+        { name: "Cowleg", price: 4700 }
+      ],
+      "Stews & Sauces": [
+        { name: "Tomatoes Stew", price: 4500 },
+        { name: "Tomatoes Sauce", price: 1200 },
+        { name: "Peppered Sauce/Soup", price: 1200 },
+        { name: "Fried Rice Sauce", price: 1200 },
+        { name: "Vegetable Sauce", price: 2300 },
+        { name: "Salad", price: 1700 },
+        { name: "Curry Sauce", price: 5000 },
+        { name: "Egg Sauce", price: 4000 }
+      ],
+      "Swallows": [
+        { name: "Poundo (Yam)", price: 2500 },
+        { name: "Semovita", price: 2300 },
+        { name: "Garri", price: 2000 },
+        { name: "Wheat", price: 2300 }
       ]
     };
 
@@ -320,7 +412,7 @@
         <tr data-id="${id}" ${isNew?'data-new="1"':''}>
           <td>
             <select class="type">
-              ${['','Drinks','Food','Rooms'].map(t=>`<option value="${t}" ${String(row.type||'')===t?'selected':''}>${t==='Food'?'Bites':(t||'—')}</option>`).join('')}
+              ${['','Drinks','Food','Rooms'].map(t=>`<option value="${t}" ${String(row.type||'')===t?'selected':''}>${t||'—'}</option>`).join('')}
             </select>
           </td>
           <td>${itemSelectHTML(row)}</td>
@@ -484,7 +576,7 @@
         }
       }
 
-      // Load Food (Bites)
+      // Load Food (Bites, Swallows, Stews & Sauces, Proteins, etc.)
       for (const [cat, items] of Object.entries(foodCatalog)){
         for (const item of items){
           allItems.push({

@@ -236,7 +236,7 @@
   <!-- Bottom nav only -->
   <nav class="bottom-nav">
     <a href="./index.html" class="active">Home</a>
-    <a href="./bites.html">Bites</a>
+    <a href="./food.html">Food</a>
     <a href="./drinks.html">Drinks</a>
     <a href="./rooms.html">Rooms</a>
     <a href="./contact.html">Contact</a>
@@ -249,8 +249,22 @@
     const slug = s => String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/gi,'-').replace(/-+/g,'-').toLowerCase().replace(/-$/,'');
     const NAME_ALIAS = {
       'lamothe-patriot': 'lamothe-original',
-      '1964wine': '1964-wine'
+      '1964wine': '1964-wine',
+      'silk-and-spice-wine': 'slik-and-spice-wine',
+      'slik-spice-wine': 'slik-and-spice-wine'
     };
+    const FALLBACK_PRICES = {
+      'price-asconi-agor-wine': 18000,
+      'price-slik-and-spice-wine': 30000
+    };
+
+    function applyFallbackPrices(){
+      Object.entries(FALLBACK_PRICES).forEach(([id, value]) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        if (!el.textContent.trim()) el.textContent = formatNaira(value);
+      });
+    }
 
     function injectWines() {
       fetch(`${ENDPOINT}?token=${encodeURIComponent(TOKEN)}`)
@@ -259,7 +273,8 @@
           if (!j.ok || !Array.isArray(j.rows)) return;
           j.rows.forEach(item => {
             if (String(item.type) !== 'Drinks') return;
-            if (String(item.cat) !== 'Wines') return;
+            const cat = String(item.cat || '').trim().toLowerCase();
+            if (cat !== 'wines' && cat !== 'wine') return;
             if (!item.name) return;
             const rawSlug = slug(item.name);
             const id = 'price-' + (NAME_ALIAS[rawSlug] || rawSlug);
@@ -275,7 +290,10 @@
               if (card) card.classList.add('soldout');
             }
           });
-        }).catch(() => {});
+          applyFallbackPrices();
+        }).catch(() => {
+          applyFallbackPrices();
+        });
     }
 
     document.addEventListener('DOMContentLoaded', injectWines);
