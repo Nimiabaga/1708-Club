@@ -118,232 +118,379 @@
     const drinksCatalog = {
       "Arabian Tea": [
         { name: "Abino Shaka", price: 7000 },
-        { name: "Man Power", price: 7000 },
-        { name: "Body Cleanser", price: 7000 }
+        { name: "Arebian Tea", price: 11200 },
+        { name: "Body Cleanser", price: 7000 },
+        { name: "Man Power", price: 7000 }
       ],
       "Beers/Lagers": [
-        { name: "Star", price: 1800 }, { name: "Gulder", price: 1900 }, { name: "Heineken", price: 2100 },
-        { name: "Medium Heineken", price: 1600 }, { name: '33"', price: 1600 }, { name: "Budweiser", price: 1700 },
-        { name: "Star Radler", price: 1700 }, { name: "Orijin Beer", price: 2500 },
-        { name: "Life", price: 1600 }, { name: "Hero", price: 1600 }, { name: "Tiger", price: 1600 },
-        { name: "Trophy", price: 1600 }, { name: "Castle Lite", price: 1500 }, { name: "Flying Fish", price: 1500 }
-      ],
-      "Beers/Stout": [
-        { name: "Small Stout", price: 1700 }, { name: "Medium Stout", price: 2000 }, { name: "Big Stout", price: 2700 },
-        { name: "Legend", price: 2000 }, { name: "Guinness Smooth", price: 3000 }
+        { name: "33\"", price: 3700 },
+        { name: "Budweiser", price: 3700 },
+        { name: "Castle Lite", price: 1500 },
+        { name: "Club Heineken", price: 5000 },
+        { name: "Club Tiger", price: 3400 },
+        { name: "Flying Fish", price: 5700 },
+        { name: "Gulder", price: 3700 },
+        { name: "Heineken", price: 3700 },
+        { name: "Hero", price: 3700 },
+        { name: "Life", price: 3700 },
+        { name: "Medium Heineken", price: 2100 },
+        { name: "Orijin Beer", price: 3700 },
+        { name: "Star", price: 3700 },
+        { name: "Star Radler", price: 3700 },
+        { name: "Tiger", price: 3700 },
+        { name: "Trophy", price: 3700 }
       ],
       "Beers/Ready": [
-        { name: "Desperadoes", price: 1800 }, { name: "B/Smirnoff", price: 2200 }, { name: "Medium Double Black", price: 1600 }
+        { name: "B/Smirnoff", price: 4000 },
+        { name: "Club M/Double Black", price: 3400 },
+        { name: "Desperadoes", price: 3400 },
+        { name: "Medium Double Black", price: 3700 }
       ],
-      "Soft/Mixer": [
-        { name: "Water", price: 500 }, { name: "Fayrouz", price: 1000 }, { name: "Coke can", price: 1000 },
-        { name: "Maltina", price: 1200 }, { name: "Juice", price: 3000 }, { name: "Hollandia", price: 3500 },
-        { name: "Mineral", price: 1000 }, { name: "Amstel", price: 1200 }, { name: "Guinness Malta", price: 1200 },
-        { name: "Chivita active", price: 5200 }, { name: "Chivita 100", price: 6000 },
-        { name: "Vita Milk", price: 2300 }
-      ],
-      "Energy/Herbs": [
-        { name: "Blue Bullet", price: 2000 }, { name: "Black Bullet - New", price: 3000 }, { name: "Predator", price: 2000 },
-        { name: "Red Bull", price: 3000 }, { name: "Odogwu Bitters", price: 1200 }, { name: "Origin Bitters", price: 2500 },
-        { name: "1960", price: 1700 }, { name: "Vina gano", price: 1700 }, { name: "Fearless", price: 1200 },
-        { name: "Climax can", price: 1400 }, { name: "Don Simon", price: 7250 }
-      ],
-      "Wines": [
-        { name: "Carlo Rossi", price: 18000 }, { name: "Markenellis", price: 18000 }, { name: "Four Cousins", price: 18000 },
-        { name: "Four Cousins Sparkling", price: 22000 }, { name: "Andre", price: 22000 }, { name: "Drostdy hof", price: 18000 },
-        { name: "Pastoral Wine", price: 19000 }, { name: "Pastoral Sour", price: 21500 }, { name: "Pastoral Muscat", price: 21500 }, { name: "Star Chaser", price: 17000 }, { name: "Lamothe Original", price: 15000 },
-        { name: "Toma Wine", price: 10000 }, { name: "Princi Pinal Wine", price: 10000 }, { name: "1964 Wine", price: 10000 },
-        { name: "Sweet Lip Wine", price: 15000 }, { name: "Asconi Agor wine", price: 18000 }, { name: "Slik and Spice wine", price: 30000 }
+      "Beers/Stout": [
+        { name: "Big Stout", price: 4500 },
+        { name: "Guinness Smooth", price: 3700 },
+        { name: "Legend", price: 3700 },
+        { name: "Medium Stout", price: 3700 },
+        { name: "Small Stout", price: 3700 }
       ],
       "Champagne": [
-        { name: "Belaire Fantôme Rosé", price: 100000 }, { name: "Belaire Fantôme lux", price: 110000 },
-        { name: "Belaire Fantôme Gold", price: 100000 }, { name: "Moet", price: 155000 }
-      ],
-      "Whiskey": [
-        { name: "Mini William Lawson", price: 12000 }, { name: "William Lawson", price: 25000 },
-        { name: "Jamson-stout", price: 60000 }, { name: "Jameson Irish (Green)", price: 40000 },
-        { name: "Jameson green small", price: 18000 }, { name: "Jameson Green big", price: 51000 },
-        { name: "Jameson Black Barrel", price: 60000 }, { name: "Ballantines", price: 40000 },
-        { name: "Jack Daniels", price: 56000 },
-        { name: "American Honey", price: 35000 }, { name: "Monkey Shoulder", price: 85000 },
-        { name: "Smokey Monkey", price: 90000 }, { name: "Lakes Whiskey", price: 120000 },
-        { name: "Balvenie 12yrs", price: 155000 }, { name: "Balvenie 14yrs", price: 250000 },
-        { name: "Balvenie 16yrs", price: 550000 }, { name: "Balvenie 21yrs", price: 1000000 },
-        { name: "Glenfiddich 12yrs", price: 100000 }, { name: "Glenfiddich 15yrs", price: 120000 },
-        { name: "Glenfiddich 18yrs", price: 160000 },
-        { name: "Glenfiddich 22yrs", price: 800000 }, { name: "Glenfiddich 23yrs", price: 900000 },
-        { name: "Glenfiddich 26yrs", price: 2000000 }, { name: "Macallan 12yrs", price: 120000 },
-        { name: "Tenjaku", price: 36000 }, { name: "West Cork Bourbon", price: 25000 },
-        { name: "Macallan Rare Cask", price: 600000 }, { name: "Tullamore Dew", price: 40000 },
-        { name: "Glenlivet Founder's Reserve", price: 100000 }, { name: "Glenlivet 12yrs", price: 150000 },
-        { name: "Glenlivet 15yrs", price: 200000 }, { name: "Glenlivet 18yrs", price: 350000 },
-        { name: "Singleton", price: 80000 }, { name: "Black Label", price: 60000 },
-        { name: "Glenmorangie", price: 60000 }
-      ],
-      "Shots": [
-        { name: "Tequila", price: 3000 }, { name: "Casamigos Tequila", price: 3000 }, { name: "Bacardi", price: 3000 },
-        { name: "Campari", price: 3000 }, { name: "Baileys", price: 3000 }, { name: "Gin", price: 3000 },
-        { name: "Jagermeister", price: 3000 }
-      ],
-      "Cocktails": [
-        { name: "Adios Motherfucker", price: 10000 }, { name: "Tequila Sunrise", price: 10000 },
-        { name: "Screaming Orgasm", price: 10000 }, { name: "Strawberry Daiquiri", price: 10000 },
-        { name: "Sweet Poison", price: 10000 }, { name: "Zombie", price: 10000 }, { name: "Irish Coffee", price: 10000 },
-        { name: "Frozen Strawberry Margarita", price: 10000 }, { name: "Frozen Blue Margarita", price: 10000 },
-        { name: "Classic Margarita", price: 10000 }, { name: "Long Island", price: 10000 }, { name: "Piña colada", price: 10000 },
-        { name: "Long Island Iced Tea", price: 10000 }, { name: "Electric Ice Tea", price: 10000 }, 
-        { name: "Kiwi Fizzy", price: 10000 }, { name: "Mai Tai", price: 10000 }, { name: "Blue Hawaii", price: 10000 }, 
-        { name: "Mojito", price: 10000 }, { name: "Sex on the Beach", price: 10000 }, { name: "Hammer", price: 10000 },
-        { name: "Seabreeze", price: 10000 }
-      ],
-      "Liquor-Rum-Gin": [
-        { name: "Jaegermeister", price: 35000 }, { name: "Bumbu Original", price: 100000 }, { name: "Cape velvet", price: 50000 },
-        { name: "Hendricks", price: 100000 }, { name: "Gordon Gin", price: 100000 }, { name: "Bombay Sapphire", price: 50000 },
-        { name: "Baileys", price: 35000 }, { name: "Gordon Gin (Medium)", price: 5000 }, { name: "Big Gordon", price: 12000 },
-        { name: "Smirnoff X1 (Small)", price: 3200 }, { name: "Smirnoff X1 (Big)", price: 12000 },
-        { name: "Jambis", price: 23000 }, { name: "Big campari", price: 45000 }, { name: "Medium campari", price: 40500 },
-        { name: "John banamas", price: 28000 }
-      ],
-      "Cognac": [
-        { name: "Martel VSSD", price: 100000 }, { name: "Martel VS", price: 73000 }, { name: "Martel Blue Swift", price: 134000 },
-        { name: "Hennessy VS", price: 106000 }, { name: "Hennessy VSOP", price: 167500 }, { name: "Hennessy XO", price: 500000 },
-        { name: "Dusse VSOP", price: 150000 }, { name: "Meukow VS", price: 75000 }, { name: "Remy Martin", price: 105600 }
-      ],
-      "Smoothies": [
-        { name: "Milk Fruity", price: 8000 }, { name: "Banana Strawberry", price: 8000 }, { name: "Avocado Banana", price: 8000 },
-        { name: "Peanut Banana", price: 8000 }, { name: "Ginger Mix", price: 8000 }, { name: "Fresh Juice", price: 8000 },
-        { name: "Fruit Perfait", price: 8000 }, { name: "Tropical Bowl", price: 8000 }, { name: "Sex Boster", price: 8000 },
-        { name: "Creamy Avocado", price: 8000 }, { name: "Pussy Wet", price: 8000 }
-      ],
-      "Milkshakes": [
-        { name: "Creamy Vanilla", price: 10000 }, { name: "Strawberry Slush", price: 10000 },
-        { name: "Peanut Butter Delight", price: 10000 }, { name: "Chocolate Flavoured Shakes", price: 10000 },
-        { name: "Bailey Milkshake", price: 10000 }, { name: "Banana Milkshake", price: 10000 }, { name: "Sneakers Milkshake", price: 10000 }
-      ],
-      "Mocktails": [
-        { name: "Chapman", price: 6000 }, { name: "Tropical Island", price: 8000 }, { name: "Bribe Pina", price: 8000 },
-        { name: "Frozen Passion Colada", price: 8000 }, { name: "Blue Lemonade", price: 8000 }, { name: "Blue Hawaii", price: 8000 },
-        { name: "Sweet Sunrise", price: 8000 }, { name: "Lick Me Up", price: 8000 }, { name: "Cucumber Cooler", price: 8000 },
-        { name: "Bahamas Sunrise", price: 8000 }, { name: "Cinderella", price: 8000 }, { name: "Ginger Lemonade", price: 8000 }
+        { name: "Belaire Fantôme Gold", price: 100000 },
+        { name: "Belaire Fantôme lux", price: 110000 },
+        { name: "Belaire Fantôme Rosé", price: 101000 },
+        { name: "Moet", price: 184000 }
       ],
       "Cigarettes / Nuts": [
-        { name: "LIGHTER", price: 500 },
-        { name: "DUNHILL", price: 2500 },
-        { name: "BENSON SWITCH", price: 2500 },
-        { name: "BENSON BOOST", price: 2500 },
         { name: "BENSON", price: 2500 },
-        { name: "ESSE CHANGE", price: 2500 },
-        { name: "ORIS", price: 1500 },
+        { name: "BENSON BOOST", price: 2500 },
+        { name: "BENSON SWITCH", price: 2500 },
+        { name: "BOHEM", price: 2000 },
         { name: "CHESTERFIELD", price: 2000 },
         { name: "DORCHESTER", price: 2000 },
-        { name: "BOHEM", price: 2000 },
+        { name: "DUNHILL", price: 2500 },
+        { name: "ESSE CHANGE", price: 2500 },
+        { name: "GROUNDNUT BIG", price: 5050 },
         { name: "GROUNDNUT SMALL", price: 1000 },
-        { name: "GROUNDNUT BIG", price: 1500 }
+        { name: "LIGHTER", price: 500 },
+        { name: "ORIS", price: 1500 }
+      ],
+      "Cocktails": [
+        { name: "Adios Motherfucker", price: 10000 },
+        { name: "Blue Hawaii", price: 10000 },
+        { name: "Classic Margarita", price: 10000 },
+        { name: "Electric Ice Tea", price: 10000 },
+        { name: "Frozen Blue Margarita", price: 10000 },
+        { name: "Frozen Strawberry Margarita", price: 10000 },
+        { name: "Hammer", price: 10000 },
+        { name: "Irish Coffee", price: 10000 },
+        { name: "Kiwi Fizzy", price: 10000 },
+        { name: "Long Island", price: 10000 },
+        { name: "Long Island Iced Tea", price: 10000 },
+        { name: "Mai Tai", price: 10000 },
+        { name: "Mojito", price: 10000 },
+        { name: "Piña colada", price: 10000 },
+        { name: "Screaming Orgasm", price: 10000 },
+        { name: "Seabreeze", price: 10000 },
+        { name: "Sex on the Beach", price: 10000 },
+        { name: "Strawberry Daiquiri", price: 10000 },
+        { name: "Sweet Poison", price: 10000 },
+        { name: "Tequila Sunrise", price: 10000 },
+        { name: "Zombie", price: 10000 }
+      ],
+      "Cognac": [
+        { name: "Dusse VSOP", price: 150000 },
+        { name: "Hennessy VS", price: 106000 },
+        { name: "Hennessy VSOP", price: 167500 },
+        { name: "Hennessy XO", price: 500000 },
+        { name: "Martel Blue Swift", price: 134000 },
+        { name: "Martel VS", price: 73000 },
+        { name: "Martel VSSD", price: 100000 },
+        { name: "Meukow VS", price: 75000 },
+        { name: "Remy Martin", price: 105000 }
+      ],
+      "Energy/Herbs": [
+        { name: "1960", price: 1700 },
+        { name: "Black Bullet - New", price: 3000 },
+        { name: "Blue Bullet", price: 2000 },
+        { name: "Climax can", price: 1400 },
+        { name: "Don Simon", price: 7250 },
+        { name: "Fearless", price: 1200 },
+        { name: "Odogwu Bitters", price: 1200 },
+        { name: "Origin Bitters", price: 2500 },
+        { name: "Predator", price: 2300 },
+        { name: "Red Bull", price: 3000 },
+        { name: "Vina gano", price: 1700 },
+        { name: "Vino Gano", price: 1700 },
+        { name: "Zagg", price: 1100 }
+      ],
+      "Liquor-Rum-Gin": [
+        { name: "Baileys", price: 50500 },
+        { name: "Big campari", price: 45000 },
+        { name: "Big Gordon", price: 13400 },
+        { name: "Bombay Sapphire", price: 50000 },
+        { name: "Bumbu Original", price: 100000 },
+        { name: "Cape velvet", price: 50000 },
+        { name: "Gordon Gin", price: 100000 },
+        { name: "Gordon Gin (Medium)", price: 5600 },
+        { name: "Hendricks", price: 100000 },
+        { name: "Jaegermeister", price: 35000 },
+        { name: "Jambis", price: 23000 },
+        { name: "John banamas", price: 28000 },
+        { name: "Liquor", price: 5000 },
+        { name: "Medium campari", price: 40500 },
+        { name: "Smirnoff X1 (Big)", price: 13400 },
+        { name: "Smirnoff X1 (Small)", price: 3700 }
+      ],
+      "Milkshakes": [
+        { name: "Bailey Milkshake", price: 10000 },
+        { name: "Banana Milkshake", price: 10000 },
+        { name: "Chocolate Flavoured Shakes", price: 10000 },
+        { name: "Creamy Vanilla", price: 10000 },
+        { name: "Peanut Butter Delight", price: 10000 },
+        { name: "Sneakers Milkshake", price: 10000 },
+        { name: "Strawberry Slush", price: 10000 }
+      ],
+      "Mocktails": [
+        { name: "Bahamas Sunrise", price: 8000 },
+        { name: "Blue Hawaii", price: 8000 },
+        { name: "Blue Lemonade", price: 8000 },
+        { name: "Bribe Pina", price: 8000 },
+        { name: "Chapman", price: 6000 },
+        { name: "Cinderella", price: 8000 },
+        { name: "Cucumber Cooler", price: 8000 },
+        { name: "Frozen Passion Colada", price: 8000 },
+        { name: "Ginger Lemonade", price: 8000 },
+        { name: "Lick Me Up", price: 8000 },
+        { name: "Sweet Sunrise", price: 8000 },
+        { name: "Tropical Island", price: 8000 }
+      ],
+      "Shots": [
+        { name: "Bacardi", price: 3000 },
+        { name: "Baileys", price: 50500 },
+        { name: "Campari", price: 3000 },
+        { name: "Casamigos Tequila", price: 3000 },
+        { name: "Gin", price: 3000 },
+        { name: "Jagermeister", price: 3000 },
+        { name: "Tequila", price: 3000 }
+      ],
+      "Smoothies": [
+        { name: "Avocado Banana", price: 8000 },
+        { name: "Banana Strawberry", price: 8000 },
+        { name: "Creamy Avocado", price: 8000 },
+        { name: "Fresh Juice", price: 8000 },
+        { name: "Fruit Perfait", price: 8000 },
+        { name: "Ginger Mix", price: 8000 },
+        { name: "Milk Fruity", price: 8000 },
+        { name: "Peanut Banana", price: 8000 },
+        { name: "Pussy Wet", price: 8000 },
+        { name: "Sex Boster", price: 8000 },
+        { name: "Tropical Bowl", price: 8000 }
+      ],
+      "Soft/Mixer": [
+        { name: "Amstel", price: 1200 },
+        { name: "Chivita 100", price: 4300 },
+        { name: "Chivita active", price: 3600 },
+        { name: "Coke can", price: 1000 },
+        { name: "Fayrouz", price: 1000 },
+        { name: "Guinness Malta", price: 1200 },
+        { name: "Hollandia", price: 3500 },
+        { name: "Juice", price: 3000 },
+        { name: "Maltina", price: 1200 },
+        { name: "Mineral", price: 1000 },
+        { name: "Peak Yogurt", price: 4500 },
+        { name: "Vita Milk", price: 3300 },
+        { name: "Water", price: 500 }
+      ],
+      "Whiskey": [
+        { name: "American Honey", price: 35000 },
+        { name: "Ballantines", price: 40000 },
+        { name: "Balvenie 12yrs", price: 155000 },
+        { name: "Balvenie 14yrs", price: 250000 },
+        { name: "Balvenie 16yrs", price: 550000 },
+        { name: "Balvenie 21yrs", price: 1000000 },
+        { name: "Black Label", price: 60000 },
+        { name: "Black Label New", price: 70500 },
+        { name: "Clay More", price: 14500 },
+        { name: "Glenfiddich 12yrs", price: 110000 },
+        { name: "Glenfiddich 15yrs", price: 128500 },
+        { name: "Glenfiddich 18yrs", price: 184000 },
+        { name: "Glenfiddich 22yrs", price: 800000 },
+        { name: "Glenfiddich 23yrs", price: 900000 },
+        { name: "Glenfiddich 26yrs", price: 2000000 },
+        { name: "Glenlivet 12yrs", price: 150000 },
+        { name: "Glenlivet 15yrs", price: 200000 },
+        { name: "Glenlivet 18yrs", price: 350000 },
+        { name: "Glenlivet Founder's Reserve", price: 100000 },
+        { name: "Glenmorangie", price: 73000 },
+        { name: "Jack Daniels", price: 56000 },
+        { name: "Jameson Black", price: 67000 },
+        { name: "Jameson Black Barrel", price: 60000 },
+        { name: "Jameson Green big", price: 51000 },
+        { name: "Jameson green small", price: 18000 },
+        { name: "Jameson Irish (Green)", price: 40000 },
+        { name: "Jamson-stout", price: 60000 },
+        { name: "Kenstington", price: 14500 },
+        { name: "Lakes Whiskey", price: 120000 },
+        { name: "Macallan 12yrs", price: 120000 },
+        { name: "Macallan Rare Cask", price: 600000 },
+        { name: "Mini William Lawson", price: 12000 },
+        { name: "Monkey Shoulder", price: 85000 },
+        { name: "Singleton", price: 100000 },
+        { name: "Smokey Monkey", price: 90000 },
+        { name: "Tenjaku", price: 45000 },
+        { name: "Tullamore Dew", price: 40000 },
+        { name: "West Cork Bourbon", price: 27000 },
+        { name: "West Cork Sherry", price: 35000 },
+        { name: "Westcork Black Cask", price: 33000 },
+        { name: "William Lawson", price: 29000 }
+      ],
+      "Wines": [
+        { name: "1964 Wine", price: 17000 },
+        { name: "Andre", price: 22000 },
+        { name: "Asconi Agor wine", price: 18000 },
+        { name: "Carlo Rossi", price: 18000 },
+        { name: "Drostdy hof", price: 18000 },
+        { name: "Drostyoff", price: 20500 },
+        { name: "Four Cousins", price: 18000 },
+        { name: "Four Cousins Sparkling", price: 22000 },
+        { name: "Lamothe Original", price: 15000 },
+        { name: "Lamothe Pariot", price: 17000 },
+        { name: "Markenellis", price: 18000 },
+        { name: "Pastoral Muscat", price: 21500 },
+        { name: "Pastoral Sour", price: 21500 },
+        { name: "Pastoral Wine", price: 21500 },
+        { name: "Princi Pinal Wine", price: 11500 },
+        { name: "Slik and Spice wine", price: 30000 },
+        { name: "Star Chaser", price: 17000 },
+        { name: "Sweet Lip Wine", price: 17000 },
+        { name: "Toma Wine", price: 17000 }
       ]
     };
 
     /* Food categories: Bites, Swallows, Stews & Sauces, Proteins (type value remains 'Food') */
     const foodCatalog = {
       "Appetizers (Inter-Continental)": [
-        { name: "Samosa (5 pieces)", price: 6000 },
-        { name: "Springroll (5 pieces)", price: 5500 },
-        { name: "Nkwobi", price: 9000 },
-        { name: "Isi-Ewu", price: 10000 },
         { name: "Chicken Wings", price: 7000 },
-        { name: "Peppered Gizzard", price: 8500 },
-        { name: "Peppered Chicken", price: 7500 },
-        { name: "Peppered Goat Meat", price: 9000 },
+        { name: "Isi-Ewu", price: 11200 },
+        { name: "Nkwobi", price: 6200 },
+        { name: "Peppered Assorted", price: 4800 },
         { name: "Peppered Beef", price: 7000 },
-        { name: "Peppered Cow - Tail", price: 8000 },
+        { name: "Peppered Chicken", price: 7500 },
         { name: "Peppered Cow - Head", price: 8500 },
-        { name: "Peppered Snail", price: 4500 },
+        { name: "Peppered Cow - Tail", price: 8000 },
         { name: "Peppered Croaker", price: 8900 },
-        { name: "Peppered Assorted", price: 4800 }
+        { name: "Peppered Gizzard", price: 7900 },
+        { name: "Peppered Goat Meat", price: 9000 },
+        { name: "Peppered Snail", price: 5900 },
+        { name: "Samosa (5 pieces)", price: 6000 },
+        { name: "Samosa 5pcs", price: 2800 },
+        { name: "Shawarma", price: 5000 },
+        { name: "Shawarma Bag", price: 500 },
+        { name: "Springroll (5 pieces)", price: 5500 },
+        { name: "Springroll 5pcs", price: 2800 }
       ],
       "Appetizers (National)": [
-        { name: "Chicken Peppersoup", price: 7000 },
-        { name: "Goat Meat Peppersoup", price: 8000 },
-        { name: "Beef Peppersoup", price: 6000 },
-        { name: "Catfish Peppersoup", price: 7000 },
-        { name: "Assorted Meats Pepper Soup", price: 8000 },
-        { name: "Cow Leg Peppersoup", price: 7000 },
-        { name: "Cow Head Peppersoup", price: 8000 }
+        { name: "Assorted Meats Pepper Soup", price: 5200 },
+        { name: "Beef Peppersoup", price: 4600 },
+        { name: "Catfish Peppersoup", price: 6300 },
+        { name: "Chicken Peppersoup", price: 5700 },
+        { name: "Cow Head Peppersoup", price: 5200 },
+        { name: "Cow Leg Peppersoup", price: 5200 },
+        { name: "Croaker Peppersoup", price: 9600 },
+        { name: "Goat Meat Peppersoup", price: 6300 },
+        { name: "Peppersoup", price: 600 },
+        { name: "Suya", price: 2800 }
       ],
       "BBQ & Fries": [
-        { name: "Croaker Fish", price: 13400 },
+        { name: "Barbecue Chicken", price: 5100 },
         { name: "Cat Fish", price: 13400 },
-        { name: "Barbecue Chicken", price: 5200 },
+        { name: "Croaker Fish", price: 13400 },
         { name: "Fries", price: 3000 }
       ],
       "Beverages": [
-        { name: "Coffee", price: 2500 },
-        { name: "Tea", price: 2000 },
-        { name: "Lipton Tea", price: 0 },
+        { name: "Cocoa", price: 2500 },
+        { name: "Coffee", price: 1000 },
         { name: "Custard", price: 0 },
-        { name: "Cocoa", price: 2500 }
+        { name: "Lipton Tea", price: 0 },
+        { name: "Tea", price: 2000 }
       ],
       "Breakfast Dishes": [
-        { name: "Boiled Plantain", price: 3500 },
-        { name: "Fried Plantain", price: 3500 },
-        { name: "Fried Yam", price: 3500 },
+        { name: "Boiled Plantain", price: 1200 },
         { name: "Boiled Yam", price: 3000 },
-        { name: "Club Sandwich", price: 6500 },
-        { name: "English Breakfast", price: 7500 },
+        { name: "Club Sandwich", price: 3400 },
+        { name: "English Breakfast", price: 3400 },
+        { name: "Fried Plantain", price: 3500 },
+        { name: "Fried Yam", price: 2300 },
+        { name: "Porridge Plantain/Yam", price: 3400 },
+        { name: "Toasted Bread", price: 1200 },
         { name: "Toasted Breads", price: 2500 }
       ],
       "Main Dishes (Inter-Continental)": [
-        { name: "Plain Spaghetti", price: 1200 },
+        { name: "Chinese Stir-Fry Rice", price: 4500 },
+        { name: "French Fries", price: 3400 },
         { name: "Jollof Spaghetti", price: 2800 },
-        { name: "French Fries", price: 3500 },
-        { name: "Chinese Stir-Fry Rice", price: 4500 }
+        { name: "Plain Spaghetti", price: 1200 }
       ],
       "Main Dishes (National)": [
-        { name: "Jollof Rice", price: 5500 },
-        { name: "White Rice", price: 4500 },
-        { name: "Fried Rice", price: 5500 }
+        { name: "Fried Rice", price: 2800 },
+        { name: "Indomie", price: 2400 },
+        { name: "Jollof Rice", price: 2800 },
+        { name: "White Rice", price: 1200 }
       ],
       "National Soups": [
-        { name: "Afang Soup", price: 6500 },
-        { name: "Okro / Okra Soup", price: 5500 },
-        { name: "Egusi Soup", price: 6000 },
-        { name: "Vegetable Soup", price: 6000 },
-        { name: "Native Soup", price: 6500 },
-        { name: "Fisherman Soup", price: 9000 }
+        { name: "Afang Soup", price: 2300 },
+        { name: "Egusi Soup", price: 2300 },
+        { name: "Fisherman Soup", price: 9000 },
+        { name: "Native Soup", price: 2800 },
+        { name: "Okro / Okra Soup", price: 2300 },
+        { name: "Vegetable Soup", price: 2300 }
       ],
       "Proteins": [
-        { name: "Boiled Egg", price: 800 },
-        { name: "Omelette", price: 1500 },
-        { name: "Beef", price: 2500 },
-        { name: "Chicken", price: 3000 },
-        { name: "Goat Meat", price: 3200 },
-        { name: "Catfish", price: 3500 },
-        { name: "Croaker", price: 3800 },
-        { name: "Cow Tail", price: 2800 },
-        { name: "Cow Head", price: 3000 },
         { name: "Assorted", price: 3700 },
+        { name: "Beef", price: 3400 },
+        { name: "Boiled Egg", price: 1200 },
+        { name: "Catfish", price: 5100 },
+        { name: "Chicken", price: 4500 },
+        { name: "Commail", price: 4000 },
+        { name: "Cow Head", price: 3000 },
+        { name: "Cow Tail", price: 2800 },
+        { name: "Cowleg", price: 4700 },
+        { name: "Croaker", price: 8400 },
         { name: "Gizzard", price: 6300 },
-        { name: "Snail", price: 4700 },
-        { name: "Cowleg", price: 4700 }
+        { name: "Goat Meat", price: 5100 },
+        { name: "Omelette", price: 1200 },
+        { name: "Snail", price: 4700 }
       ],
       "Stews & Sauces": [
-        { name: "Tomatoes Stew", price: 4500 },
-        { name: "Tomatoes Sauce", price: 1200 },
-        { name: "Peppered Sauce/Soup", price: 1200 },
+        { name: "Curry Sauce", price: 1700 },
+        { name: "Egg Sauce", price: 2300 },
         { name: "Fried Rice Sauce", price: 1200 },
-        { name: "Vegetable Sauce", price: 2300 },
+        { name: "Peppered Sauce/Soup", price: 1200 },
         { name: "Salad", price: 1700 },
-        { name: "Curry Sauce", price: 5000 },
-        { name: "Egg Sauce", price: 4000 }
+        { name: "Tomatoes Sauce", price: 1200 },
+        { name: "Tomatoes Stew", price: 4500 },
+        { name: "Vegetable Sauce", price: 2300 }
       ],
       "Swallows": [
-        { name: "Poundo (Yam)", price: 2500 },
-        { name: "Semovita", price: 2300 },
-        { name: "Garri", price: 2000 },
+        { name: "Garri", price: 1200 },
+        { name: "Poundo (Yam)", price: 1700 },
+        { name: "Semovita", price: 1200 },
         { name: "Wheat", price: 2300 }
       ]
     };
 
     const roomsCatalog = {
+      "Laundry": [
+        { name: "Beddings Washing", price: 4000 },
+        { name: "Only Top", price: 1000 },
+        { name: "Towel Washing", price: 2000 },
+        { name: "Up/Down Washing and Ironing", price: 2000 }
+      ],
+      "Recreation": [
+        { name: "Snooker Club per Set", price: 3400 },
+        { name: "Snooker per Set", price: 500 },
+        { name: "Swimming for Men", price: 3000 },
+        { name: "Swimming for Women", price: 2000 }
+      ],
       "Rooms": [
         { name: "Deluxe", price: 40000 },
         { name: "Standard", price: 35000 }
