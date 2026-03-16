@@ -224,28 +224,12 @@
     const slug = s => String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/gi,'-').replace(/-+/g,'-').toLowerCase().replace(/-$/,'');
 
     function injectSmoothies() {
-      fetch(`${ENDPOINT}?token=${encodeURIComponent(TOKEN)}`)
-        .then(r => r.json())
-        .then(j => {
-          if (!j.ok || !Array.isArray(j.rows)) return;
-          j.rows.forEach(item => {
-            if (String(item.type) !== 'Drinks') return;
-            if (String(item.cat) !== 'Smoothies') return;
-            if (!item.name) return;
-            const id = 'price-' + slug(item.name);
-            const el = document.getElementById(id);
-            if (!el) return;
-            const card = el.closest('.food-card');
-            if (card) card.classList.remove('soldout');
-            const available = (item.available === true) || (String(item.available).toLowerCase() === 'true');
-            if (available) {
-              el.textContent = formatNaira(item.price);
-            } else {
-              el.innerHTML = `${formatNaira(item.price)} <span class="soldout-label">Sold Out</span>`;
-              if (card) card.classList.add('soldout');
-            }
-          });
-        }).catch(() => {});
+      const price = 8000;
+      document.querySelectorAll('[id^="price-"]').forEach(el => {
+        el.textContent = formatNaira(price);
+        const card = el.closest('.food-card');
+        if (card) card.classList.remove('soldout');
+      });
     }
 
     document.addEventListener('DOMContentLoaded', injectSmoothies);
