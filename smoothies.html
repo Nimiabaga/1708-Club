@@ -224,7 +224,7 @@
     const slug = s => String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/gi,'-').replace(/-+/g,'-').toLowerCase().replace(/-$/,'');
 
     function injectSmoothies() {
-      const price = 8000;
+      const price = 10000;
       document.querySelectorAll('[id^="price-"]').forEach(el => {
         el.textContent = formatNaira(price);
         const card = el.closest('.food-card');
